@@ -14,7 +14,7 @@ LI = "https://www.linkedin.com/company/oxyn-group/"
 
 # --------------------------------------------------------------------------
 # Empresas do grupo. Oxyn Comercial e Oxyn Pessoas seguem o manual de marca;
-# os demais nomes (Oxyn IA, Oxyn Estudio) sao de trabalho: validar com a diretoria.
+# o nome "Oxyn IA" e de trabalho: validar com a diretoria.
 # --------------------------------------------------------------------------
 UNITS = [
   dict(slug="comercial", unit="Oxyn Comercial", short="Comercial", icon="i-trend", color="blue", img="foto-leao.jpg",
@@ -96,7 +96,7 @@ UNITS = [
             "<b>Mês 2 · Implantar:</b> formação dos líderes e primeira aplicação dos rituais, com acompanhamento",
             "<b>Mês 3 · Sustentar:</b> ajustes finais, co-condução, handover e revisão do ciclo",
             "<b>Ao final:</b> a rotina está com a liderança e com o time de Pessoas da sua empresa"],
-       connects=["comercial","inteligencia-artificial","estudio"],
+       connects=["comercial","inteligencia-artificial","fqd-studios"],
        faq=[("A consultoria de RH é só para a área comercial?","Não. Atendemos toda a estrutura da empresa: governança de RH, cargos e salários, lideranças e rituais de gestão. A experiência comercial do grupo ajuda especialmente em times de vendas."),
             ("O que é RH como serviço?","É quando a Oxyn atua como o RH da sua empresa, conduzindo rituais, clima e PDI, com uma transição planejada para um time interno quando fizer sentido."),
             ("Quanto tempo dura a implantação?","O ciclo padrão é de 90 dias: estruturar, implantar e sustentar. Ao final, a rotina está com a liderança e com o time de Pessoas da empresa.")]),
@@ -124,7 +124,7 @@ UNITS = [
             "Otimização técnica do site e dados estruturados",
             "Produção e atualização de conteúdo orientado a autoridade",
             "Relatórios mensais de visibilidade, tráfego e leads"],
-       connects=["estudio","fqdtv","comercial"],
+       connects=["fqd-studios","fqdtv","comercial"],
        faq=[("O que é GEO?","GEO, ou Generative Engine Optimization, é a otimização para que sua marca seja citada e recomendada em respostas de IAs generativas como ChatGPT, Gemini e Perplexity."),
             ("GEO substitui o SEO?","Não. Os dois se complementam: as IAs se apoiam em conteúdo bem estruturado e com autoridade, que é a base do SEO. Trabalhamos as duas frentes juntas."),
             ("Em quanto tempo vejo resultado?","SEO e GEO são trabalhos de médio prazo. A Naia mede a linha de base desde o início para que você acompanhe a evolução mês a mês.")]),
@@ -152,38 +152,41 @@ UNITS = [
             "Marcas que querem posicionar seus executivos como referência",
             "Lançamentos de produtos para públicos específicos",
             "Eventos, feiras e ações que precisam de repercussão no setor"],
-       connects=["estudio","naia-geo-seo","comercial"],
+       connects=["fqd-studios","naia-geo-seo","comercial"],
        faq=[("O que é mídia de nicho?","É a comunicação direcionada a um público segmentado, com conteúdo e canais escolhidos para o contexto desse público, em vez de buscar alcance amplo."),
-            ("A FQDTV produz o conteúdo?","Sim. Concebemos, produzimos e distribuímos, com apoio da estrutura de gravação do grupo."),
+            ("A FQDTV produz o conteúdo?","Sim. Concebemos, produzimos e distribuímos. A programação diária da FQDTV é gravada no FQD Studios, o estúdio do grupo em São Paulo."),
             ("Como sei se a mídia gerou negócios?","Cada campanha tem indicadores de alcance e engajamento e, quando integrada ao comercial, de oportunidades geradas.")]),
-  dict(slug="estudio", unit="Oxyn Estúdio", short="Estúdio e conteúdo", icon="i-video", color="blue", img="foto-abstrato-capa.jpg",
-       card="Estúdio físico e gravações externas para podcasts, videocasts e conteúdos que constroem autoridade.",
-       tags=["Estúdio", "Gravação externa", "Podcast e vídeo"],
-       menu="Estúdio físico e gravações externas",
-       title="Estúdio de gravação e produção de conteúdo",
-       eyebrow="Oxyn Estúdio · Produção de conteúdo",
-       h1_thin="Estúdio e gravações externas", h1="para conteúdo que gera autoridade.",
-       lead="Estúdio físico equipado e equipe para gravações externas. Podcasts, videocasts, entrevistas, cortes para redes sociais e vídeos institucionais, do roteiro à entrega.",
+  dict(slug="fqd-studios", unit="FQD Studios", short="Estúdio e conteúdo", icon="i-video", color="blue", img="foto-abstrato-capa.jpg",
+       site="https://fqdstudios.com/",
+       address=dict(street="Av. Queiroz Filho, 1700, Bloco D, Sala 802", district="Vila Hamburguesa", city="São Paulo", region="SP", zip="05319-000"),
+       card="Estúdio em São Paulo e gravações externas para podcasts, lives, programas de bancada e conteúdo corporativo. Um estúdio, todos os formatos.",
+       tags=["Podcast e videocast", "Lives no YouTube", "Conteúdo corporativo"],
+       menu="Estúdio de gravação e gravações externas",
+       title="Estúdio de podcast, lives e conteúdo corporativo em São Paulo",
+       eyebrow="FQD Studios · Estúdio de gravação",
+       h1_thin="Um estúdio.", h1="Todos os formatos.",
+       lead="Cenário, transmissão e pós-produção sob o mesmo teto, ao lado do Parque Villa-Lobos, em São Paulo. Podcasts, lives, aulas, programas de bancada e conteúdo corporativo com captação em 4K e equipe técnica própria. Quando o conteúdo precisa acontecer fora, levamos a gravação até você.",
        pains_h2="O seu conteúdo está à altura da sua empresa?",
        pains=[("i-video","Conteúdo amador","Áudio ruim, imagem improvisada e uma percepção de marca abaixo do que a empresa entrega."),
-              ("i-layers","Produção travada","Um fornecedor para cada etapa, agendas desencontradas e meses entre a ideia e a publicação."),
-              ("i-target","Vídeo sem objetivo","Conteúdo bonito, mas sem roteiro pensado para gerar autoridade e oportunidades.")],
-       deliv_h2="Do roteiro ao corte final",
-       deliv=[("i-video","Estúdio físico","Cenário, câmeras, áudio e iluminação prontos para podcasts, videocasts e entrevistas."),
-              ("i-camera","Gravações externas","Equipe móvel para eventos, fábricas, depoimentos de clientes e vídeos institucionais."),
-              ("i-message","Roteiro e direção","Pautas e roteiros pensados para o seu público e para os objetivos comerciais."),
-              ("i-zap","Edição e cortes","Versões completas e cortes para redes sociais, site e campanhas.")],
-       how_eyebrow="Formatos", how_h2="Um estúdio, muitos formatos",
-       how_lead="Produzimos o conteúdo que o seu time comercial vai usar e que a sua marca precisa para ser lembrada.",
-       how=["Podcasts e videocasts com executivos e convidados",
-            "Depoimentos de clientes e cases em vídeo",
-            "Vídeos institucionais e de produto",
-            "Cobertura de eventos e feiras",
-            "Cortes verticais para LinkedIn, Instagram e YouTube"],
-       connects=["fqdtv","naia-geo-seo","pessoas"],
-       faq=[("Posso alugar o estúdio só para a gravação?","Sim. Oferecemos desde a locação com equipe técnica até a produção completa, com roteiro, direção e edição."),
-            ("Vocês gravam fora do estúdio?","Sim. Temos equipe para gravações externas em eventos, na sua empresa ou em clientes."),
-            ("Vocês ajudam a distribuir o conteúdo?","Sim. O conteúdo pode ser distribuído pela FQDTV e otimizado para busca e IAs pela Naia.")]),
+              ("i-layers","Um fornecedor por etapa","Cenário, gravação, transmissão e edição com equipes diferentes, agendas desencontradas e meses entre a ideia e a publicação."),
+              ("i-target","Vídeo sem objetivo","Conteúdo bonito, mas sem formato pensado para gerar autoridade e oportunidades.")],
+       deliv_h2="Do set à entrega, sob o mesmo teto",
+       deliv=[("i-message","Podcast e videocast","Áudio multipista e enquadramento planejado para os cortes das redes sociais."),
+              ("i-youtube","Lives e transmissões","Transmissão direta para o YouTube com sinal estável, troca de câmeras, grafismos e transições ao vivo."),
+              ("i-users","Bancada, aulas e corporativo","Programas de bancada para até 5 pessoas, conteúdo educacional, treinamentos, webinars e comunicação interna."),
+              ("i-camera","Pós-produção e externas","Cortes, tratamento de áudio e cor no formato de cada plataforma, e equipe para gravações fora do estúdio.")],
+       how_eyebrow="Como funciona", how_h2="Do briefing à entrega, sem trocar de fornecedor",
+       how_lead="Você não precisa levar equipamento: câmeras, áudio, luz e operação estão incluídos. Recomendamos agendar com pelo menos 3 dias de antecedência.",
+       how=["<b>Briefing:</b> formato, objetivo e identidade do projeto alinhados antes de gravar",
+            "<b>Agendamento:</b> você escolhe o horário; cenário, luz e cores ficam prontos antes da sua chegada",
+            "<b>Gravação:</b> câmeras PTZ, captação em 4K e corte ao vivo conduzidos pela equipe técnica do estúdio",
+            "<b>Entrega:</b> conteúdo editado e cortado, no prazo combinado",
+            "<b>Estrutura:</b> camarim, copa, ar-condicionado, estacionamento e segurança de prédio corporativo"],
+       connects=["fqdtv","naia-geo-seo","comercial"],
+       faq=[("Preciso levar algum equipamento?","Não. Câmeras, áudio, iluminação e operação estão incluídos."),
+            ("Dá para fazer live no YouTube?","Sim. Transmitimos direto para o YouTube, com troca de câmeras, grafismos e transições ao vivo."),
+            ("Onde fica o estúdio?","No Condomínio Villa Lobos Office Park, Av. Queiroz Filho, 1700, Bloco D, Sala 802, Vila Hamburguesa, São Paulo. Perto do Parque Villa-Lobos e da Marginal Pinheiros, a poucos minutos da estação Villa Lobos-Jaguaré da CPTM, com estacionamento no local."),
+            ("Quanto custa?","Não trabalhamos com tabela fixa. Depois de uma conversa rápida sobre formato e objetivo, enviamos uma proposta sob medida.")]),
 ]
 BY = {u["slug"]: u for u in UNITS}
 
@@ -391,7 +394,7 @@ def home():
              ("E","Execução","Acompanhamento até o fechamento, retroalimentando o sistema com dados.")]
     steps = "\n".join(f"""        <div class="step" data-reveal><span class="step__letter">{l}</span><h3 class="h5">{t}</h3><p>{d}</p></div>""" for l,t,d in drive)
     eco = [("i-search","Ser encontrado","naia-geo-seo","Naia coloca sua marca no Google e nas respostas das IAs."),
-           ("i-megaphone","Ser lembrado","fqdtv","FQDTV e Oxyn Estúdio constroem autoridade no seu nicho."),
+           ("i-megaphone","Ser lembrado","fqdtv","FQDTV e FQD Studios constroem autoridade no seu nicho."),
            ("i-trend","Converter","comercial","Oxyn Comercial transforma oportunidades em contratos assinados."),
            ("i-users","Escalar","pessoas","Oxyn Pessoas e Oxyn IA dão estrutura, líderes e produtividade.")]
     eco_cards = "\n".join(f"""        <a href="/solucoes/{s}" class="card card--eco" data-reveal><svg class="icon icon--cyan"><use href="#{i}"/></svg><h3 class="h5">{t}</h3><p>{d}</p></a>""" for i,t,s,d in eco)
@@ -574,6 +577,12 @@ def unit_page(u):
                   "provider":{"@type":"Organization","name":"Oxyn Group","url":SITE},
                   "brand":{"@type":"Brand","name":u["unit"]},
                   "areaServed":"BR","description":u["lead"],"url":SITE+path}
+    if u.get("site"):
+        service_ld["sameAs"] = u["site"]
+    if u.get("address"):
+        a = u["address"]
+        service_ld["location"] = {"@type":"Place","name":u["unit"],"address":{"@type":"PostalAddress","streetAddress":a["street"],
+            "addressLocality":a["city"],"addressRegion":a["region"],"postalCode":a["zip"],"addressCountry":"BR"}}
     pains = "\n".join(f"""        <article class="card card--glass" data-reveal>
           <svg class="icon icon--cyan"><use href="#{i}"/></svg>
           <h3 class="h5">{t}</h3>
@@ -604,7 +613,8 @@ def unit_page(u):
         <div class="tags">{tags}</div>
         <div class="btn-row">
           <a href="#contato" class="btn btn--primary">Vamos conversar <span class="arrow">→</span></a>
-          <a href="#entregas" class="btn btn--ghost">O que entregamos</a>
+          <a href="#entregas" class="btn btn--ghost">O que entregamos</a>{f'''
+          <a href="{u["site"]}" class="btn btn--ghost" target="_blank" rel="noopener">Site do {u["unit"]} <svg class="icon icon--sm"><use href="#i-external"/></svg></a>''' if u.get("site") else ""}
         </div>
       </div>
     </div>

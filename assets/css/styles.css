@@ -490,8 +490,12 @@ body{font-weight:400}
 .has-ring::after{content:"";position:absolute;z-index:-1;pointer-events:none;width:var(--ring-size,560px);aspect-ratio:1;
   right:var(--ring-x,-180px);top:var(--ring-y,-200px);background:url("/assets/img/anel.png") center/contain no-repeat;opacity:var(--ring-o,.1)}
 .has-ring>.container{position:relative;z-index:1}
-.hero.has-ring::after{z-index:0;--ring-size:820px;--ring-x:-260px;--ring-y:8%;--ring-o:.16}
+.hero.has-ring::after{z-index:0;--ring-size:820px;--ring-x:-260px;--ring-y:8%;--ring-o:.22}
 .hero.has-ring>.container{z-index:2}
+/* Anel do banner girando lentamente (respeita "reduzir movimento" do sistema) */
+.hero:not(.hero--page).has-ring::after{animation:ring-spin 40s linear infinite;will-change:transform}
+@keyframes ring-spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.hero.has-ring::after{animation:none!important}}
 .hero.has-ring::before{z-index:1}
 
 /* Grade de pontos em capas escuras */
