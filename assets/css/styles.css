@@ -770,3 +770,6 @@ a.logo-tile--img:hover img{opacity:.85}
   .founders__grid::-webkit-scrollbar{display:none}
   .founder{scroll-snap-align:start}
 }
+/* Cards numerados: numeral a esquerda, icone a direita */
+.card--feature .card__top .num{order:-1;margin-left:0}
+.card--feature .card__top .icon-badge{margin-left:auto}
