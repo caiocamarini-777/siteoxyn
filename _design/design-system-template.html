@@ -1,0 +1,1210 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Template B2B Navy: Design System</title>
+
+<!--
+================================================================================
+  GUIA PARA O CLAUDE (leia antes de reconstruir um site a partir deste arquivo)
+================================================================================
+
+  O QUE E ESTE ARQUIVO
+  Um template de site institucional B2B (servicos / consultoria / tecnologia)
+  com estetica "corporate navy": azul-marinho profundo, azul primario, ciano
+  de destaque, cards suaves de canto 16px, botoes em pilula, eyebrows em caixa
+  alta. Ele tem DUAS vistas no mesmo arquivo:
+    1. #template      -> a landing page completa, pronta para trocar conteudo
+    2. #styleguide    -> o design system documentado (tokens + componentes)
+  Um botao flutuante (data-dev-only) alterna entre as duas. Remova em producao.
+
+  COMO REUTILIZAR (passo a passo)
+  1. Troque a marca: edite os tokens em :root (secao "1. TOKENS") e o bloco
+     JSON <script id="design-tokens">. Nunca use cor hardcoded em componentes;
+     sempre var(--token).
+  2. Troque o conteudo: cada <section> tem data-section="nome" e um comentario
+     "SLOTS" listando os campos editaveis. Mantenha a estrutura de classes.
+  3. Reordene ou remova secoes livremente: cada secao e independente.
+  4. Regra de alternancia de fundo (ritmo visual): nunca coloque duas secoes
+     com o mesmo fundo em sequencia. Sequencia padrao:
+       hero(imagem) > white > navy > white > light(+banda navy) > light >
+       white > navy > gradient(sobreposta) > white > navy > overlay(imagem) > footer navy
+  5. Para criar uma secao nova, use a receita:
+       <section class="section section--{white|light|navy|gradient}">
+         <div class="container">
+           <header class="section-head [section-head--center]">
+             <p class="eyebrow">ROTULO CURTO</p>
+             <h2 class="h2">Titulo em ate 2 linhas</h2>
+             <p class="lead">Subtitulo opcional.</p>
+           </header>
+           <div class="grid grid--{2|3|4}"> ...cards... </div>
+         </div>
+       </section>
+  6. Em fundos escuros (navy, gradient, overlay) use os componentes "--dark"
+     ou "glass"; em fundos claros use "soft". A cor do texto ja se ajusta
+     sozinha pela classe da secao (heranca de --fg e --fg-muted).
+
+  FORMULAS DE COPY (padrao do site de referencia)
+  - Eyebrow: 1 a 3 palavras, caixa alta, nomeia o bloco ("O DESAFIO",
+    "POR QUE NOS", "SERVICOS", "CASES DE SUCESSO", "PROXIMO PASSO").
+  - H1: promessa de valor em 3 substantivos + verbo de resultado
+    ("Estrategia, tecnologia e operacao para acelerar seu crescimento").
+  - H2: frase curta, muitas vezes pergunta ("Sua marca esta preparada?").
+  - Cards de problema: titulo = sintoma ("B2B ainda no manual"),
+    texto = consequencia em 1 frase.
+  - Cards de resultado: numero grande (+38%), metrica, metrica secundaria,
+    1 frase de contexto.
+  - CTA: verbo + especialista/conversa + seta "->" ("Fale com um especialista").
+
+  CLASSES PRINCIPAIS (catalogo completo no #styleguide)
+  Layout ....... .container .section .section--white|light|navy|gradient|overlay
+                 .section-head .section-head--center .grid .grid--2|3|4 .bento
+  Tipografia ... .display .h2 .h3 .h4 .eyebrow .lead .small .text-muted
+  Acoes ........ .btn .btn--primary .btn--ghost .btn--outline .btn--lg .link-arrow
+  Elementos .... .tag .tag--cyan|blue|teal|green|purple|steel  .icon-badge
+                 .icon .icon--{cor}
+  Cards ........ .card .card--soft .card--glass .card--feature .card--service
+                 .card--case .card--result .card--tool .card--eco
+  Blocos ....... .nav .hero .marquee .stats-band .carousel .partners .cta-final
+                 .footer .cookie
+
+  ICONES
+  Sprite SVG inline no topo do <body> (<svg id="icon-sprite">). Use:
+    <svg class="icon"><use href="#i-cart"/></svg>
+  Estilo: traco 2px, linecap round, 24x24 (padrao Lucide). Para adicionar,
+  crie um <symbol id="i-nome" viewBox="0 0 24 24"> com o mesmo estilo.
+
+  IMAGENS
+  Placeholders sao gradientes CSS. Para usar foto real, defina a variavel
+  inline: style="--img:url('foto.jpg')". O overlay escuro ja e aplicado.
+
+  JS INCLUSO (vanilla, sem dependencias, no final do arquivo)
+  nav solida ao rolar | menu mobile | carrossel com setas e dots |
+  contador animado [data-count] | revelar ao rolar [data-reveal] |
+  banner de cookies | alternador template/styleguide.
+
+  REGRAS DE ESCRITA DESTE PROJETO
+  - Nao usar travessao (em dash) em nenhum texto. Usar virgula, dois-pontos,
+    ponto e virgula, parenteses ou frases separadas.
+  - Textos curtos. "Slide/site nao e relatorio": 1 ideia por bloco.
+================================================================================
+-->
+
+<!-- Tokens em formato legivel por maquina (espelho de :root). -->
+<script type="application/json" id="design-tokens">
+{
+  "name": "Corporate Navy",
+  "font": { "heading": "Montserrat 700/800", "body": "Inter 400/500/600" },
+  "color": {
+    "navy": "#00284D", "navy-deep": "#0D1D2B", "primary": "#0074C2", "primary-hover": "#005FA0",
+    "accent": "#00ACF0", "bg": "#F5F7FA", "surface": "#FFFFFF", "muted": "#EEF1F6",
+    "text": "#00284D", "text-muted": "#5E7587", "border": "#DEE6ED", "on-dark": "#F5F7FA",
+    "categorical": { "cyan": "#00ACF0", "blue": "#0074C2", "teal": "#0FB888", "green": "#68B431", "purple": "#8E479E", "steel": "#5383C6" }
+  },
+  "gradient": { "brand": "linear-gradient(135deg, #00284D, #0074C2)", "image-fade": "linear-gradient(to top, rgba(0,0,0,.85), rgba(0,0,0,.4), transparent)" },
+  "radius": { "sm": "8px", "md": "12px", "lg": "16px", "xl": "24px", "section": "32px", "pill": "9999px" },
+  "space": { "section-y": "96px", "section-y-sm": "80px", "section-y-cta": "160px", "card-pad": "32px", "card-pad-sm": "28px", "gap": "16px", "gap-lg": "24px" },
+  "container": { "max": "1280px", "gutter": "32px", "gutter-mobile": "16px" }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ==========================================================================
+   1. TOKENS  (edite aqui para trocar a marca inteira)
+   ========================================================================== */
+:root{
+  /* Marca */
+  --color-navy:#00284D;          /* fundo escuro principal, cor do texto em claro */
+  --color-navy-deep:#0D1D2B;     /* overlays e CTA final */
+  --color-primary:#0074C2;       /* botoes, links */
+  --color-primary-hover:#005FA0;
+  --color-accent:#00ACF0;        /* eyebrows em fundo escuro, numeros grandes */
+
+  /* Neutros */
+  --color-bg:#F5F7FA;            /* secao "light" */
+  --color-surface:#FFFFFF;       /* secao "white" */
+  --color-muted:#EEF1F6;         /* fundo de card soft */
+  --color-text:#00284D;
+  --color-text-muted:#5E7587;
+  --color-border:#DEE6ED;
+  --color-on-dark:#F5F7FA;
+  --color-on-dark-muted:rgba(245,247,250,.7);
+  --color-glass:rgba(245,247,250,.05);
+  --color-glass-border:rgba(245,247,250,.1);
+
+  /* Categoricas (icones, tags, destaques de resultado) */
+  --c-cyan:#00ACF0; --c-blue:#0074C2; --c-teal:#0FB888;
+  --c-green:#68B431; --c-purple:#8E479E; --c-steel:#5383C6;
+
+  /* Gradientes */
+  --grad-brand:linear-gradient(135deg,var(--color-navy) 0%,var(--color-primary) 100%);
+  --grad-image-fade:linear-gradient(to top,rgba(0,0,0,.85),rgba(0,0,0,.4) 55%,rgba(0,0,0,0));
+  --grad-hero-overlay:linear-gradient(90deg,rgba(0,40,77,.82) 0%,rgba(0,40,77,.6) 60%,rgba(0,40,77,.45) 100%);
+
+  /* Tipografia */
+  --font-heading:"Montserrat",system-ui,sans-serif;
+  --font-body:"Inter",system-ui,sans-serif;
+  --fs-display:clamp(2.25rem,1.4rem + 3.2vw,3.5rem);  /* 36 > 56 */
+  --fs-h2:clamp(2rem,1.3rem + 2.6vw,3.25rem);         /* 32 > 52 */
+  --fs-h3:clamp(1.5rem,1.15rem + 1.3vw,2.25rem);      /* 24 > 36 */
+  --fs-h4:1.5rem;   /* 24 */
+  --fs-h5:1.125rem; /* 18 */
+  --fs-lead:1.125rem;
+  --fs-body:1rem;
+  --fs-sm:.875rem;
+  --fs-xs:.75rem;
+  --fs-stat:clamp(2.25rem,1.8rem + 1.6vw,3rem);
+  --lh-tight:1.1; --lh-heading:1.15; --lh-body:1.6;
+  --ls-display:-.02em; --ls-eyebrow:.1em;
+
+  /* Raios */
+  --r-sm:8px; --r-md:12px; --r-lg:16px; --r-xl:24px; --r-section:32px; --r-pill:9999px;
+
+  /* Espacamento */
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-5:20px;
+  --space-6:24px; --space-8:32px; --space-10:40px; --space-12:48px; --space-16:64px;
+  --section-y:96px; --section-y-sm:80px; --section-y-cta:160px;
+  --container:1280px; --gutter:32px;
+
+  /* Sombras e movimento */
+  --shadow-sm:0 1px 2px rgba(0,40,77,.06);
+  --shadow-md:0 8px 24px rgba(0,40,77,.08);
+  --shadow-lg:0 20px 48px rgba(0,40,77,.16);
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --dur:.3s;
+  --nav-h:84px;
+}
+@media (max-width:768px){
+  :root{ --gutter:16px; --section-y:72px; --section-y-sm:64px; --section-y-cta:104px; --nav-h:68px; }
+}
+
+/* ==========================================================================
+   2. BASE
+   ========================================================================== */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;font-family:var(--font-body);font-size:var(--fs-body);font-weight:500;
+  line-height:var(--lh-body);color:var(--color-text);background:var(--color-surface);
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4,h5,p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--color-accent);outline-offset:3px;border-radius:4px}
+[hidden]{display:none!important}
+
+/* ==========================================================================
+   3. LAYOUT
+   ========================================================================== */
+.container{width:100%;max-width:calc(var(--container) + var(--gutter)*2);margin-inline:auto;padding-inline:var(--gutter)}
+.section{position:relative;padding-block:var(--section-y);
+  --fg:var(--color-text);--fg-muted:var(--color-text-muted);--eyebrow:var(--color-primary);
+  color:var(--fg)}
+.section--white{background:var(--color-surface)}
+.section--light{background:var(--color-bg)}
+.section--navy,.section--gradient,.section--overlay{
+  --fg:var(--color-on-dark);--fg-muted:var(--color-on-dark-muted);--eyebrow:var(--color-accent)}
+.section--navy{background:var(--color-navy)}
+.section--gradient{background:var(--grad-brand)}
+/* Secao que "sobe" sobre a anterior com cantos superiores arredondados */
+.section--overlap{margin-top:calc(var(--r-section) * -1.5);border-radius:var(--r-section) var(--r-section) 0 0;z-index:2}
+.section--overlay{background:var(--color-navy-deep);overflow:hidden;padding-block:var(--section-y-cta)}
+.section--tight{padding-block:var(--section-y-sm)}
+
+.section-head{max-width:640px;margin-bottom:var(--space-12);display:grid;gap:var(--space-4)}
+.section-head--center{margin-inline:auto;text-align:center;justify-items:center}
+.section-head--split{max-width:none;display:flex;align-items:flex-end;justify-content:space-between;gap:var(--space-8)}
+.section-head--split>div:first-child{max-width:640px;display:grid;gap:var(--space-4)}
+
+.grid{display:grid;gap:var(--space-4)}
+.grid--2{grid-template-columns:repeat(2,1fr);gap:var(--space-4)}
+.grid--3{grid-template-columns:repeat(3,1fr)}
+.grid--4{grid-template-columns:repeat(4,1fr)}
+@media (max-width:1024px){.grid--4{grid-template-columns:repeat(2,1fr)}.grid--3{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.grid--2,.grid--3,.grid--4{grid-template-columns:1fr}}
+
+/* ==========================================================================
+   4. TIPOGRAFIA
+   ========================================================================== */
+.display,.h2,.h3,.h4,.h5{font-family:var(--font-heading);color:var(--fg,var(--color-text))}
+.display{font-size:var(--fs-display);font-weight:800;line-height:var(--lh-tight);letter-spacing:var(--ls-display)}
+.h2{font-size:var(--fs-h2);font-weight:700;line-height:var(--lh-heading);letter-spacing:-.01em}
+.h3{font-size:var(--fs-h3);font-weight:700;line-height:1.2}
+.h4{font-size:var(--fs-h4);font-weight:600;line-height:1.3}
+.h5{font-size:var(--fs-h5);font-weight:600;line-height:1.5}
+.eyebrow{font-family:var(--font-body);font-size:var(--fs-sm);font-weight:600;letter-spacing:var(--ls-eyebrow);
+  text-transform:uppercase;color:var(--eyebrow,var(--color-primary))}
+.lead{font-size:var(--fs-lead);line-height:1.6;color:var(--fg-muted,var(--color-text-muted));max-width:560px}
+.section-head--center .lead{margin-inline:auto}
+.small{font-size:var(--fs-sm);line-height:1.6}
+.xs{font-size:var(--fs-xs)}
+.text-muted{color:var(--fg-muted,var(--color-text-muted))}
+
+/* ==========================================================================
+   5. BOTOES E LINKS
+   ========================================================================== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);height:40px;padding:0 var(--space-6);
+  border-radius:var(--r-pill);border:1px solid transparent;font-size:var(--fs-sm);font-weight:500;line-height:1;
+  white-space:nowrap;transition:background var(--dur) var(--ease),border-color var(--dur) var(--ease),transform var(--dur) var(--ease),color var(--dur)}
+.btn:hover{transform:translateY(-1px)}
+.btn--primary{background:var(--color-primary);color:var(--color-on-dark)}
+.btn--primary:hover{background:var(--color-primary-hover)}
+/* Ghost: contorno claro, para fundos escuros */
+.btn--ghost{background:transparent;color:var(--color-on-dark);border-color:rgba(245,247,250,.4)}
+.btn--ghost:hover{background:rgba(245,247,250,.1);border-color:rgba(245,247,250,.7)}
+/* Outline: contorno navy, para fundos claros */
+.btn--outline{background:transparent;color:var(--color-navy);border-color:var(--color-border)}
+.btn--outline:hover{border-color:var(--color-navy)}
+.btn--lg{height:48px;padding:0 var(--space-8);font-size:var(--fs-body)}
+.btn--sm{height:36px;padding:0 var(--space-4)}
+.btn .arrow{transition:transform var(--dur) var(--ease)}
+.btn:hover .arrow,.link-arrow:hover .arrow{transform:translateX(3px)}
+.link-arrow{display:inline-flex;align-items:center;gap:6px;font-size:var(--fs-sm);font-weight:600;color:var(--color-primary)}
+.section--navy .link-arrow,.card--case .link-arrow{color:var(--color-accent)}
+.btn-row{display:flex;flex-wrap:wrap;gap:var(--space-3)}
+
+/* ==========================================================================
+   6. ELEMENTOS
+   ========================================================================== */
+/* Tag / chip: texto na cor categorica, fundo da mesma cor a 10% */
+.tag{--t:var(--c-blue);display:inline-flex;align-items:center;padding:4px 12px;border-radius:var(--r-pill);
+  font-size:var(--fs-xs);font-weight:500;line-height:16px;color:var(--t);
+  background:color-mix(in srgb,var(--t) 10%,transparent)}
+.tag--cyan{--t:var(--c-cyan)}.tag--blue{--t:var(--c-blue)}.tag--teal{--t:var(--c-teal)}
+.tag--green{--t:var(--c-green)}.tag--purple{--t:var(--c-purple)}.tag--steel{--t:var(--c-steel)}
+.tag--dark{color:var(--color-on-dark);background:rgba(255,255,255,.12)}
+.tag--solid{color:var(--color-on-dark);background:color-mix(in srgb,var(--t) 85%,black)}
+.tags{display:flex;flex-wrap:wrap;gap:var(--space-2)}
+
+.icon{width:24px;height:24px;flex:none;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.icon--sm{width:16px;height:16px}.icon--lg{width:28px;height:28px}
+.icon--cyan{color:var(--c-cyan)}.icon--blue{color:var(--c-blue)}.icon--teal{color:var(--c-teal)}
+.icon--green{color:var(--c-green)}.icon--purple{color:var(--c-purple)}.icon--steel{color:var(--c-steel)}
+/* Badge redondo para icone */
+.icon-badge{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:50%;
+  background:color-mix(in srgb,var(--color-primary) 10%,transparent);color:var(--color-primary)}
+.icon-badge .icon{width:18px;height:18px}
+.num{font-size:var(--fs-xs);font-weight:600;letter-spacing:.03em;color:var(--color-primary)}
+
+.divider{height:1px;background:var(--color-border);border:0;margin:var(--space-4) 0}
+.section--navy .divider,.section--gradient .divider{background:var(--color-glass-border)}
+
+/* ==========================================================================
+   7. CARDS
+   ========================================================================== */
+.card{position:relative;border-radius:var(--r-lg);padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-3);
+  transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease),border-color var(--dur)}
+.card p{font-size:var(--fs-sm);line-height:1.65;color:var(--fg-muted,var(--color-text-muted))}
+/* Soft: fundo cinza-azulado, para secoes claras */
+.card--soft{background:var(--color-muted)}
+.section--light .card--soft{background:#EAEEF5}
+.card--soft:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+/* Glass: translucido com borda, para secoes escuras */
+.card--glass{background:var(--color-glass);border:1px solid var(--color-glass-border);padding:28px}
+.card--glass:hover{border-color:rgba(0,172,240,.4);background:rgba(245,247,250,.08)}
+.card--glass .h5{color:var(--color-on-dark)}
+
+/* Feature (diferencial numerado) */
+.card--feature .card__top{display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-3)}
+.card--feature .h4{margin-bottom:var(--space-1)}
+
+/* Bento de servicos: 2 grandes em cima, 4 menores embaixo */
+.bento{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4)}
+.bento>.card--service:nth-child(-n+2){grid-column:span 2}
+.card--service{min-height:260px}
+.card--service .h3{margin-top:var(--space-2)}
+.card--service .tags{margin-top:auto;padding-top:var(--space-3)}
+@media (max-width:1024px){.bento{grid-template-columns:repeat(2,1fr)}.bento>.card--service:nth-child(-n+2){grid-column:span 2}}
+@media (max-width:640px){.bento{grid-template-columns:1fr}.bento>.card--service:nth-child(-n+2){grid-column:auto}}
+
+/* Case: imagem de fundo + fade escuro + conteudo no rodape */
+.card--case{--img:none;min-height:420px;padding:var(--space-6);justify-content:flex-end;overflow:hidden;color:var(--color-on-dark);
+  background:var(--img) center/cover no-repeat,var(--ph,var(--grad-brand))}
+.card--case::before{content:"";position:absolute;inset:0;background:var(--grad-image-fade);transition:opacity var(--dur)}
+.card--case>*{position:relative}
+.card--case .h4{color:var(--color-on-dark);font-weight:700;max-width:30ch}
+.card--case .case__logo{font-family:var(--font-heading);font-weight:800;font-size:1.5rem;letter-spacing:-.02em}
+.card--case .case__foot{display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);flex-wrap:wrap}
+.card--case:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+
+/* Resultado: numero grande + borda esquerda colorida */
+.card--result{--t:var(--c-cyan);background:rgba(0,40,77,.55);border:1px solid var(--color-glass-border);
+  border-left:3px solid var(--t);padding:var(--space-6) var(--space-6) var(--space-8);gap:var(--space-2);backdrop-filter:blur(6px)}
+.card--result .result__label{display:flex;align-items:center;gap:var(--space-2);font-size:var(--fs-xs);font-weight:600;
+  letter-spacing:.04em;text-transform:uppercase;color:var(--color-on-dark)}
+.card--result .result__label .icon{color:var(--t);width:16px;height:16px}
+.card--result .result__value{font-family:var(--font-heading);font-weight:800;font-size:var(--fs-stat);line-height:1.1;color:var(--t);margin-top:var(--space-3)}
+.card--result .result__metric{font-weight:600;color:var(--color-on-dark)}
+.card--result .result__sub{font-size:var(--fs-xs);color:var(--t)}
+.card--result .divider{margin:var(--space-4) 0}
+.card--result.is-white{--t:var(--color-on-dark)}
+.card--result.is-white .result__sub{color:var(--c-cyan)}
+
+/* Ferramenta / produto */
+.card--tool .tool__logo{font-family:var(--font-heading);font-weight:800;font-size:1.6rem;letter-spacing:-.03em;color:var(--color-navy)}
+.card--tool .tool__logo span{color:var(--c-teal)}
+.card--tool .h4{font-size:1.25rem}
+
+/* Ecossistema: cards conectados por linha com "nos" no topo */
+.eco{position:relative}
+.eco::before{content:"";position:absolute;left:12.5%;right:12.5%;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,172,240,.5),transparent)}
+.card--eco{align-items:center;text-align:center;background:rgba(13,29,43,.5);border:1px solid rgba(0,172,240,.2);padding:var(--space-8) var(--space-6)}
+.card--eco::before{content:"";position:absolute;top:-6px;left:50%;width:12px;height:12px;margin-left:-6px;border-radius:50%;
+  border:2px solid var(--color-accent);background:var(--color-navy)}
+.card--eco .h5{font-size:1rem;font-weight:700;color:var(--color-on-dark)}
+@media (max-width:1024px){.eco::before{display:none}}
+
+/* ==========================================================================
+   8. BLOCOS
+   ========================================================================== */
+/* NAV: transparente sobre o hero, solida ao rolar (.is-scrolled via JS) */
+.nav{position:fixed;inset:0 0 auto;z-index:50;height:var(--nav-h);display:flex;align-items:center;
+  transition:background var(--dur) var(--ease),box-shadow var(--dur),height var(--dur)}
+.nav.is-scrolled{background:rgba(0,40,77,.92);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(245,247,250,.08);height:64px}
+.nav .container{display:flex;align-items:center;justify-content:space-between;gap:var(--space-6)}
+.brand{display:flex;flex-direction:column;line-height:1;color:var(--color-on-dark)}
+.brand__name{font-family:var(--font-heading);font-weight:800;font-size:1.35rem;letter-spacing:-.01em}
+.brand__sub{font-size:.58rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent);margin-top:3px}
+.nav__links{display:flex;align-items:center;gap:var(--space-8);font-size:var(--fs-sm);color:var(--color-on-dark-muted)}
+.nav__links a:hover{color:var(--color-on-dark)}
+.nav__lang{display:inline-flex;align-items:center;gap:6px}
+.nav__toggle{display:none;background:none;border:0;color:var(--color-on-dark);padding:8px}
+@media (max-width:900px){
+  .nav__toggle{display:block}
+  .nav__links{position:fixed;inset:var(--nav-h) 0 auto;flex-direction:column;align-items:flex-start;gap:var(--space-5);
+    padding:var(--space-6) var(--gutter) var(--space-8);background:var(--color-navy);transform:translateY(-120%);
+    transition:transform var(--dur) var(--ease);z-index:-1}
+  .nav.is-open .nav__links{transform:none}
+  .nav.is-open{background:var(--color-navy)}
+}
+
+/* HERO */
+.hero{--img:none;position:relative;min-height:min(100vh,900px);display:flex;align-items:center;color:var(--color-on-dark);
+  padding-block:calc(var(--nav-h) + var(--space-16)) var(--space-16);
+  background:var(--img) center/cover no-repeat,var(--ph-hero);
+  --fg:var(--color-on-dark);--fg-muted:var(--color-on-dark-muted);--eyebrow:var(--color-accent)}
+.hero::before{content:"";position:absolute;inset:0;background:var(--grad-hero-overlay)}
+.hero>.container{position:relative}
+.hero__content{max-width:680px;display:grid;gap:var(--space-5)}
+.hero .lead{font-size:var(--fs-body);max-width:520px}
+.hero .btn-row{margin-top:var(--space-3)}
+/* Placeholder do hero: substitua por foto via --img */
+:root{--ph-hero:radial-gradient(1200px 600px at 75% 40%,#1b4f7d 0%,transparent 60%),radial-gradient(800px 500px at 20% 80%,#0a3a63 0%,transparent 60%),#0b2a47}
+
+/* MARQUEE de logos de clientes */
+.marquee{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.marquee__track{display:flex;gap:var(--space-8);width:max-content;animation:marquee 40s linear infinite}
+.marquee:hover .marquee__track{animation-play-state:paused}
+.logo-tile{display:grid;place-items:center;width:150px;height:64px;border-radius:var(--r-sm);background:var(--color-bg);
+  border:1px solid var(--color-border);font-family:var(--font-heading);font-weight:700;color:#7d8fa0;font-size:1rem;letter-spacing:-.01em}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marquee__track{animation:none}}
+
+/* STATS: banda navy arredondada inserida numa secao clara */
+.stats-band{position:relative;overflow:hidden;border-radius:var(--r-lg);background:var(--color-navy);color:var(--color-on-dark);
+  padding:var(--space-16) var(--space-8)}
+.stats-band::before{content:"";position:absolute;inset:0;opacity:.35;
+  background-image:radial-gradient(rgba(0,172,240,.6) 1px,transparent 1.5px);background-size:22px 22px;
+  mask-image:radial-gradient(ellipse at center,#000 20%,transparent 75%)}
+.stats{position:relative;display:grid;grid-template-columns:repeat(4,1fr);max-width:960px;margin-inline:auto}
+.stat{text-align:center;padding:var(--space-4) var(--space-6)}
+.stat+.stat{border-left:1px solid rgba(245,247,250,.25)}
+.stat__value{font-family:var(--font-heading);font-weight:800;font-size:var(--fs-stat);line-height:1.1;color:var(--color-accent)}
+.stat__label{margin-top:var(--space-2);font-size:var(--fs-xs);font-weight:500;text-transform:uppercase;letter-spacing:.04em;color:var(--color-on-dark-muted)}
+@media (max-width:768px){.stats{grid-template-columns:repeat(2,1fr);row-gap:var(--space-6)}.stat:nth-child(3){border-left:0}}
+
+/* PARCEIROS: grade de logos centralizada */
+.partners{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-10) var(--space-16);max-width:760px;margin-inline:auto}
+.partner{display:grid;place-items:center;width:120px;height:56px;font-family:var(--font-heading);font-weight:700;color:#8a9aa9;filter:grayscale(1);opacity:.85;transition:opacity var(--dur),filter var(--dur)}
+.partner:hover{filter:none;opacity:1;color:var(--color-navy)}
+
+/* CARROSSEL (scroll-snap + setas + dots) */
+.carousel{position:relative}
+.carousel__track{display:grid;grid-auto-flow:column;grid-auto-columns:min(720px,86%);gap:var(--space-4);overflow-x:auto;
+  scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:var(--space-2)}
+.carousel__track::-webkit-scrollbar{display:none}
+.carousel__track>*{scroll-snap-align:start}
+.carousel__arrows{display:flex;gap:var(--space-2)}
+.carousel__arrow{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:transparent;
+  border:1px solid rgba(245,247,250,.3);color:var(--color-on-dark);transition:background var(--dur)}
+.carousel__arrow:hover{background:rgba(245,247,250,.1)}
+.carousel__dots{display:flex;justify-content:center;gap:6px;margin-top:var(--space-6)}
+.carousel__dot{width:6px;height:6px;border-radius:var(--r-pill);border:0;padding:0;background:rgba(245,247,250,.35);transition:width var(--dur),background var(--dur)}
+.carousel__dot.is-active{width:22px;background:var(--color-accent)}
+
+/* CTA FINAL sobre imagem */
+.cta-final{--img:none;background:var(--img) center/cover no-repeat,var(--ph-cta)}
+.cta-final::before{content:"";position:absolute;inset:0;background:rgba(13,29,43,.55)}
+.cta-final>.container{position:relative}
+.cta-final .section-head{margin-bottom:var(--space-8)}
+:root{--ph-cta:radial-gradient(rgba(255,214,140,.55) 1px,transparent 1.6px) 0 0/18px 18px,radial-gradient(900px 400px at 50% 50%,#13263a,#0a1420)}
+
+/* FOOTER */
+.footer{background:var(--color-navy);color:var(--color-on-dark);padding-block:var(--space-16) var(--space-8);border-top:1px solid var(--color-glass-border)}
+.footer__grid{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:var(--space-8)}
+.footer h4{font-size:var(--fs-sm);font-weight:600;margin-bottom:var(--space-4);font-family:var(--font-body)}
+.footer li{margin-bottom:var(--space-3)}
+.footer li a,.footer p{font-size:var(--fs-sm);color:var(--color-on-dark-muted)}
+.footer li a:hover{color:var(--color-on-dark)}
+.footer p{margin-top:var(--space-4);max-width:260px}
+.socials{display:flex;gap:var(--space-3);margin-top:var(--space-6)}
+.socials a{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;border:1px solid rgba(245,247,250,.25);color:var(--color-on-dark-muted)}
+.socials a:hover{color:var(--color-on-dark);border-color:var(--color-accent)}
+.footer__bottom{display:flex;justify-content:space-between;gap:var(--space-4);flex-wrap:wrap;margin-top:var(--space-12);
+  padding-top:var(--space-6);border-top:1px solid var(--color-glass-border);font-size:var(--fs-xs);color:var(--color-on-dark-muted)}
+@media (max-width:900px){.footer__grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.footer__grid{grid-template-columns:1fr}}
+
+/* COOKIE */
+.cookie{position:fixed;inset:auto 0 0;z-index:60;background:#0b0b0b;color:#fff;padding:var(--space-6) var(--gutter);
+  display:flex;flex-direction:column;align-items:center;gap:var(--space-4);text-align:center;font-size:var(--fs-sm)}
+.cookie .btn{background:#fff;color:#111;height:36px;font-weight:600}
+
+/* Responsivo de cabecalhos com setas */
+@media (max-width:768px){.section-head--split{flex-direction:column;align-items:flex-start}}
+
+/* Revelar ao rolar */
+[data-reveal]{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+[data-reveal].is-visible{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){[data-reveal]{opacity:1;transform:none}}
+
+/* ==========================================================================
+   9. STYLEGUIDE (apenas a vista de documentacao)
+   ========================================================================== */
+.sg{background:var(--color-bg);min-height:100vh;padding-bottom:var(--space-16)}
+.sg__hero{background:var(--grad-brand);color:var(--color-on-dark);padding:var(--space-16) 0 var(--space-12);
+  --fg:var(--color-on-dark);--fg-muted:var(--color-on-dark-muted);--eyebrow:var(--color-accent)}
+.sg__nav{position:sticky;top:0;z-index:5;background:rgba(245,247,250,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--color-border)}
+.sg__nav .container{display:flex;gap:var(--space-6);overflow-x:auto;padding-block:var(--space-3);font-size:var(--fs-sm);white-space:nowrap}
+.sg__nav a{color:var(--color-text-muted)}.sg__nav a:hover{color:var(--color-primary)}
+.sg__block{padding-top:var(--space-12)}
+.sg__block>.h3{margin-bottom:var(--space-2)}
+.sg__block>.lead{margin-bottom:var(--space-6)}
+.sg__panel{background:#fff;border:1px solid var(--color-border);border-radius:var(--r-lg);padding:var(--space-6);margin-bottom:var(--space-4)}
+.sg__panel--dark{background:var(--color-navy);border-color:var(--color-navy);--fg:var(--color-on-dark);--fg-muted:var(--color-on-dark-muted);--eyebrow:var(--color-accent);color:var(--fg)}
+.sg__panel--grad{background:var(--grad-brand);border:0;--fg:var(--color-on-dark);--fg-muted:var(--color-on-dark-muted);color:var(--fg)}
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:var(--space-4)}
+.swatch{border-radius:var(--r-md);overflow:hidden;border:1px solid var(--color-border);background:#fff}
+.swatch__chip{height:72px}
+.swatch__meta{padding:var(--space-3);font-size:var(--fs-xs);line-height:1.5}
+.swatch__meta b{display:block;font-size:var(--fs-sm)}
+.swatch__meta code{color:var(--color-text-muted)}
+.sg code,.sg pre{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px}
+.sg pre{background:var(--color-navy-deep);color:#cfe3f5;border-radius:var(--r-md);padding:var(--space-4);overflow:auto;line-height:1.6;margin:0}
+.type-row{display:grid;grid-template-columns:180px 1fr;gap:var(--space-6);align-items:baseline;padding:var(--space-4) 0;border-bottom:1px solid var(--color-border)}
+.type-row:last-child{border-bottom:0}
+.type-row code{color:var(--color-text-muted)}
+@media (max-width:640px){.type-row{grid-template-columns:1fr;gap:var(--space-2)}}
+.row{display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center}
+.scale{display:flex;flex-wrap:wrap;gap:var(--space-4);align-items:flex-end}
+.scale__item{display:grid;gap:6px;justify-items:center;font-size:var(--fs-xs);color:var(--color-text-muted)}
+.scale__box{background:var(--color-primary);opacity:.85}
+.radius-box{width:72px;height:72px;background:var(--color-muted);border:1px solid var(--color-border)}
+.icon-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:var(--space-3)}
+.icon-cell{display:grid;justify-items:center;gap:6px;padding:var(--space-4) var(--space-2);border-radius:var(--r-md);background:var(--color-bg);font-size:11px;color:var(--color-text-muted)}
+.icon-cell .icon{color:var(--color-navy)}
+.sg table{width:100%;border-collapse:collapse;font-size:var(--fs-sm)}
+.sg th,.sg td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--color-border);vertical-align:top}
+.sg th{font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-muted)}
+
+/* Alternador dev (remover em producao) */
+.dev-switch{position:fixed;right:16px;bottom:16px;z-index:70;display:flex;padding:4px;border-radius:var(--r-pill);
+  background:rgba(13,29,43,.9);box-shadow:var(--shadow-lg);backdrop-filter:blur(8px)}
+.dev-switch button{border:0;background:transparent;color:var(--color-on-dark-muted);padding:8px 14px;border-radius:var(--r-pill);font-size:12px;font-weight:600}
+.dev-switch button[aria-pressed="true"]{background:var(--color-primary);color:#fff}
+body.has-cookie .dev-switch{bottom:120px}
+</style>
+</head>
+
+<body class="has-cookie">
+
+<!-- ========================================================================
+     SPRITE DE ICONES (estilo Lucide: traco 2px, 24x24)
+     Uso: <svg class="icon icon--cyan"><use href="#i-cart"/></svg>
+     ======================================================================== -->
+<svg id="icon-sprite" width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></symbol>
+  <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2.5 3h2.6l2.3 11.2a1.6 1.6 0 0 0 1.6 1.3h8.6a1.6 1.6 0 0 0 1.6-1.2L21 7H6"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0 5.2 5.2l-8.6 8.6a2.1 2.1 0 0 1-3-3l8.6-8.6a4 4 0 0 0-2.2-2.2Z"/><path d="M14.7 6.3 17 4"/></symbol>
+  <symbol id="i-megaphone" viewBox="0 0 24 24"><path d="M3 11v2a1 1 0 0 0 1 1h3l6 4V6L7 10H4a1 1 0 0 0-1 1Z"/><path d="M17 9a4 4 0 0 1 0 6"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></symbol>
+  <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M10 10h4v4h-4zM9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></symbol>
+  <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5"/><path d="m8.5 13.2-1.5 7.8 5-3 5 3-1.5-7.8"/></symbol>
+  <symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="14" rx="2"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></symbol>
+  <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 12a8.5 8.5 0 0 1-12.4 7.6L3 21l1.4-5.4A8.5 8.5 0 1 1 21 12Z"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.5a6.5 6.5 0 0 1 3.5 5.5"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-8M15 7h6v6"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18h2"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20h16M7 16v-4M12 16V8M17 16v-7"/></symbol>
+  <symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="7.5" ry="2.5"/><path d="M4.5 5.5v13c0 1.4 3.4 2.5 7.5 2.5s7.5-1.1 7.5-2.5v-13M4.5 12c0 1.4 3.4 2.5 7.5 2.5s7.5-1.1 7.5-2.5"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10.5V17M8 7.5v.01M12 17v-6.5M12 13.5a3 3 0 0 1 6 0V17"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5v.01"/></symbol>
+  <symbol id="i-youtube" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="m10 9 5 3-5 3V9Z"/></symbol>
+</svg>
+
+<!-- ######################################################################
+     VISTA 1: TEMPLATE
+     ###################################################################### -->
+<div id="template">
+
+  <!-- NAV | SLOTS: marca (nome + sub), links (3 a 5), idioma, CTA -->
+  <nav class="nav" data-component="nav">
+    <div class="container">
+      <a href="#" class="brand" aria-label="Pagina inicial">
+        <span class="brand__name">SUAMARCA</span>
+        <span class="brand__sub">Digital Commerce</span>
+      </a>
+      <div class="nav__links" id="nav-links">
+        <a href="#servicos">Soluções</a>
+        <a href="#cases">Cases</a>
+        <a href="#">Faça Parte</a>
+        <span class="nav__lang">🇧🇷 PT</span>
+        <a href="#contato" class="btn btn--ghost btn--sm">Fale conosco</a>
+      </div>
+      <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-links"><svg class="icon"><use href="#i-menu"/></svg></button>
+    </div>
+  </nav>
+
+  <!-- HERO | fundo: foto + overlay navy | alinhado a esquerda
+       SLOTS: --img (foto), eyebrow, h1 (3 linhas max), lead (2 linhas), 2 botoes -->
+  <header class="hero" data-section="hero" style="--img:none">
+    <div class="container">
+      <div class="hero__content" data-reveal>
+        <p class="eyebrow">Full-service digital commerce</p>
+        <h1 class="display">Estratégia, tecnologia e operação para acelerar seu crescimento digital</h1>
+        <p class="lead">De D2C a marketplaces, do B2B ao social commerce. Um único parceiro com execução local em todos os mercados onde sua marca precisa estar.</p>
+        <div class="btn-row">
+          <a href="#contato" class="btn btn--primary">Fale com um especialista <span class="arrow">→</span></a>
+          <a href="#servicos" class="btn btn--ghost">Conheça nossas soluções</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- LOGOS DE CLIENTES | fundo white | marquee infinito
+       SLOTS: eyebrow centralizado, lista de logos (duplicada para loop) -->
+  <section class="section section--white section--tight" data-section="clients" style="padding-block:48px">
+    <p class="eyebrow" style="text-align:center;margin-bottom:24px;font-size:12px">Clientes que confiam em nós</p>
+    <div class="marquee">
+      <div class="marquee__track" data-marquee>
+        <span class="logo-tile">Cliente A</span><span class="logo-tile">Cliente B</span><span class="logo-tile">Cliente C</span>
+        <span class="logo-tile">Cliente D</span><span class="logo-tile">Cliente E</span><span class="logo-tile">Cliente F</span>
+        <span class="logo-tile">Cliente G</span><span class="logo-tile">Cliente H</span><span class="logo-tile">Cliente I</span>
+        <span class="logo-tile">Cliente J</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEMA | fundo navy | cabecalho a esquerda + 3 cards glass com icone
+       SLOTS: eyebrow, h2 (pergunta), 3x {icone, titulo-sintoma, consequencia} -->
+  <section class="section section--navy section--tight" data-section="problem">
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <p class="eyebrow">O desafio</p>
+        <h2 class="h2">Sua marca está preparada para o digital?</h2>
+      </header>
+      <div class="grid grid--3">
+        <article class="card card--glass" data-reveal>
+          <svg class="icon icon--cyan"><use href="#i-cart"/></svg>
+          <h3 class="h5">Marketplaces sem gestão ativa</h3>
+          <p>Listings mal otimizados, vendedores não autorizados e chargebacks corroendo margem silenciosamente.</p>
+        </article>
+        <article class="card card--glass" data-reveal>
+          <svg class="icon icon--cyan"><use href="#i-wrench"/></svg>
+          <h3 class="h5">B2B ainda no manual</h3>
+          <p>Pedidos por telefone, planilha e representante. Alto custo de servir, baixa escala e zero visibilidade.</p>
+        </article>
+        <article class="card card--glass" data-reveal>
+          <svg class="icon icon--cyan"><use href="#i-megaphone"/></svg>
+          <h3 class="h5">Mídia sem retorno real</h3>
+          <p>Investimento em tráfego pago sem integração com CRM, plataforma e operação.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAIS | fundo white | 4 cards soft numerados
+       SLOTS: eyebrow, h2, 4x {icone, numero 01-04, titulo, texto} -->
+  <section class="section section--white" data-section="differentials">
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <p class="eyebrow">Por que nós</p>
+        <h2 class="h2">O que nos diferencia no mercado</h2>
+      </header>
+      <div class="grid grid--4">
+        <article class="card card--soft card--feature" data-reveal>
+          <div class="card__top"><span class="icon-badge"><svg class="icon"><use href="#i-globe"/></svg></span><span class="num">01</span></div>
+          <h3 class="h4">Presença global, execução local</h3>
+          <p>Times especializados nos mercados onde sua marca precisa estar. Operação real, não apenas escritórios.</p>
+        </article>
+        <article class="card card--soft card--feature" data-reveal>
+          <div class="card__top"><span class="icon-badge"><svg class="icon"><use href="#i-layers"/></svg></span><span class="num">02</span></div>
+          <h3 class="h4">Ecossistema full-service</h3>
+          <p>Da estratégia à execução, mídia e fulfillment. Um único parceiro para toda a jornada digital.</p>
+        </article>
+        <article class="card card--soft card--feature" data-reveal>
+          <div class="card__top"><span class="icon-badge"><svg class="icon"><use href="#i-cpu"/></svg></span><span class="num">03</span></div>
+          <h3 class="h4">Ferramentas proprietárias</h3>
+          <p>Ativos exclusivos que impactam diretamente a conversão e a rentabilidade do canal digital.</p>
+        </article>
+        <article class="card card--soft card--feature" data-reveal>
+          <div class="card__top"><span class="icon-badge"><svg class="icon"><use href="#i-award"/></svg></span><span class="num">04</span></div>
+          <h3 class="h4">Parcerias</h3>
+          <p>Certificações nos níveis mais altos das principais plataformas de tecnologia e mídia.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUMEROS | fundo light com banda navy arredondada | 4 stats com divisores
+       SLOTS: 4x {valor (data-count anima numeros), prefixo/sufixo, rotulo} -->
+  <section class="section section--light" data-section="stats" style="padding-block:24px 0">
+    <div class="container" style="max-width:1560px">
+      <div class="stats-band" data-reveal>
+        <div class="stats">
+          <div class="stat"><div class="stat__value" data-count="5">5</div><div class="stat__label">Continentes</div></div>
+          <div class="stat"><div class="stat__value" data-count="400" data-prefix="+">+400</div><div class="stat__label">Profissionais</div></div>
+          <div class="stat"><div class="stat__value" data-count="1200" data-prefix="+ ">+ 1200</div><div class="stat__label">Projetos entregues</div></div>
+          <div class="stat"><div class="stat__value" data-count="12" data-prefix="+">+12</div><div class="stat__label">Anos de expertise</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICOS | fundo light | cabecalho centralizado + bento (2 grandes + 4) + CTA
+       SLOTS: 6x {icone colorido, titulo, texto, tags na MESMA cor do icone} -->
+  <section class="section section--light" id="servicos" data-section="services">
+    <div class="container">
+      <header class="section-head section-head--center" data-reveal>
+        <p class="eyebrow">Serviços</p>
+        <h2 class="h2">Tudo que sua operação digital precisa</h2>
+      </header>
+      <div class="bento">
+        <article class="card card--soft card--service" data-reveal>
+          <svg class="icon icon--cyan"><use href="#i-zap"/></svg>
+          <h3 class="h3">Estratégia &amp; Playbook</h3>
+          <p>Roadmap de canais, arquitetura de plataforma e diretrizes para operação digital integrada.</p>
+          <div class="tags"><span class="tag tag--cyan">D2C</span><span class="tag tag--cyan">B2B</span><span class="tag tag--cyan">Marketplace</span><span class="tag tag--cyan">Omnichannel</span></div>
+        </article>
+        <article class="card card--soft card--service" data-reveal>
+          <svg class="icon icon--blue"><use href="#i-globe"/></svg>
+          <h3 class="h3">Desenvolvimento &amp; Implementação</h3>
+          <p>E-commerces D2C e B2B com integração a ERP, CRM, meios de pagamento e logística.</p>
+          <div class="tags"><span class="tag tag--blue">Plataforma A</span><span class="tag tag--blue">Plataforma B</span><span class="tag tag--blue">Plataforma C</span></div>
+        </article>
+        <article class="card card--soft card--service" data-reveal>
+          <svg class="icon icon--teal"><use href="#i-bag"/></svg>
+          <h3 class="h3">Marketplace &amp; Retail Media</h3>
+          <p>Setup, auditoria e aceleração de vendas em marketplaces 1P e 3P.</p>
+          <div class="tags"><span class="tag tag--teal">Canal 1</span><span class="tag tag--teal">Canal 2</span><span class="tag tag--teal">Canal 3</span></div>
+        </article>
+        <article class="card card--soft card--service" data-reveal>
+          <svg class="icon icon--steel"><use href="#i-zap"/></svg>
+          <h3 class="h3">Performance Marketing</h3>
+          <p>Squads moduláveis focadas em alcance e conversão.</p>
+          <div class="tags"><span class="tag tag--steel">SEO</span><span class="tag tag--steel">Tráfego Pago</span><span class="tag tag--steel">CRO</span></div>
+        </article>
+        <article class="card card--soft card--service" data-reveal>
+          <svg class="icon icon--green"><use href="#i-message"/></svg>
+          <h3 class="h3">CRM &amp; Fidelização</h3>
+          <p>Estratégias para ampliar LTV e reduzir CAC.</p>
+          <div class="tags"><span class="tag tag--green">Gestão de CRM</span><span class="tag tag--green">Automação</span></div>
+        </article>
+        <article class="card card--soft card--service" data-reveal>
+          <svg class="icon icon--purple"><use href="#i-users"/></svg>
+          <h3 class="h3">Social &amp; Live Commerce</h3>
+          <p>Vendas via redes sociais, live e parcerias com influenciadores.</p>
+          <div class="tags"><span class="tag tag--purple">Social</span><span class="tag tag--purple">Live</span><span class="tag tag--purple">Influencers</span></div>
+        </article>
+      </div>
+      <div style="display:flex;justify-content:center;margin-top:32px">
+        <a href="#contato" class="btn btn--primary">Fale com um especialista <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARCEIROS | fundo white | centralizado + grade de logos em cinza (cor no hover)
+       SLOTS: eyebrow, h2 (menor, use style ou .h3), lead, logos -->
+  <section class="section section--white" data-section="partners">
+    <div class="container">
+      <header class="section-head section-head--center" data-reveal>
+        <p class="eyebrow">Parceiros em destaque</p>
+        <h2 class="h3">Parceiros e Certificados</h2>
+        <p class="lead small">Somos certificados pelas maiores plataformas e parceiros de tecnologia do mercado.</p>
+      </header>
+      <div class="partners" data-reveal>
+        <span class="partner">Parceiro 1</span><span class="partner">Parceiro 2</span><span class="partner">Parceiro 3</span>
+        <span class="partner">Parceiro 4</span><span class="partner">Parceiro 5</span><span class="partner">Parceiro 6</span><span class="partner">Parceiro 7</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASES | fundo navy | cabecalho split (titulo esq, setas dir) + carrossel
+       SLOTS por card: --img (foto), logo, eyebrow-categoria, titulo, tags, link -->
+  <section class="section section--navy" id="cases" data-section="cases" style="padding-bottom:120px">
+    <div class="container">
+      <header class="section-head section-head--split" data-reveal>
+        <div>
+          <p class="eyebrow">Cases de sucesso</p>
+          <h2 class="h2">Resultados que falam por si</h2>
+        </div>
+        <div class="carousel__arrows">
+          <button class="carousel__arrow" data-carousel-prev aria-label="Anterior"><svg class="icon icon--sm"><use href="#i-chevron-left"/></svg></button>
+          <button class="carousel__arrow" data-carousel-next aria-label="Próximo"><svg class="icon icon--sm"><use href="#i-chevron-right"/></svg></button>
+        </div>
+      </header>
+      <div class="carousel" data-carousel>
+        <div class="carousel__track" data-carousel-track>
+          <article class="card card--case" style="--ph:linear-gradient(135deg,#7a2840,#1d3b5c)">
+            <span class="case__logo">Cliente A</span>
+            <p class="eyebrow" style="font-size:11px">Digital B2B</p>
+            <h3 class="h4">Cliente A inova no B2B e moderniza a jornada de vendas</h3>
+            <div class="case__foot"><div class="tags"><span class="tag tag--dark">Implementação</span><span class="tag tag--dark">UX/UI Design</span></div><a href="#" class="link-arrow">Leia o case completo <svg class="icon icon--sm arrow"><use href="#i-chevron-right"/></svg></a></div>
+          </article>
+          <article class="card card--case" style="--ph:linear-gradient(135deg,#2f5a36,#3a1d2c)">
+            <span class="case__logo">Cliente B</span>
+            <p class="eyebrow" style="font-size:11px">Experiência premium</p>
+            <h3 class="h4">Cliente B aprimora a jornada de compra com solução customizada</h3>
+            <div class="case__foot"><div class="tags"><span class="tag tag--dark">Implementação</span><span class="tag tag--dark">UX/UI Design</span></div><a href="#" class="link-arrow">Leia o case completo <svg class="icon icon--sm arrow"><use href="#i-chevron-right"/></svg></a></div>
+          </article>
+          <article class="card card--case" style="--ph:linear-gradient(135deg,#1f4f7a,#0f2a44)">
+            <span class="case__logo">Cliente C</span>
+            <p class="eyebrow" style="font-size:11px">Redução de CAC</p>
+            <h3 class="h4">Cliente C escala CRM e alcança 185% de crescimento em receita</h3>
+            <div class="case__foot"><div class="tags"><span class="tag tag--dark">CRM</span></div><a href="#" class="link-arrow">Leia o case completo <svg class="icon icon--sm arrow"><use href="#i-chevron-right"/></svg></a></div>
+          </article>
+          <article class="card card--case" style="--ph:linear-gradient(135deg,#6b4a1f,#1d2f45)">
+            <span class="case__logo">Cliente D</span>
+            <p class="eyebrow" style="font-size:11px">Varejo top 10</p>
+            <h3 class="h4">Cliente D acelera a expansão digital com performance em novas lojas</h3>
+            <div class="case__foot"><div class="tags"><span class="tag tag--dark">Mídia Paga</span></div><a href="#" class="link-arrow">Leia o case completo <svg class="icon icon--sm arrow"><use href="#i-chevron-right"/></svg></a></div>
+          </article>
+        </div>
+        <div class="carousel__dots" data-carousel-dots></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTADOS | fundo gradient, sobreposto a secao anterior (cantos 32px)
+       SLOTS por card: cor (--t), cliente, valor grande, metrica, metrica secundaria, contexto -->
+  <section class="section section--gradient section--overlap" data-section="results">
+    <div class="container">
+      <header class="section-head section-head--center" data-reveal>
+        <p class="eyebrow">Resultados reais</p>
+        <h2 class="h2">Números que falam por si</h2>
+      </header>
+      <div class="grid grid--3" style="max-width:1040px;margin-inline:auto">
+        <article class="card card--result" style="--t:var(--c-cyan)" data-reveal>
+          <span class="result__label"><svg class="icon"><use href="#i-trend"/></svg>Cliente D</span>
+          <span class="result__value">+38%</span>
+          <span class="result__metric">Crescimento no faturamento</span>
+          <span class="result__sub">+112% Atingimento da meta</span>
+          <hr class="divider">
+          <p>Gestão estratégica de orçamento orientada por metas, com otimização contínua das campanhas.</p>
+        </article>
+        <article class="card card--result" style="--t:var(--c-green)" data-reveal>
+          <span class="result__label"><svg class="icon"><use href="#i-trend"/></svg>Cliente C</span>
+          <span class="result__value">+185%</span>
+          <span class="result__metric">Crescimento de receita</span>
+          <span class="result__sub">+85,7% Receita influenciada</span>
+          <hr class="divider">
+          <p>Aceleração da maturidade do CRM com estratégias que fortalecem relacionamento e performance.</p>
+        </article>
+        <article class="card card--result is-white" data-reveal>
+          <span class="result__label"><svg class="icon" style="color:var(--c-cyan)"><use href="#i-trend"/></svg>Cliente B</span>
+          <span class="result__value">+14,3%</span>
+          <span class="result__metric">Crescimento de receita</span>
+          <span class="result__sub">+10,4% Aumento de ticket médio</span>
+          <hr class="divider">
+          <p>Mais autonomia, estoque preciso e uma jornada de compra intuitiva para o cliente.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FERRAMENTAS / PRODUTOS | fundo white | 2 cards soft
+       SLOTS por card: logo, tag de categoria, titulo, texto com prova numerica, link externo -->
+  <section class="section section--white" data-section="tools">
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <p class="eyebrow">Ferramentas proprietárias</p>
+        <h2 class="h2">Tecnologia que só nós temos</h2>
+      </header>
+      <div class="grid grid--2">
+        <article class="card card--soft card--tool" data-reveal>
+          <span class="tool__logo"><span>›</span>Produto A</span>
+          <div class="tags"><span class="tag tag--cyan" style="text-transform:uppercase;letter-spacing:.06em;font-weight:600">Smart syndication</span></div>
+          <h3 class="h4">Conteúdo enriquecido em escala</h3>
+          <p>Distribui vídeo, imagens interativas e fichas técnicas para milhares de varejistas digitais. Até +27% de conversão e -10% de devoluções.</p>
+          <a href="#" class="link-arrow">Conheça a solução <svg class="icon icon--sm"><use href="#i-external"/></svg></a>
+        </article>
+        <article class="card card--soft card--tool" data-reveal>
+          <span class="tool__logo">Produto B</span>
+          <div class="tags"><span class="tag tag--cyan" style="text-transform:uppercase;letter-spacing:.06em;font-weight:600">Analytics</span></div>
+          <h3 class="h4">Inteligência preditiva</h3>
+          <p>Análise preditiva de comportamento de shopper para segmentação, lifetime value e decisões de mídia mais eficientes.</p>
+          <a href="#" class="link-arrow">Conheça a solução <svg class="icon icon--sm"><use href="#i-external"/></svg></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ECOSSISTEMA | fundo navy | centralizado + 4 cards ligados por linha
+       SLOTS: eyebrow, h2, lead, 4x {icone colorido, titulo, texto curto} -->
+  <section class="section section--navy" data-section="ecosystem">
+    <div class="container">
+      <header class="section-head section-head--center" data-reveal>
+        <p class="eyebrow">Ecossistema integrado</p>
+        <h2 class="h2">Commerce não opera sozinho</h2>
+        <p class="lead small">O poder está na conexão entre as frentes. Cada cliente é potencializado pelas demais unidades.</p>
+      </header>
+      <div class="grid grid--4 eco">
+        <article class="card card--eco" data-reveal><svg class="icon icon--cyan"><use href="#i-cart"/></svg><h3 class="h5">Commerce</h3><p>D2C, B2B, Marketplace e Social Commerce integrados.</p></article>
+        <article class="card card--eco" data-reveal><svg class="icon icon--steel"><use href="#i-phone"/></svg><h3 class="h5">Sales &amp; Merchandising</h3><p>Presença na gôndola conectada ao digital shelf.</p></article>
+        <article class="card card--eco" data-reveal><svg class="icon icon--green"><use href="#i-chart"/></svg><h3 class="h5">Activation &amp; Experience</h3><p>Ativações de campo conectadas a jornadas digitais.</p></article>
+        <article class="card card--eco" data-reveal><svg class="icon icon--teal"><use href="#i-database"/></svg><h3 class="h5">Data &amp; Technology</h3><p>Dados de sell-out conectados à mídia digital.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL | fundo overlay sobre foto | centralizado
+       SLOTS: --img (foto), eyebrow, h2 (pergunta), lead, botao grande -->
+  <section class="section section--overlay cta-final" id="contato" data-section="cta" style="--img:none">
+    <div class="container">
+      <header class="section-head section-head--center" data-reveal>
+        <p class="eyebrow">Próximo passo</p>
+        <h2 class="h2">Vamos acelerar seu crescimento digital?</h2>
+        <p class="lead">Um único parceiro para toda a jornada: da estratégia à execução, da tecnologia à operação.</p>
+      </header>
+      <div style="display:flex;justify-content:center" data-reveal>
+        <a href="#" class="btn btn--primary btn--lg">Agende uma conversa com nosso time <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER | navy | 4 colunas (marca + 3 listas) + barra inferior -->
+  <footer class="footer" data-component="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a href="#" class="brand"><span class="brand__name">SUAMARCA</span><span class="brand__sub">Digital Commerce</span></a>
+          <p>Estratégia, tecnologia e operação para acelerar o crescimento digital de marcas.</p>
+          <div class="socials">
+            <a href="#" aria-label="LinkedIn"><svg class="icon icon--sm"><use href="#i-linkedin"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg class="icon icon--sm"><use href="#i-instagram"/></svg></a>
+            <a href="#" aria-label="YouTube"><svg class="icon icon--sm"><use href="#i-youtube"/></svg></a>
+          </div>
+        </div>
+        <div><h4>Soluções</h4><ul>
+          <li><a href="#">Estratégia &amp; Playbook</a></li><li><a href="#">Desenvolvimento &amp; Ongoing</a></li>
+          <li><a href="#">Marketplace &amp; Retail Media</a></li><li><a href="#">Performance Marketing</a></li>
+          <li><a href="#">CRM &amp; Fidelização</a></li><li><a href="#">Social &amp; Live Commerce</a></li></ul></div>
+        <div><h4>Ferramentas</h4><ul><li><a href="#">Produto A</a></li><li><a href="#">Produto B</a></li></ul></div>
+        <div><h4>Empresa</h4><ul><li><a href="#">Faça parte do time</a></li></ul></div>
+      </div>
+      <div class="footer__bottom"><span>© 2026 SuaMarca. Todos os direitos reservados.</span><a href="#">Política de Privacidade</a></div>
+    </div>
+  </footer>
+
+  <!-- COOKIE BANNER -->
+  <div class="cookie" data-cookie>
+    <span>Usamos cookies para melhorar sua experiência, analisar o uso do site e personalizar conteúdo.</span>
+    <button class="btn" data-cookie-ok>Ok, entendi!</button>
+  </div>
+</div>
+
+<!-- ######################################################################
+     VISTA 2: STYLEGUIDE (design system documentado)
+     ###################################################################### -->
+<div id="styleguide" class="sg" hidden>
+  <div class="sg__hero">
+    <div class="container" style="display:grid;gap:16px">
+      <p class="eyebrow">Design system</p>
+      <h1 class="display">Corporate Navy</h1>
+      <p class="lead">Tokens, tipografia e componentes do template. Tudo aqui é a mesma CSS usada na landing page: mude um token e as duas vistas mudam juntas.</p>
+    </div>
+  </div>
+  <nav class="sg__nav"><div class="container">
+    <a href="#sg-cores">Cores</a><a href="#sg-tipo">Tipografia</a><a href="#sg-espaco">Espaço e raios</a><a href="#sg-botoes">Botões</a>
+    <a href="#sg-tags">Tags</a><a href="#sg-icones">Ícones</a><a href="#sg-cards">Cards</a><a href="#sg-secoes">Seções</a><a href="#sg-prompt">Como pedir ao Claude</a>
+  </div></nav>
+
+  <div class="container">
+
+    <section class="sg__block" id="sg-cores">
+      <h2 class="h3">Cores</h2>
+      <p class="lead">Navy domina (fundos escuros e texto), azul primário é ação, ciano é destaque. Categóricas servem para diferenciar serviços: ícone e tags do mesmo card usam a mesma cor.</p>
+      <div class="sg__panel"><p class="eyebrow" style="margin-bottom:16px">Marca</p><div class="swatches" data-swatches="--color-navy,--color-navy-deep,--color-primary,--color-primary-hover,--color-accent"></div></div>
+      <div class="sg__panel"><p class="eyebrow" style="margin-bottom:16px">Neutros</p><div class="swatches" data-swatches="--color-surface,--color-bg,--color-muted,--color-border,--color-text-muted,--color-text"></div></div>
+      <div class="sg__panel"><p class="eyebrow" style="margin-bottom:16px">Categóricas</p><div class="swatches" data-swatches="--c-cyan,--c-blue,--c-teal,--c-green,--c-purple,--c-steel"></div></div>
+      <div class="grid grid--2">
+        <div class="sg__panel sg__panel--grad" style="min-height:120px"><p class="eyebrow" style="color:var(--color-accent)">--grad-brand</p><p class="small text-muted">135deg navy para primary. Usado na seção de resultados.</p></div>
+        <div class="sg__panel" style="min-height:120px;position:relative;overflow:hidden;background:var(--grad-brand);border:0"><div style="position:absolute;inset:0;background:var(--grad-image-fade)"></div><p class="eyebrow" style="position:relative;color:#fff">--grad-image-fade</p><p class="small" style="position:relative;color:rgba(255,255,255,.75)">Sobre fotos de cases para legibilidade.</p></div>
+      </div>
+    </section>
+
+    <section class="sg__block" id="sg-tipo">
+      <h2 class="h3">Tipografia</h2>
+      <p class="lead">Montserrat para títulos (700 e 800), Inter para corpo (500 como padrão). Títulos sempre em navy no claro e off-white no escuro.</p>
+      <div class="sg__panel">
+        <div class="type-row"><code>.display<br>Montserrat 800 · 36→56px · lh 1.1 · -0.02em</code><span class="display">Acelere seu crescimento</span></div>
+        <div class="type-row"><code>.h2<br>Montserrat 700 · 32→52px · lh 1.15</code><span class="h2">Título de seção</span></div>
+        <div class="type-row"><code>.h3<br>Montserrat 700 · 24→36px</code><span class="h3">Título de card de serviço</span></div>
+        <div class="type-row"><code>.h4<br>Montserrat 600 · 24px</code><span class="h4">Título de card de diferencial</span></div>
+        <div class="type-row"><code>.h5<br>Montserrat 600 · 18px</code><span class="h5">Título de card pequeno</span></div>
+        <div class="type-row"><code>.eyebrow<br>Inter 600 · 14px · caps · 0.1em</code><span class="eyebrow">Rótulo da seção</span></div>
+        <div class="type-row"><code>.lead<br>Inter 500 · 18px · muted</code><span class="lead">Subtítulo que explica a seção em uma ou duas linhas.</span></div>
+        <div class="type-row"><code>body<br>Inter 500 · 16px · lh 1.6</code><span>Texto corrido padrão do site.</span></div>
+        <div class="type-row"><code>.small / card p<br>Inter 500 · 14px</code><span class="small text-muted">Descrição de card, sempre em cor muted.</span></div>
+        <div class="type-row"><code>.stat__value<br>Montserrat 800 · 36→48px · accent</code><span class="stat__value" style="font-family:var(--font-heading);font-weight:800;font-size:var(--fs-stat);color:var(--color-accent)">+185%</span></div>
+      </div>
+    </section>
+
+    <section class="sg__block" id="sg-espaco">
+      <h2 class="h3">Espaço e raios</h2>
+      <p class="lead">Base de 4px. Seções com 96px verticais (80px nas compactas, 160px no CTA final). Container de 1280px com gutter de 32px (16px no mobile).</p>
+      <div class="sg__panel"><div class="scale" id="space-scale"></div></div>
+      <div class="sg__panel"><div class="scale">
+        <div class="scale__item"><div class="radius-box" style="border-radius:var(--r-sm)"></div>sm 8 · logos</div>
+        <div class="scale__item"><div class="radius-box" style="border-radius:var(--r-md)"></div>md 12</div>
+        <div class="scale__item"><div class="radius-box" style="border-radius:var(--r-lg)"></div>lg 16 · cards</div>
+        <div class="scale__item"><div class="radius-box" style="border-radius:var(--r-xl)"></div>xl 24</div>
+        <div class="scale__item"><div class="radius-box" style="border-radius:var(--r-section) var(--r-section) 0 0"></div>section 32 · topo</div>
+        <div class="scale__item"><div class="radius-box" style="border-radius:var(--r-pill);height:40px"></div>pill · botões, tags</div>
+      </div></div>
+    </section>
+
+    <section class="sg__block" id="sg-botoes">
+      <h2 class="h3">Botões e links</h2>
+      <p class="lead">Sempre pílula. Primário com seta "→" para a ação principal. Ghost no escuro, outline no claro. No máximo dois botões lado a lado.</p>
+      <div class="sg__panel"><div class="row">
+        <a class="btn btn--primary">Fale com um especialista <span class="arrow">→</span></a>
+        <a class="btn btn--outline">Secundário (claro)</a>
+        <a class="btn btn--primary btn--lg">Grande <span class="arrow">→</span></a>
+        <a class="btn btn--primary btn--sm">Pequeno</a>
+        <a class="link-arrow">Leia o case completo <svg class="icon icon--sm arrow"><use href="#i-chevron-right"/></svg></a>
+      </div></div>
+      <div class="sg__panel sg__panel--dark"><div class="row">
+        <a class="btn btn--primary">Primário <span class="arrow">→</span></a>
+        <a class="btn btn--ghost">Ghost (escuro)</a>
+        <a class="btn btn--ghost btn--sm">Fale conosco</a>
+      </div></div>
+      <pre>&lt;a class="btn btn--primary"&gt;Texto &lt;span class="arrow"&gt;→&lt;/span&gt;&lt;/a&gt;
+&lt;a class="btn btn--ghost"&gt;Texto&lt;/a&gt;   &lt;!-- fundo escuro --&gt;
+&lt;a class="btn btn--outline"&gt;Texto&lt;/a&gt; &lt;!-- fundo claro --&gt;</pre>
+    </section>
+
+    <section class="sg__block" id="sg-tags">
+      <h2 class="h3">Tags</h2>
+      <p class="lead">Texto na cor categórica e fundo da mesma cor a 10%. Em fotos, use .tag--dark.</p>
+      <div class="sg__panel"><div class="tags">
+        <span class="tag tag--cyan">cyan</span><span class="tag tag--blue">blue</span><span class="tag tag--teal">teal</span>
+        <span class="tag tag--green">green</span><span class="tag tag--purple">purple</span><span class="tag tag--steel">steel</span>
+      </div></div>
+      <div class="sg__panel sg__panel--dark"><div class="tags"><span class="tag tag--dark">tag--dark</span><span class="tag tag--cyan">cyan no escuro</span></div></div>
+    </section>
+
+    <section class="sg__block" id="sg-icones">
+      <h2 class="h3">Ícones</h2>
+      <p class="lead">Traço 2px, cantos arredondados, 24px. Cor por classe .icon--{cor} ou herdada de currentColor.</p>
+      <div class="sg__panel"><div class="icon-grid" id="icon-grid"></div></div>
+      <pre>&lt;svg class="icon icon--teal"&gt;&lt;use href="#i-bag"/&gt;&lt;/svg&gt;
+&lt;span class="icon-badge"&gt;&lt;svg class="icon"&gt;&lt;use href="#i-globe"/&gt;&lt;/svg&gt;&lt;/span&gt;</pre>
+    </section>
+
+    <section class="sg__block" id="sg-cards">
+      <h2 class="h3">Cards</h2>
+      <p class="lead">Raio 16px, sem sombra em repouso. Hover sobe 3px (soft) ou acende a borda (glass). Escolha pelo fundo da seção.</p>
+      <table class="sg__panel" style="display:table">
+        <thead><tr><th>Classe</th><th>Fundo da seção</th><th>Uso</th></tr></thead>
+        <tbody>
+          <tr><td><code>.card--soft</code></td><td>white / light</td><td>Base para diferenciais, serviços e ferramentas</td></tr>
+          <tr><td><code>.card--glass</code></td><td>navy</td><td>Problemas, dores, listas em fundo escuro</td></tr>
+          <tr><td><code>.card--feature</code></td><td>white</td><td>soft + ícone em badge + número 01..04</td></tr>
+          <tr><td><code>.card--service</code></td><td>light (dentro de .bento)</td><td>Título grande + tags coloridas no rodapé</td></tr>
+          <tr><td><code>.card--case</code></td><td>navy (carrossel)</td><td>Foto + fade + logo + título + tags + link</td></tr>
+          <tr><td><code>.card--result</code></td><td>gradient</td><td>Número grande, borda esquerda na cor --t</td></tr>
+          <tr><td><code>.card--tool</code></td><td>white</td><td>Logo do produto + tag + título + link externo</td></tr>
+          <tr><td><code>.card--eco</code></td><td>navy (dentro de .eco)</td><td>Centralizado, nó no topo, linha conectando</td></tr>
+        </tbody>
+      </table>
+      <div class="grid grid--3" style="margin-top:16px">
+        <article class="card card--soft card--feature"><div class="card__top"><span class="icon-badge"><svg class="icon"><use href="#i-globe"/></svg></span><span class="num">01</span></div><h3 class="h4">card--feature</h3><p>Ícone em badge, número, título e texto.</p></article>
+        <div class="sg__panel sg__panel--dark" style="margin:0;padding:16px"><article class="card card--glass"><svg class="icon icon--cyan"><use href="#i-cart"/></svg><h3 class="h5">card--glass</h3><p>Para fundos escuros.</p></article></div>
+        <div class="sg__panel sg__panel--grad" style="margin:0;padding:16px"><article class="card card--result" style="--t:var(--c-green)"><span class="result__label"><svg class="icon"><use href="#i-trend"/></svg>Cliente</span><span class="result__value">+185%</span><span class="result__metric">card--result</span></article></div>
+      </div>
+    </section>
+
+    <section class="sg__block" id="sg-secoes">
+      <h2 class="h3">Seções do template</h2>
+      <p class="lead">Ordem e fundo de cada bloco. Alterne fundos claros e escuros; nunca repita o mesmo fundo em sequência (exceto stats + serviços, que formam um bloco único).</p>
+      <table class="sg__panel" style="display:table">
+        <thead><tr><th>#</th><th>data-section</th><th>Fundo</th><th>Layout</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><code>hero</code></td><td>foto + overlay navy</td><td>Esquerda, eyebrow + display + lead + 2 botões</td></tr>
+          <tr><td>2</td><td><code>clients</code></td><td>white</td><td>Marquee de logos</td></tr>
+          <tr><td>3</td><td><code>problem</code></td><td>navy</td><td>Cabeçalho esq. + 3 glass</td></tr>
+          <tr><td>4</td><td><code>differentials</code></td><td>white</td><td>Cabeçalho esq. + 4 feature</td></tr>
+          <tr><td>5</td><td><code>stats</code></td><td>light + banda navy</td><td>4 números com divisores</td></tr>
+          <tr><td>6</td><td><code>services</code></td><td>light</td><td>Centralizado + bento 2+4 + CTA</td></tr>
+          <tr><td>7</td><td><code>partners</code></td><td>white</td><td>Centralizado + logos</td></tr>
+          <tr><td>8</td><td><code>cases</code></td><td>navy</td><td>Split + carrossel</td></tr>
+          <tr><td>9</td><td><code>results</code></td><td>gradient, sobreposta</td><td>Centralizado + 3 result</td></tr>
+          <tr><td>10</td><td><code>tools</code></td><td>white</td><td>Cabeçalho esq. + 2 tool</td></tr>
+          <tr><td>11</td><td><code>ecosystem</code></td><td>navy</td><td>Centralizado + 4 eco conectados</td></tr>
+          <tr><td>12</td><td><code>cta</code></td><td>overlay sobre foto</td><td>Centralizado + botão grande</td></tr>
+          <tr><td>13</td><td><code>footer</code></td><td>navy</td><td>4 colunas + barra inferior</td></tr>
+        </tbody>
+      </table>
+      <pre>&lt;!-- Receita de nova seção --&gt;
+&lt;section class="section section--white" data-section="nome"&gt;
+  &lt;div class="container"&gt;
+    &lt;header class="section-head section-head--center" data-reveal&gt;
+      &lt;p class="eyebrow"&gt;Rótulo&lt;/p&gt;
+      &lt;h2 class="h2"&gt;Título&lt;/h2&gt;
+      &lt;p class="lead"&gt;Subtítulo&lt;/p&gt;
+    &lt;/header&gt;
+    &lt;div class="grid grid--3"&gt;
+      &lt;article class="card card--soft" data-reveal&gt;...&lt;/article&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</pre>
+    </section>
+
+    <section class="sg__block" id="sg-prompt">
+      <h2 class="h3">Como pedir ao Claude</h2>
+      <p class="lead">Anexe este arquivo e use um pedido nesta linha. Quanto mais conteúdo real você der, menos o Claude inventa.</p>
+      <pre>Use o arquivo design-system-template.html como base obrigatória.
+1. Troque os tokens de marca: navy=#____, primary=#____, accent=#____.
+   Fontes: títulos ____, corpo ____ (Google Fonts).
+2. Marca: nome "____", subtítulo "____".
+3. Mantenha estas seções, nesta ordem: hero, clients, problem, services,
+   cases, results, cta, footer. Remova as demais.
+4. Conteúdo de cada seção: [cole aqui os textos, números e cases].
+5. Respeite as regras do GUIA PARA O CLAUDE no topo do arquivo
+   (alternância de fundos, classes existentes, sem travessão, textos curtos).
+6. Entregue um único HTML, sem frameworks, mantendo o JS do template.</pre>
+    </section>
+  </div>
+</div>
+
+<!-- Alternador de vistas (remover em producao) -->
+<div class="dev-switch" data-dev-only role="group" aria-label="Alternar vista">
+  <button data-view="template" aria-pressed="true">Template</button>
+  <button data-view="styleguide" aria-pressed="false">Design System</button>
+</div>
+
+<script>
+/* ==========================================================================
+   JS DO TEMPLATE (vanilla, sem dependencias)
+   ========================================================================== */
+(function(){
+  const $ = (s, r=document) => r.querySelector(s);
+  const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+
+  /* NAV: solida ao rolar + menu mobile */
+  const nav = $('.nav');
+  const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > 40);
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  const toggle = $('.nav__toggle');
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  $$('.nav__links a').forEach(a => a.addEventListener('click', () => nav.classList.remove('is-open')));
+
+  /* MARQUEE: duplica os itens para loop continuo */
+  $$('[data-marquee]').forEach(t => { t.innerHTML += t.innerHTML; });
+
+  /* CARROSSEL: setas + dots sincronizados com o scroll */
+  $$('[data-carousel]').forEach(c => {
+    const track = $('[data-carousel-track]', c);
+    const section = c.closest('section');
+    const items = [...track.children];
+    const dotsWrap = $('[data-carousel-dots]', c);
+    const dots = items.map((_, i) => {
+      const d = document.createElement('button');
+      d.className = 'carousel__dot'; d.setAttribute('aria-label', 'Ir para item ' + (i+1));
+      d.addEventListener('click', () => track.scrollTo({left: items[i].offsetLeft - track.offsetLeft, behavior:'smooth'}));
+      dotsWrap.appendChild(d); return d;
+    });
+    const step = () => items[0].getBoundingClientRect().width + 16;
+    $('[data-carousel-prev]', section)?.addEventListener('click', () => track.scrollBy({left:-step(), behavior:'smooth'}));
+    $('[data-carousel-next]', section)?.addEventListener('click', () => track.scrollBy({left: step(), behavior:'smooth'}));
+    const sync = () => {
+      const i = Math.round(track.scrollLeft / step());
+      dots.forEach((d, k) => d.classList.toggle('is-active', k === Math.min(i, dots.length-1)));
+    };
+    track.addEventListener('scroll', sync, {passive:true}); sync();
+  });
+
+  /* CONTADOR: anima [data-count] quando entra na tela */
+  const countIO = new IntersectionObserver(entries => entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target, end = +el.dataset.count, pre = el.dataset.prefix || '', suf = el.dataset.suffix || '';
+    const t0 = performance.now(), dur = 1400;
+    const tick = t => { const p = Math.min((t - t0)/dur, 1), v = Math.round(end * (1 - Math.pow(1-p, 3)));
+      el.textContent = pre + v.toLocaleString('pt-BR') + suf; if (p < 1) requestAnimationFrame(tick); };
+    requestAnimationFrame(tick); countIO.unobserve(el);
+  }), {threshold:.5});
+  $$('[data-count]').forEach(el => countIO.observe(el));
+
+  /* REVEAL: fade + slide ao entrar na tela, com pequeno escalonamento */
+  const revIO = new IntersectionObserver(entries => entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const sibs = [...e.target.parentElement.children].filter(n => n.hasAttribute('data-reveal'));
+    e.target.style.transitionDelay = (sibs.indexOf(e.target) * 70) + 'ms';
+    e.target.classList.add('is-visible'); revIO.unobserve(e.target);
+  }), {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  $$('[data-reveal]').forEach(el => revIO.observe(el));
+
+  /* COOKIE */
+  const cookie = $('[data-cookie]');
+  try { if (localStorage.getItem('cookie-ok')) { cookie.hidden = true; document.body.classList.remove('has-cookie'); } } catch(e){}
+  $('[data-cookie-ok]').addEventListener('click', () => {
+    cookie.hidden = true; document.body.classList.remove('has-cookie');
+    try { localStorage.setItem('cookie-ok', '1'); } catch(e){}
+  });
+
+  /* STYLEGUIDE: swatches, escala de espaco e grade de icones gerados a partir dos tokens */
+  const cs = getComputedStyle(document.documentElement);
+  $$('[data-swatches]').forEach(w => w.dataset.swatches.split(',').forEach(t => {
+    const v = cs.getPropertyValue(t).trim();
+    w.insertAdjacentHTML('beforeend', `<div class="swatch"><div class="swatch__chip" style="background:var(${t})"></div><div class="swatch__meta"><b>${t.replace(/^--(color-|c-)/,'')}</b><code>${t}</code><br><code>${v}</code></div></div>`);
+  }));
+  [1,2,3,4,5,6,8,10,12,16].forEach(n => {
+    const v = cs.getPropertyValue('--space-' + n).trim();
+    $('#space-scale').insertAdjacentHTML('beforeend', `<div class="scale__item"><div class="scale__box" style="width:${v};height:${v}"></div>${n}<br>${v}</div>`);
+  });
+  $$('#icon-sprite symbol').forEach(s => {
+    $('#icon-grid').insertAdjacentHTML('beforeend', `<div class="icon-cell"><svg class="icon"><use href="#${s.id}"/></svg>${s.id}</div>`);
+  });
+
+  /* ALTERNADOR template / styleguide (remover em producao) */
+  const views = { template: $('#template'), styleguide: $('#styleguide') };
+  const show = name => {
+    Object.entries(views).forEach(([k, el]) => el.hidden = k !== name);
+    $$('.dev-switch button').forEach(b => b.setAttribute('aria-pressed', b.dataset.view === name));
+    if (location.hash !== '#' + name) history.replaceState(null, '', '#' + name);
+    window.scrollTo(0, 0);
+  };
+  $$('.dev-switch button').forEach(b => b.addEventListener('click', () => show(b.dataset.view)));
+  if (location.hash === '#styleguide') show('styleguide');
+})();
+</script>
+</body>
+</html>
