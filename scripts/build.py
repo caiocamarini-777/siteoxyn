@@ -6,9 +6,9 @@ import json, sys, pathlib, hashlib
 
 OUT = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else pathlib.Path(__file__).resolve().parent.parent
 SITE = "https://oxyngroup.com.br"
-WA = "https://wa.me/5511981411141?text=Ol%C3%A1%2C%20quero%20falar%20com%20um%20especialista%20da%20Oxyn."
+WA = "https://wa.me/5511979706449?text=Ol%C3%A1%2C%20quero%20falar%20com%20um%20especialista%20da%20Oxyn."
 EMAIL = "comercial@oxyngroup.com.br"
-PHONE = "+55 11 98141-1141"
+PHONE = "+55 11 97970-6449"
 IG = "https://www.instagram.com/oxyn_group/"
 LI = "https://www.linkedin.com/company/oxyn-group/"
 
@@ -381,7 +381,7 @@ ORG = {
   "@context": "https://schema.org", "@type": "Organization",
   "name": "Oxyn Group", "legalName": "Oxyn Serviços e Consultoria LTDA", "url": SITE,
   "logo": f"{SITE}{IMG}/logo-oxyn.png", "slogan": "Oxigenamos o crescimento B2B.",
-  "email": EMAIL, "telephone": "+5511981411141", "sameAs": [IG, LI],
+  "email": EMAIL, "telephone": "+5511979706449", "sameAs": [IG, LI],
   "description": "Grupo de quatro empresas B2B focado em fazer clientes venderem mais: a Oxyn (consultoria comercial e terceirização de vendas, consultoria de RH e IA aplicada), a Naia (GEO e SEO), a FQDTV (mídia de nicho) e a FQD Studios (estúdio de conteúdo).",
   "founder": [{"@type": "Person", "name": l["nome"], "jobTitle": l["cargo"]} for l in LEADERS],
   "subOrganization": [{"@type": "Organization", "name": "Oxyn", "url": SITE,
