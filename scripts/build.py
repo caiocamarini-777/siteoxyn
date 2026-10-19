@@ -2,7 +2,7 @@
 Uso (na raiz do repo): python3 scripts/build.py
 Edite os textos aqui e rode o script; ele sobrescreve index.html, solucoes/*.html e sitemap.xml.
 """
-import json, sys, pathlib
+import json, sys, pathlib, hashlib
 
 OUT = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else pathlib.Path(__file__).resolve().parent.parent
 SITE = "https://oxyngroup.com.br"
@@ -209,6 +209,10 @@ BY["fqd-studios"].update(site_label="Site da FQD Studios")
 # --------------------------------------------------------------------------
 SPRITE = open(pathlib.Path(__file__).with_name("sprite.svg"), encoding="utf-8").read()
 IMG = "/assets/img"
+# Versao dos arquivos de estilo e script: muda a cada alteracao e obriga o navegador a baixar a versao nova
+def _ver(rel):
+    return hashlib.md5((OUT / rel).read_bytes()).hexdigest()[:10]
+CSS_V, JS_V = _ver("assets/css/styles.css"), _ver("assets/js/main.js")
 
 # Fundadores (Manual de Marca v1.0, slide "Fundadores"). Fotos: salvar em
 # assets/img/fundadores/<slug>.jpg e preencher "foto".
@@ -256,7 +260,7 @@ def head(title, desc, path, jsonld):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;600&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles.css?v={CSS_V}">
 <script type="application/ld+json">
 {json.dumps(jsonld, ensure_ascii=False, indent=2)}
 </script>
@@ -345,7 +349,7 @@ def footer():
     <button class="btn" data-cookie-ok>Ok, entendi</button>
   </div>
 
-<script src="/assets/js/main.js" defer></script>
+<script src="/assets/js/main.js?v={JS_V}" defer></script>
 </body>
 </html>
 """

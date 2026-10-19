@@ -2,10 +2,35 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/solucoes/comercial", "destination": "/solucoes/vendas", "permanent": true },
-    { "source": "/solucoes/estudio", "destination": "/solucoes/fqd-studios", "permanent": true }
+    {
+      "source": "/solucoes/comercial",
+      "destination": "/solucoes/vendas",
+      "permanent": true
+    },
+    {
+      "source": "/solucoes/estudio",
+      "destination": "/solucoes/fqd-studios",
+      "permanent": true
+    }
   ],
   "headers": [
-    { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600" }] }
+    {
+      "source": "/assets/img/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(css|js)/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
   ]
 }
