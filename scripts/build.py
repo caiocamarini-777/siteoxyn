@@ -13,16 +13,17 @@ IG = "https://www.instagram.com/oxyn_group/"
 LI = "https://www.linkedin.com/company/oxyn-group/"
 
 # --------------------------------------------------------------------------
-# Empresas do grupo. Oxyn Comercial e Oxyn Pessoas seguem o manual de marca;
+# O Oxyn Group sao 4 empresas: a Oxyn (frentes Vendas, Pessoas e IA), Naia, FQDTV e FQD Studios.
+# Oxyn Vendas (antes "Comercial" no manual) e Oxyn Pessoas seguem o manual de marca;
 # o nome "Oxyn IA" e de trabalho: validar com a diretoria.
 # --------------------------------------------------------------------------
 UNITS = [
-  dict(slug="comercial", unit="Oxyn Comercial", short="Comercial", icon="i-trend", color="blue", img="foto-leao.jpg",
+  dict(slug="vendas", unit="Oxyn Vendas", short="Vendas", icon="i-trend", color="blue", img="foto-leao.jpg",
        card="Consultoria comercial B2B. Diagnóstico primeiro; depois reestruturamos o time, treinamos a equipe ou assumimos a operação de vendas.",
        tags=["Diagnóstico comercial", "Treinamento", "Operação terceirizada"],
        menu="Consultoria comercial e operação de vendas",
        title="Consultoria comercial B2B e terceirização de vendas",
-       eyebrow="Oxyn Comercial · Frente principal",
+       eyebrow="Oxyn Vendas · Frente principal",
        h1_thin="Antes de vender mais,", h1="entenda o que trava suas vendas.",
        lead="Começamos pelo diagnóstico e, a partir dele, definimos o caminho: reestruturar o time comercial, treinar a equipe atual ou assumir a operação de vendas como parte da sua empresa.",
        pains_h2="Onde a venda trava na sua empresa?",
@@ -69,7 +70,7 @@ UNITS = [
             "Pilotos com indicadores de sucesso definidos antes de começar",
             "Implementação e integração com os sistemas que você já usa",
             "Treinamento e acompanhamento da adoção"],
-       connects=["comercial","naia-geo-seo","pessoas"],
+       connects=["vendas","naia-geo-seo","pessoas"],
        faq=[("Preciso ter uma equipe de tecnologia para implementar IA?","Não. Conduzimos o diagnóstico, a implementação e o treinamento. Quando há integração com sistemas internos, trabalhamos junto com o seu time ou fornecedor de TI."),
             ("Quais ferramentas de IA vocês utilizam?","Escolhemos a ferramenta pelo caso de uso, não o contrário. Trabalhamos com os principais modelos e plataformas do mercado e com automações integradas ao seu CRM."),
             ("Como medir o retorno de um projeto de IA?","Cada piloto nasce com indicadores definidos, como horas economizadas, leads qualificados, tempo de resposta ou taxa de conversão.")]),
@@ -96,7 +97,7 @@ UNITS = [
             "<b>Mês 2 · Implantar:</b> formação dos líderes e primeira aplicação dos rituais, com acompanhamento",
             "<b>Mês 3 · Sustentar:</b> ajustes finais, co-condução, handover e revisão do ciclo",
             "<b>Ao final:</b> a rotina está com a liderança e com o time de Pessoas da sua empresa"],
-       connects=["comercial","inteligencia-artificial","fqd-studios"],
+       connects=["vendas","inteligencia-artificial","fqd-studios"],
        faq=[("A consultoria de RH é só para a área comercial?","Não. Atendemos toda a estrutura da empresa: governança de RH, cargos e salários, lideranças e rituais de gestão. A experiência comercial do grupo ajuda especialmente em times de vendas."),
             ("O que é RH como serviço?","É quando a Oxyn atua como o RH da sua empresa, conduzindo rituais, clima e PDI, com uma transição planejada para um time interno quando fizer sentido."),
             ("Quanto tempo dura a implantação?","O ciclo padrão é de 90 dias: estruturar, implantar e sustentar. Ao final, a rotina está com a liderança e com o time de Pessoas da empresa.")]),
@@ -124,7 +125,7 @@ UNITS = [
             "Otimização técnica do site e dados estruturados",
             "Produção e atualização de conteúdo orientado a autoridade",
             "Relatórios mensais de visibilidade, tráfego e leads"],
-       connects=["fqd-studios","fqdtv","comercial"],
+       connects=["fqd-studios","fqdtv","vendas"],
        faq=[("O que é GEO?","GEO, ou Generative Engine Optimization, é a otimização para que sua marca seja citada e recomendada em respostas de IAs generativas como ChatGPT, Gemini e Perplexity."),
             ("GEO substitui o SEO?","Não. Os dois se complementam: as IAs se apoiam em conteúdo bem estruturado e com autoridade, que é a base do SEO. Trabalhamos as duas frentes juntas."),
             ("Em quanto tempo vejo resultado?","SEO e GEO são trabalhos de médio prazo. A Naia mede a linha de base desde o início para que você acompanhe a evolução mês a mês.")]),
@@ -152,7 +153,7 @@ UNITS = [
             "Marcas que querem posicionar seus executivos como referência",
             "Lançamentos de produtos para públicos específicos",
             "Eventos, feiras e ações que precisam de repercussão no setor"],
-       connects=["fqd-studios","naia-geo-seo","comercial"],
+       connects=["fqd-studios","naia-geo-seo","vendas"],
        faq=[("O que é mídia de nicho?","É a comunicação direcionada a um público segmentado, com conteúdo e canais escolhidos para o contexto desse público, em vez de buscar alcance amplo."),
             ("A FQDTV produz o conteúdo?","Sim. Concebemos, produzimos e distribuímos. A programação diária da FQDTV é gravada no FQD Studios, o estúdio do grupo em São Paulo."),
             ("Como sei se a mídia gerou negócios?","Cada campanha tem indicadores de alcance e engajamento e, quando integrada ao comercial, de oportunidades geradas.")]),
@@ -182,13 +183,26 @@ UNITS = [
             "<b>Gravação:</b> câmeras PTZ, captação em 4K e corte ao vivo conduzidos pela equipe técnica do estúdio",
             "<b>Entrega:</b> conteúdo editado e cortado, no prazo combinado",
             "<b>Estrutura:</b> camarim, copa, ar-condicionado, estacionamento e segurança de prédio corporativo"],
-       connects=["fqdtv","naia-geo-seo","comercial"],
+       connects=["fqdtv","naia-geo-seo","vendas"],
        faq=[("Preciso levar algum equipamento?","Não. Câmeras, áudio, iluminação e operação estão incluídos."),
             ("Dá para fazer live no YouTube?","Sim. Transmitimos direto para o YouTube, com troca de câmeras, grafismos e transições ao vivo."),
             ("Onde fica o estúdio?","No Condomínio Villa Lobos Office Park, Av. Queiroz Filho, 1700, Bloco D, Sala 802, Vila Hamburguesa, São Paulo. Perto do Parque Villa-Lobos e da Marginal Pinheiros, a poucos minutos da estação Villa Lobos-Jaguaré da CPTM, com estacionamento no local."),
             ("Quanto custa?","Não trabalhamos com tabela fixa. Depois de uma conversa rápida sobre formato e objetivo, enviamos uma proposta sob medida.")]),
 ]
 BY = {u["slug"]: u for u in UNITS}
+OXYN = ["vendas", "pessoas", "inteligencia-artificial"]      # frentes dentro da Oxyn
+EMPRESAS = ["naia-geo-seo", "fqdtv", "fqd-studios"]            # demais empresas do grupo
+UNITS = [BY[s] for s in OXYN + EMPRESAS]
+for u in UNITS:
+    u["empresa"] = "Oxyn" if u["slug"] in OXYN else u["unit"]
+# Logos oficiais das empresas do grupo (banner das paginas de solucao)
+BY["naia-geo-seo"]["logo"] = "empresas/naia.svg"
+BY["fqdtv"]["logo"] = "empresas/fqdtv.svg"
+BY["fqd-studios"]["logo"] = "empresas/fqd-studios.svg"
+# Site proprio de cada empresa (botao no banner, para o cliente saber mais)
+BY["naia-geo-seo"].update(site="https://naia.today/", site_label="Site da Naia")
+BY["fqdtv"].update(site="https://fqdtv.com.br/", site_label="Canal da FQDTV no YouTube")
+BY["fqd-studios"].update(site_label="Site da FQD Studios")
 
 # --------------------------------------------------------------------------
 # Partes compartilhadas
@@ -199,13 +213,25 @@ IMG = "/assets/img"
 # Fundadores (Manual de Marca v1.0, slide "Fundadores"). Fotos: salvar em
 # assets/img/fundadores/<slug>.jpg e preencher "foto".
 LEADERS = [
-  dict(nome="Caio Camarini", cargo="CEO", foto="", bio="Liderança comercial, digitalização B2B e estratégias omnichannel. Harvard Business School."),
-  dict(nome="Erick Melo", cargo="Diretoria", foto="", bio="Tecnologia e negócios. Fundador da Webjump e conselheiro do E-Commerce Brasil."),
-  dict(nome="Bruno Gurgel", cargo="Diretoria", foto="", bio="Tecnologia, inovação e gestão. Passagens por R7, Whirlpool e Ambev."),
-  dict(nome="Beatriz Fonseca", cargo="CPO", foto="", bio="Pessoas e Cultura. Psicologia Organizacional, Harvard Business School."),
-  dict(nome="Vinicius Christe", cargo="CRO", foto="", bio="Estratégia comercial, relacionamento com o mercado e mídia digital."),
+  dict(nome="Caio Camarini", cargo="CEO", foto="caio-camarini.jpg", bio="Executivo com mais de 20 anos em liderança comercial e desenvolvimento de negócios. Especialista em digitalização B2B e estratégias omnichannel, concluiu o programa de Negociação e Decisões Competitivas da Harvard Business School."),
+  dict(nome="Erick Melo", cargo="Membro da diretoria", foto="erick-melo.jpg", bio="Empreendedor com mais de 20 anos em tecnologia e negócios. Fundou a Webjump, integra o Conselho do E-Commerce Brasil e concluiu o programa Managing Innovation da Harvard Business School."),
+  dict(nome="Bruno Gurgel", cargo="Membro da diretoria", foto="bruno-gurgel.jpg", bio="Empreendedor com mais de 20 anos em tecnologia, inovação e gestão. Com passagens por R7, Whirlpool e Ambev, é fundador da EquilibriON e da consultoria de tecnologia A10 Partners."),
+  dict(nome="Beatriz Fonseca", cargo="CPO", foto="beatriz-fonseca.jpg", bio="Executiva com mais de 20 anos de experiência, 10 deles liderando equipes. Especialista em Pessoas e Cultura, pós-graduada em Psicologia Organizacional e formada no High Potential Leadership Program da Harvard Business School."),
+  dict(nome="Vinicius Christe", cargo="CRO", foto="vinicius-christe.jpg", bio="Executivo com mais de 20 anos em planejamento e comercialização de mídia digital. Especialista em estratégia comercial, relacionamento com o mercado e novos formatos e veículos de mídia."),
 ]
-SECTORS = ["Indústria", "Agro", "Farma", "Varejo", "Educação", "Financeiro", "Auto e Aviação"]
+# Clientes (logos em assets/img/clientes; exibidos em cinza, como pede o manual)
+CLIENTS = [
+  dict(nome="Expert Esquadrias", logo="expert-esquadrias.png", site="https://expertesquadrias.com.br/"),
+  dict(nome="Harpix", logo="harpix.svg", site="https://harpix.com.br/"),
+  dict(nome="Omni11", logo="omni11.png", site="https://omni11.com.br/"),
+  dict(nome="FQD Studios", logo="fqd-studios-mono.svg", site="https://fqdstudios.com/"),
+  dict(nome="Bersaglio Imóveis", logo="bersaglio-imoveis.png", site="https://www.bersaglioimoveis.com.br/"),
+  dict(nome="Weinberg", logo="weinberg.png", site=""),
+  dict(nome="Naia", logo="naia.svg", site="https://naia.today/"),
+  dict(nome="iMasters", logo="imasters.png", site="https://imasters.com.br/"),
+]
+SECTORS = [("Indústria","i-factory"), ("Agro","i-wheat"), ("Farma","i-pill"), ("Varejo","i-store"),
+           ("Educação","i-graduation"), ("Financeiro","i-bank"), ("Automotivo","i-car"), ("Aviação","i-plane")]
 
 def head(title, desc, path, jsonld):
     url = SITE + path
@@ -240,9 +266,9 @@ def head(title, desc, path, jsonld):
 CUR = ' aria-current="page"'
 
 def nav(current=None):
-    items = "\n".join(
-        f'            <a href="/solucoes/{u["slug"]}"{CUR if u["slug"]==current else ""}><b>{u["unit"]}</b><small>{u["menu"]}</small></a>'
-        for u in UNITS)
+    link = lambda u: f'            <a href="/solucoes/{u["slug"]}"{CUR if u["slug"]==current else ""}><b>{u["unit"]}</b><small>{u["menu"]}</small></a>'
+    items = ('            <span class="nav__group">Oxyn</span>\n' + "\n".join(link(BY[s]) for s in OXYN) +
+             '\n            <span class="nav__group">Empresas do grupo</span>\n' + "\n".join(link(BY[s]) for s in EMPRESAS))
     return f"""  <!-- NAV | logo 02 (fonte branca) sobre fundo escuro + dropdown de solucoes -->
   <nav class="nav" data-component="nav">
     <div class="container">
@@ -293,7 +319,7 @@ def footer():
       <div class="footer__grid">
         <div>
           <a href="/" class="brand"><img class="brand__logo" src="{IMG}/logo-oxyn-branco.png" alt="Oxyn Group" width="240" height="86" loading="lazy"></a>
-          <p>Oxigenamos o crescimento B2B. Comercial, pessoas, IA, GEO, mídia e conteúdo para sua empresa vender mais.</p>
+          <p>Oxigenamos o crescimento B2B. Vendas, pessoas, IA, GEO, mídia e conteúdo para sua empresa vender mais.</p>
           <div class="socials">
             <a href="{LI}" aria-label="LinkedIn" target="_blank" rel="noopener"><svg class="icon icon--sm"><use href="#i-linkedin"/></svg></a>
             <a href="{IG}" aria-label="Instagram" target="_blank" rel="noopener"><svg class="icon icon--sm"><use href="#i-instagram"/></svg></a>
@@ -352,9 +378,11 @@ ORG = {
   "name": "Oxyn Group", "legalName": "Oxyn Serviços e Consultoria LTDA", "url": SITE,
   "logo": f"{SITE}{IMG}/logo-oxyn.png", "slogan": "Oxigenamos o crescimento B2B.",
   "email": EMAIL, "telephone": "+5511981411141", "sameAs": [IG, LI],
-  "description": "Grupo de empresas B2B focado em fazer clientes venderem mais: consultoria comercial e terceirização de vendas, consultoria de RH, IA aplicada, GEO e SEO, mídia de nicho e produção de conteúdo.",
+  "description": "Grupo de quatro empresas B2B focado em fazer clientes venderem mais: a Oxyn (consultoria comercial e terceirização de vendas, consultoria de RH e IA aplicada), a Naia (GEO e SEO), a FQDTV (mídia de nicho) e a FQD Studios (estúdio de conteúdo).",
   "founder": [{"@type": "Person", "name": l["nome"], "jobTitle": l["cargo"]} for l in LEADERS],
-  "subOrganization": [{"@type": "Organization", "name": u["unit"], "url": f'{SITE}/solucoes/{u["slug"]}'} for u in UNITS],
+  "subOrganization": [{"@type": "Organization", "name": "Oxyn", "url": SITE,
+                       "department": [{"@type": "Organization", "name": BY[s]["unit"], "url": f'{SITE}/solucoes/{s}'} for s in OXYN]}]
+                     + [{"@type": "Organization", "name": BY[s]["unit"], "url": f'{SITE}/solucoes/{s}'} for s in EMPRESAS],
 }
 
 def initials(n):
@@ -366,13 +394,25 @@ def initials(n):
 def home():
     service_cards = "\n".join(f"""        <a href="/solucoes/{u["slug"]}" class="card card--soft card--service" data-reveal>
           <svg class="icon icon--blue icon--lg"><use href="#{u["icon"]}"/></svg>
-          <span class="card__unit">{u["unit"]}</span>
+          <span class="card__unit">{u["empresa"]}</span>
           <h3 class="h3" style="margin-top:0">{u["short"]}</h3>
           <p>{u["card"]}</p>
           <div class="tags">{"".join(f'<span class="tag tag--blue">{t}</span>' for t in u["tags"])}</div>
           <span class="link-arrow">Conheça <span class="arrow">→</span></span>
         </a>""" for u in UNITS)
-    tiles = "".join(f'<span class="logo-tile logo-tile--text">{s}</span>' for s in SECTORS)
+    tiles = "".join(f'<span class="sector"><svg class="icon"><use href="#{i}"/></svg><span>{n}</span></span>' for n,i in SECTORS)
+    def client_tile(c):
+        img = f'<img src="{IMG}/clientes/{c["logo"]}" alt="{c["nome"]}" loading="lazy">'
+        if c["site"]:
+            return f'<a class="logo-tile logo-tile--img" href="{c["site"]}" target="_blank" rel="noopener" title="{c["nome"]}">{img}</a>'
+        return f'<span class="logo-tile logo-tile--img" title="{c["nome"]}">{img}</span>'
+    client_tiles = "".join(client_tile(c) for c in CLIENTS)
+    acionadas = {"pessoas":"Time e lideranças que sustentam", "inteligencia-artificial":"Produtividade para vender mais",
+                 "naia-geo-seo":"Visibilidade no Google e nas IAs", "fqdtv":"Reputação no seu nicho",
+                 "fqd-studios":"Conteúdo que prova autoridade"}
+    co = lambda s, nome: f'''<a class="sol__co" href="/solucoes/{s}"><b>{nome}</b><span>{acionadas[s]}</span></a>'''
+    sol_frentes = "".join(co(s, BY[s]["short"].replace(" e RH","")) for s in ["pessoas","inteligencia-artificial"])
+    sol_empresas = "".join(co(s, BY[s]["unit"]) for s in EMPRESAS)
     pillars = [("i-users","Conexões certas","Networking e know-how de fundadores com mais de 20 anos de vivência no setor B2B."),
                ("i-award","Experiência prática","Atuação real com indústrias, distribuidores e grandes contas, de agro a varejo."),
                ("i-layers","Sem modelo engessado","Abordagem consultiva e personalizada. O diagnóstico define a solução, não o contrário."),
@@ -395,16 +435,18 @@ def home():
     steps = "\n".join(f"""        <div class="step" data-reveal><span class="step__letter">{l}</span><h3 class="h5">{t}</h3><p>{d}</p></div>""" for l,t,d in drive)
     eco = [("i-search","Ser encontrado","naia-geo-seo","Naia coloca sua marca no Google e nas respostas das IAs."),
            ("i-megaphone","Ser lembrado","fqdtv","FQDTV e FQD Studios constroem autoridade no seu nicho."),
-           ("i-trend","Converter","comercial","Oxyn Comercial transforma oportunidades em contratos assinados."),
-           ("i-users","Escalar","pessoas","Oxyn Pessoas e Oxyn IA dão estrutura, líderes e produtividade.")]
+           ("i-trend","Converter","vendas","A Oxyn transforma oportunidades em contratos assinados."),
+           ("i-users","Escalar","pessoas","As frentes Pessoas e IA da Oxyn dão estrutura, líderes e produtividade.")]
     eco_cards = "\n".join(f"""        <a href="/solucoes/{s}" class="card card--eco" data-reveal><svg class="icon icon--cyan"><use href="#{i}"/></svg><h3 class="h5">{t}</h3><p>{d}</p></a>""" for i,t,s,d in eco)
-    leaders = "\n".join(f"""        <article class="card card--glass leader" data-reveal>
-          <div class="leader__photo"{f' style="background-image:url({IMG}/fundadores/{l["foto"]})"' if l["foto"] else ""}>{"" if l["foto"] else initials(l["nome"])}</div>
-          <span class="leader__role">{l["cargo"]}</span>
-          <h3 class="h5">{l["nome"]}</h3>
-          <p>{l["bio"]}</p>
+    leaders = "\n".join(f"""        <article class="founder" data-reveal>
+          <div class="founder__photo"><img src="{IMG}/fundadores/{l["foto"]}" alt="{l["nome"]}, {l["cargo"]} da Oxyn Group" loading="lazy" width="600" height="800"></div>
+          <div class="founder__body">
+            <span class="founder__role">{l["cargo"]}</span>
+            <h3 class="founder__name">{l["nome"]}</h3>
+            <p>{l["bio"]}</p>
+          </div>
         </article>""" for l in LEADERS)
-    faq_home = [("O que é a Oxyn Group?","A Oxyn Group é um grupo de empresas B2B que oxigena o crescimento de outras empresas. Reúne consultoria comercial e operação de vendas, consultoria de RH, IA aplicada, GEO e SEO, mídia de nicho e produção de conteúdo, todas com o mesmo objetivo: fazer o cliente vender mais."),
+    faq_home = [("O que é a Oxyn Group?","A Oxyn Group é um grupo de quatro empresas B2B que oxigena o crescimento de outras empresas: a Oxyn, com as frentes Vendas, Pessoas e IA; a Naia, de GEO e SEO; a FQDTV, de mídia de nicho; e a FQD Studios, de produção de conteúdo. Todas com o mesmo objetivo: fazer o cliente vender mais."),
                 ("O que significa Business Converter™?","É a categoria que criamos para nos descrever. Não somos uma agência de representação nem uma consultoria que entrega um relatório e vai embora. Entramos na operação, estruturamos o que precisa ser estruturado e ficamos até o resultado aparecer."),
                 ("Preciso contratar todas as frentes?","Não. Cada empresa do grupo pode ser contratada de forma independente. A vantagem de combinar frentes é ter um único parceiro cuidando da jornada inteira, da visibilidade ao fechamento."),
                 ("Por onde começamos?","Pelo diagnóstico. Ele mostra se o gargalo está no processo, no time ou no mercado e define quais frentes fazem sentido para o seu momento.")]
@@ -419,49 +461,60 @@ def home():
   <header class="hero has-ring" data-section="hero" style="--img:url('{IMG}/foto-abstrato-capa.jpg')">
     <div class="container">
       <span class="dotgrid" aria-hidden="true"></span>
-      <div class="hero__content" data-reveal>
-        <p class="eyebrow">Oxyn Group · Business Converter™</p>
-        <h1 class="display"><span class="thin">Oxigenamos o</span>crescimento B2B.</h1>
-        <p class="lead">Seis frentes, um objetivo: sua empresa vendendo mais. Do diagnóstico comercial à operação de vendas, de pessoas à IA, do Google às respostas das IAs, conduzido por fundadores com mais de 20 anos em vendas B2B.</p>
+      <div class="hero__content hero__content--home" data-reveal>
+        <p class="sol__kicker">Oxyn Group · Business Converter™</p>
+        <h1 class="sol__title"><small>Vendas que não</small><b>dependem</b><b>de sorte<span>.</span></b></h1>
+        <p class="lead">Quando a venda trava, raramente é um problema só: a marca que ninguém encontra, o time sem método, o funil sem critério. Nós encontramos onde a sua venda trava e resolvemos de ponta a ponta, do primeiro contato ao contrato assinado.</p>
         <div class="btn-row">
-          <a href="#contato" class="btn btn--primary">Vamos conversar <span class="arrow">→</span></a>
-          <a href="#solucoes" class="btn btn--ghost">Conheça as soluções</a>
+          <a href="#contato" class="btn btn--primary btn--lg">Agende um diagnóstico <span class="arrow">→</span></a>
+          <a href="#solucao" class="btn btn--ghost btn--lg">Veja como funciona</a>
         </div>
+      </div>
+      <div class="hero__pains" data-reveal>
+        <span class="hero__pains-t">O que resolvemos</span>
+        <div><em>01</em><b>Ninguém encontra a sua empresa</b><span>Nem no Google, nem nas respostas das IAs.</span></div>
+        <div><em>02</em><b>O time vende sem método</b><span>Funil sem critério e resultado que oscila.</span></div>
+        <div><em>03</em><b>A operação não escala</b><span>Gente, liderança e produtividade travando o crescimento.</span></div>
       </div>
     </div>
   </header>
 
-  <!-- SETORES | trajetoria de cases (substituir por logos de clientes em cinza quando autorizado) -->
+  <!-- SETORES | trajetoria de cases: um icone por setor com o nome abaixo, direto no fundo -->
   <section class="section section--white section--tight" data-section="sectors" style="padding-block:48px">
-    <p class="eyebrow" style="text-align:center;margin-bottom:24px">Trajetória de cases em sete setores</p>
+    <p class="eyebrow" style="text-align:center;margin-bottom:24px">Trajetória de cases em oito setores</p>
     <div class="marquee">
       <div class="marquee__track" data-marquee>{tiles}</div>
     </div>
   </section>
 
-  <!-- PROBLEMA | o problema do cliente antes da Oxyn -->
-  <section class="section section--navy section--tight" data-section="problem">
+  <!-- SOLUCAO COMPLETA | desenhado no Claude Design (A2): a Oxyn e a camada que diagnostica, aciona o grupo ou opera tudo -->
+  <section class="sol" id="solucao" data-section="solution">
+    <div class="sol__photo" aria-hidden="true"></div>
+    <div class="container sol__top">
+      <span class="dotgrid" aria-hidden="true"></span>
+      <p class="sol__kicker" data-reveal>Como resolvemos</p>
+      <h2 class="sol__title" data-reveal><small>A solução completa para</small><b>Incrementar</b><b>vendas<span>.</span></b></h2>
+      <div class="sol__creds" data-reveal>
+        <div class="sol__cred"><b>20+</b><span>anos de cada fundador <br>em vendas B2B</span></div>
+        <div class="sol__cred"><b>4</b><span>empresas integradas <br>em um só grupo</span></div>
+        <div class="sol__cred"><b>8</b><span>setores com cases, <br>de agro a aviação</span></div>
+      </div>
+    </div>
     <div class="container">
-      <header class="section-head" data-reveal>
-        <p class="eyebrow">O desafio</p>
-        <h2 class="h2">Por que sua empresa não vende o quanto poderia?</h2>
-      </header>
-      <div class="grid grid--3">
-        <article class="card card--glass" data-reveal>
-          <svg class="icon icon--cyan"><use href="#i-chart"/></svg>
-          <h3 class="h5">Resultado que oscila</h3>
-          <p>Sem método, cadência e gestão de funil, a receita depende de poucos vendedores e de meses de sorte.</p>
-        </article>
-        <article class="card card--glass" data-reveal>
-          <svg class="icon icon--cyan"><use href="#i-search"/></svg>
-          <h3 class="h5">Marca invisível</h3>
-          <p>O comprador pesquisa no Google e pergunta às IAs. Se a sua empresa não aparece, o concorrente leva a reunião.</p>
-        </article>
-        <article class="card card--glass" data-reveal>
-          <svg class="icon icon--cyan"><use href="#i-layers"/></svg>
-          <h3 class="h5">Fornecedores desconectados</h3>
-          <p>Agência, consultoria, RH e produtora trabalhando separados, cada um com uma meta diferente da sua.</p>
-        </article>
+      <div class="sol__layer" data-reveal>
+        <a class="sol__brand" href="/solucoes/vendas"><small>A camada que conecta tudo</small><b>OXYN</b></a>
+        <div class="sol__step"><em>01</em><b>Diagnostica</b><span>Processo, time, carteira e mercado: mostra onde a venda trava.</span></div>
+        <div class="sol__step"><em>02</em><b>Aciona o grupo</b><span>Reestrutura, treina e traz a empresa certa para cada gargalo.</span></div>
+        <div class="sol__step"><em>03</em><b>Ou opera tudo</b><span>Assume a operação comercial como o time da sua empresa.</span></div>
+      </div>
+      <div class="sol__cos" data-reveal>
+        <span class="sol__cos-label">O que a<br>Oxyn aciona</span>
+        <div class="sol__group"><span class="sol__group-t">Frentes da Oxyn</span><div class="sol__group-items">{sol_frentes}</div></div>
+        <div class="sol__group"><span class="sol__group-t">Empresas do grupo</span><div class="sol__group-items">{sol_empresas}</div></div>
+      </div>
+      <div class="sol__foot" data-reveal>
+        <p>Estruturando, crescendo ou escalando: <strong>a Oxyn monta a combinação certa para o seu momento.</strong></p>
+        <a href="#contato" class="btn btn--amber btn--lg">Agende um diagnóstico <span class="arrow">→</span></a>
       </div>
     </div>
   </section>
@@ -502,13 +555,13 @@ def home():
     </div>
   </section>
 
-  <!-- SOLUCOES | as seis empresas do grupo -->
+  <!-- SOLUCOES | as 4 empresas do grupo: Oxyn (3 frentes) + Naia, FQDTV, FQD Studios -->
   <section class="section section--white" id="solucoes" data-section="services">
     <div class="container">
       <header class="section-head section-head--center" data-reveal>
         <p class="eyebrow">Soluções</p>
-        <h2 class="h2">Seis frentes, a mesma lógica</h2>
-        <p class="lead">Diagnosticar, estruturar e sustentar. Contrate uma frente ou combine várias: todas trabalham pelo mesmo resultado, a sua receita.</p>
+        <h2 class="h2">Quatro empresas, a mesma lógica</h2>
+        <p class="lead">A Oxyn, com as frentes Vendas, Pessoas e IA, mais Naia, FQDTV e FQD Studios. Contrate uma ou combine várias: todas trabalham pelo mesmo resultado, a sua receita.</p>
       </header>
       <div class="bento">
 {service_cards}
@@ -522,7 +575,7 @@ def home():
       <header class="section-head section-head--center" data-reveal>
         <p class="eyebrow">Como atuamos</p>
         <h2 class="h2">Do primeiro contato ao contrato assinado</h2>
-        <p class="lead small">Cada empresa do grupo resolve uma etapa da jornada de receita. Juntas, encurtam o caminho entre ser descoberto e vender.</p>
+        <p class="lead small">Cada empresa e frente do grupo resolve uma etapa da jornada de receita. Juntas, encurtam o caminho entre ser descoberto e vender.</p>
       </header>
       <div class="grid grid--4 eco">
 {eco_cards}
@@ -543,20 +596,30 @@ def home():
       </div>
       <div class="steps__result" data-reveal>
         <div><b>Resultado</b><p>Um processo comercial mensurável, com menos risco e mais conversão.</p></div>
-        <a href="/solucoes/comercial" class="btn btn--ghost">Conheça a Oxyn Comercial <span class="arrow">→</span></a>
+        <a href="/solucoes/vendas" class="btn btn--ghost">Conheça a Oxyn Vendas <span class="arrow">→</span></a>
       </div>
     </div>
   </section>
 
-  <!-- FUNDADORES | foto "forca e lideranca" com sobreposicao escura -->
-  <section class="section section--overlay photo-section" id="fundadores" data-section="leadership" style="--img:url('{IMG}/foto-leao.jpg');--ov:.72;padding-block:var(--section-y)">
+  <!-- CLIENTES | mesmo layout da trajetoria; logos em cinza, como pede o manual -->
+  <section class="section section--light section--tight" data-section="clients" style="padding-block:48px">
+    <p class="eyebrow" style="text-align:center;margin-bottom:24px">Clientes</p>
+    <div class="marquee">
+      <div class="marquee__track" data-marquee>{client_tiles}</div>
+    </div>
+  </section>
+
+  <!-- FUNDADORES | retratos dos fundadores (slide 10 da apresentacao Q4 2026) -->
+  <section class="section founders" id="fundadores" data-section="leadership">
     <div class="container">
-      <header class="section-head" data-reveal>
-        <p class="eyebrow">Fundadores</p>
-        <h2 class="h2">Mais de 20 anos de experiência cada</h2>
-        <p class="lead">Liderança comercial, tecnologia, mídia e gestão de pessoas, com atuação em indústria, agro, farma, varejo e educação.</p>
+      <header class="founders__head" data-reveal>
+        <div>
+          <p class="sol__kicker">Fundadores</p>
+          <h2 class="sol__title"><small>Quem respira B2B</small><b>há mais de 20 anos<span>.</span></b></h2>
+        </div>
+        <p class="lead">Liderança comercial, tecnologia, mídia e gestão de pessoas, com passagem por grandes empresas e formação na Harvard Business School. É essa experiência que aplicamos em cada cliente.</p>
       </header>
-      <div class="grid grid--leaders">
+      <div class="founders__grid">
 {leaders}
       </div>
     </div>
@@ -604,7 +667,7 @@ def unit_page(u):
     html += f"""
   <!-- HERO interno | uma foto por pagina, sobreposicao escura -->
   <header class="hero hero--page has-ring" data-section="hero" style="--img:url('{IMG}/{u["img"]}')">
-    <div class="container">
+    <div class="container{" hero__split" if u.get("logo") else ""}">
       <div class="hero__content" data-reveal>
         <nav class="crumbs" aria-label="Trilha"><a href="/">Oxyn Group</a><span>/</span><a href="/#solucoes">Soluções</a><span>/</span><span>{u["unit"]}</span></nav>
         <p class="eyebrow">{u["eyebrow"]}</p>
@@ -614,9 +677,10 @@ def unit_page(u):
         <div class="btn-row">
           <a href="#contato" class="btn btn--primary">Vamos conversar <span class="arrow">→</span></a>
           <a href="#entregas" class="btn btn--ghost">O que entregamos</a>{f'''
-          <a href="{u["site"]}" class="btn btn--ghost" target="_blank" rel="noopener">Site do {u["unit"]} <svg class="icon icon--sm"><use href="#i-external"/></svg></a>''' if u.get("site") else ""}
+          <a href="{u["site"]}" class="btn btn--ghost" target="_blank" rel="noopener">{u.get("site_label", "Site da " + u["unit"])} <svg class="icon icon--sm"><use href="#i-external"/></svg></a>''' if u.get("site") else ""}
         </div>
-      </div>
+      </div>{f'''
+      <div class="hero__logo" data-reveal><img src="{IMG}/{u["logo"]}" alt="Logo {u["unit"]}" width="360" height="240"></div>''' if u.get("logo") else ""}
     </div>
   </header>
 
@@ -667,7 +731,7 @@ def unit_page(u):
       <header class="section-head section-head--center" data-reveal>
         <p class="eyebrow">Ecossistema Oxyn</p>
         <h2 class="h2">Potencialize com outras frentes do grupo</h2>
-        <p class="lead small">Cada empresa da Oxyn Group resolve uma etapa da jornada de receita. Combinadas, multiplicam o resultado.</p>
+        <p class="lead small">Cada empresa e frente da Oxyn Group resolve uma etapa da jornada de receita. Combinadas, multiplicam o resultado.</p>
       </header>
       <div class="grid grid--3 eco">
 {conn}

@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opções: seção O desafio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;600&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/styles.css">
+<style>
+/* Rotulos da pagina de comparacao (nao vao para o site) */
+.opt-label{background:#000;color:#fff;font:600 12px/1 var(--font-body);letter-spacing:.1em;text-transform:uppercase;padding:14px var(--gutter)}
+.opt-label b{color:var(--color-amber);margin-right:10px}
+
+/* ---------------- OPCAO A: jornada com vazamentos ---------------- */
+.leak{position:relative;margin-top:var(--space-12)}
+.leak__phases{display:grid;grid-template-columns:3fr 1fr 2fr;gap:var(--space-4);margin-bottom:var(--space-6)}
+.leak__phase{font-size:var(--fs-xs);font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--color-accent);
+  padding-bottom:var(--space-3);border-bottom:1px solid rgba(255,255,255,.25)}
+.leak__steps{position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:var(--space-4)}
+.leak__steps::before{content:"";position:absolute;left:0;right:0;top:9px;height:1px;background:rgba(162,210,223,.35)}
+.leak__step{position:relative;display:grid;gap:var(--space-3);align-content:start;padding-top:36px}
+.leak__step::before{content:"";position:absolute;top:3px;left:0;width:13px;height:13px;border-radius:50%;background:var(--color-navy);border:2px solid var(--color-accent)}
+.leak__n{font-family:var(--font-data);font-weight:300;font-size:2.4rem;line-height:1;color:#fff}
+.leak__stage{font-weight:700;font-size:.95rem;text-transform:uppercase;letter-spacing:.03em;color:#fff}
+.leak__pain{font-size:var(--fs-sm);color:var(--color-on-dark-muted);line-height:1.6}
+.leak__front{margin-top:var(--space-2);display:inline-flex;align-items:center;gap:6px;font-size:var(--fs-xs);font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--color-lagoa)}
+.leak__front:hover{color:#fff}
+@media (max-width:1024px){.leak__phases{display:none}.leak__steps{grid-template-columns:repeat(3,1fr);row-gap:var(--space-10)}.leak__steps::before{display:none}}
+@media (max-width:640px){.leak__steps{grid-template-columns:1fr}}
+
+/* ---------------- OPCAO B: diagnostico editorial ---------------- */
+.section--linho{background:var(--color-linho);--fg:var(--color-text);--fg-muted:var(--color-text-muted);--eyebrow:var(--color-primary);color:var(--fg)}
+.diag{display:grid;grid-template-columns:5fr 7fr;gap:var(--space-16);align-items:start}
+.diag__intro{position:sticky;top:110px;display:grid;gap:var(--space-5)}
+.diag__intro .h2{color:#000;font-size:clamp(1.8rem,1.2rem + 2vw,2.9rem)}
+.diag__intro .h2 .thin{color:var(--color-primary)}
+.diag__rule{width:72px;height:1px;background:#000;opacity:.5}
+.diag__list{border-top:1px solid #000}
+.diag__row{display:grid;grid-template-columns:64px 1fr auto;gap:var(--space-6);align-items:start;padding:var(--space-6) 0;border-bottom:1px solid rgba(0,0,0,.18);transition:background var(--dur)}
+.diag__row:hover{background:rgba(26,130,162,.05)}
+.diag__n{font-family:var(--font-data);font-weight:300;font-size:2rem;line-height:1;color:var(--color-primary)}
+.diag__pain{font-weight:700;font-size:1.05rem;line-height:1.35;color:#000}
+.diag__impact{margin-top:6px;font-size:var(--fs-sm);color:var(--color-text-muted)}
+.diag__impact b{color:#000;font-weight:600}
+.diag__front{display:grid;justify-items:end;gap:2px;text-align:right;white-space:nowrap}
+.diag__front small{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-muted)}
+.diag__front a{font-weight:700;font-size:var(--fs-sm);color:var(--color-primary)}
+.diag__front a:hover{text-decoration:underline}
+@media (max-width:900px){.diag{grid-template-columns:1fr;gap:var(--space-8)}.diag__intro{position:static}.diag__row{grid-template-columns:48px 1fr}.diag__front{grid-column:2;justify-items:start;text-align:left}}
+
+/* ---------------- OPCAO C: a equacao da receita ---------------- */
+.section--azul{background:var(--color-primary);--fg:#fff;--fg-muted:rgba(255,255,255,.8);--eyebrow:#fff;color:#fff}
+.section--azul.has-ring{--ring-o:.18;--ring-size:640px;--ring-x:-200px;--ring-y:-220px}
+.eq{display:flex;flex-wrap:nowrap;align-items:flex-start;justify-content:center;gap:var(--space-2);margin-top:var(--space-10)}
+.eq__lhs{display:block;text-align:center;font-family:var(--font-data);font-weight:300;font-size:clamp(2.2rem,1.6rem + 2vw,3.4rem);line-height:1;color:#fff;margin-top:var(--space-10)}
+.eq__op{font-family:var(--font-data);font-weight:300;font-size:1.9rem;line-height:1;color:#fff;opacity:.55;padding-top:2px}
+.eq__f{flex:1 1 0;display:grid;justify-items:center;gap:10px;text-align:center;min-width:0}
+.eq__f b{font-family:var(--font-data);font-weight:300;font-size:clamp(1.25rem,.9rem + 1vw,1.75rem);line-height:1.1;color:#fff}
+.eq__f a{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#000;background:var(--color-nevoa);padding:5px 8px;border-radius:2px;white-space:nowrap}
+.eq__f a:hover{background:#fff}
+.eq__f span{font-size:12px;line-height:1.45;color:rgba(255,255,255,.85);max-width:160px}
+@media (max-width:900px){.eq{flex-direction:column;align-items:center;gap:var(--space-4)}.eq__f{flex:none}}
+.eq__note{display:grid;justify-items:center;gap:var(--space-4);text-align:center;margin-top:var(--space-12)}
+.eq__note::before{content:"";width:220px;height:1px;background:rgba(255,255,255,.5)}
+.eq__note p{font-size:var(--fs-lead);max-width:640px;color:#fff}
+.eq__note p b{font-weight:700}
+</style>
+</head>
+<body>
+
+<!-- =====================================================================
+     OPCAO A: "Onde a sua venda vaza?" (jornada de compra, fundo escuro)
+     ===================================================================== -->
+<div class="opt-label"><b>Opção A</b>Jornada com vazamentos · mantém o fundo escuro, troca os cards por uma linha do tempo</div>
+<section class="section section--navy">
+  <div class="container">
+    <header class="section-head" style="max-width:760px">
+      <p class="eyebrow">O desafio</p>
+      <h2 class="h2">Onde a sua venda vaza?</h2>
+      <p class="lead">Vendas raramente travam em um ponto só. Elas escapam ao longo da jornada, da primeira busca ao contrato assinado. A Oxyn Group atua em cada uma dessas etapas.</p>
+    </header>
+    <div class="leak">
+      <div class="leak__phases"><span class="leak__phase">Atrair</span><span class="leak__phase">Converter</span><span class="leak__phase">Sustentar</span></div>
+      <div class="leak__steps">
+        <div class="leak__step"><span class="leak__n">1.</span><span class="leak__stage">Ser encontrado</span><p class="leak__pain">O comprador pergunta ao Google e ao ChatGPT. Quem aparece é o concorrente.</p><a class="leak__front" href="/solucoes/naia-geo-seo">Naia →</a></div>
+        <div class="leak__step"><span class="leak__n">2.</span><span class="leak__stage">Ser lembrado</span><p class="leak__pain">Sua marca é desconhecida no setor, e cada reunião começa do zero.</p><a class="leak__front" href="/solucoes/fqdtv">FQDTV →</a></div>
+        <div class="leak__step"><span class="leak__n">3.</span><span class="leak__stage">Provar autoridade</span><p class="leak__pain">Sem conteúdo que mostre domínio do assunto, a proposta vira disputa de preço.</p><a class="leak__front" href="/solucoes/fqd-studios">FQD Studios →</a></div>
+        <div class="leak__step"><span class="leak__n">4.</span><span class="leak__stage">Fechar</span><p class="leak__pain">Funil sem critério e vendedor no lead errado. O resultado oscila mês a mês.</p><a class="leak__front" href="/solucoes/comercial">Oxyn Comercial →</a></div>
+        <div class="leak__step"><span class="leak__n">5.</span><span class="leak__stage">Manter o time</span><p class="leak__pain">Contratação que não vinga e líder sem preparo. A meta depende de quem fica.</p><a class="leak__front" href="/solucoes/pessoas">Oxyn Pessoas →</a></div>
+        <div class="leak__step"><span class="leak__n">6.</span><span class="leak__stage">Escalar</span><p class="leak__pain">Horas em pesquisa, follow-up e proposta manual. Menos tempo vendendo.</p><a class="leak__front" href="/solucoes/inteligencia-artificial">Oxyn IA →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     OPCAO B: "Diagnostico" editorial (fundo Linho, lista com fios finos)
+     ===================================================================== -->
+<div class="opt-label"><b>Opção B</b>Diagnóstico editorial · fundo claro quente (Linho), lista com fios finos, sem cards</div>
+<section class="section section--linho">
+  <div class="container diag">
+    <div class="diag__intro">
+      <p class="eyebrow">O desafio</p>
+      <h2 class="h2"><span class="thin">Vender mais depende de</span>seis coisas funcionando juntas.</h2>
+      <span class="diag__rule"></span>
+      <p class="lead">Se uma delas falha, a receita sente. Reconhece algum destes sintomas na sua empresa?</p>
+      <div class="btn-row"><a href="#contato" class="btn btn--primary">Agende um diagnóstico <span class="arrow">→</span></a></div>
+    </div>
+    <div class="diag__list">
+      <div class="diag__row"><span class="diag__n">01</span><div><p class="diag__pain">O comprador pesquisa no Google e no ChatGPT, e quem aparece é o concorrente.</p><p class="diag__impact"><b>Impacto:</b> menos oportunidades entrando no funil.</p></div><div class="diag__front"><small>Resolve</small><a href="/solucoes/naia-geo-seo">Naia</a></div></div>
+      <div class="diag__row"><span class="diag__n">02</span><div><p class="diag__pain">Sua marca é desconhecida no setor e cada reunião começa do zero.</p><p class="diag__impact"><b>Impacto:</b> ciclo de venda longo e pouca indicação.</p></div><div class="diag__front"><small>Resolve</small><a href="/solucoes/fqdtv">FQDTV</a></div></div>
+      <div class="diag__row"><span class="diag__n">03</span><div><p class="diag__pain">O conteúdo da empresa é amador ou não existe.</p><p class="diag__impact"><b>Impacto:</b> sem prova de autoridade, a proposta vira disputa de preço.</p></div><div class="diag__front"><small>Resolve</small><a href="/solucoes/fqd-studios">FQD Studios</a></div></div>
+      <div class="diag__row"><span class="diag__n">04</span><div><p class="diag__pain">O funil não tem critério e o time gasta energia no lead errado.</p><p class="diag__impact"><b>Impacto:</b> resultado que oscila e oportunidades perdidas.</p></div><div class="diag__front"><small>Resolve</small><a href="/solucoes/comercial">Oxyn Comercial</a></div></div>
+      <div class="diag__row"><span class="diag__n">05</span><div><p class="diag__pain">Contratações que não vingam e líderes sem preparo para gerir.</p><p class="diag__impact"><b>Impacto:</b> rotatividade alta e meta que depende de poucos.</p></div><div class="diag__front"><small>Resolve</small><a href="/solucoes/pessoas">Oxyn Pessoas</a></div></div>
+      <div class="diag__row"><span class="diag__n">06</span><div><p class="diag__pain">O time perde horas com pesquisa, follow-up e propostas manuais.</p><p class="diag__impact"><b>Impacto:</b> menos tempo vendendo, custo maior por venda.</p></div><div class="diag__front"><small>Resolve</small><a href="/solucoes/inteligencia-artificial">Oxyn IA</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     OPCAO C: "A equacao da receita" (fundo Azul Oxyn solido + anel)
+     ===================================================================== -->
+<div class="opt-label"><b>Opção C</b>A equação da receita · fundo Azul Oxyn sólido com o anel, números em Barlow</div>
+<section class="section section--azul has-ring">
+  <div class="container">
+    <header class="section-head section-head--center">
+      <p class="eyebrow">O desafio</p>
+      <h2 class="h2" style="color:#fff">Receita não é sorte. É uma equação.</h2>
+    </header>
+    <span class="eq__lhs">Receita =</span>
+    <div class="eq">
+      <div class="eq__f"><b>Visibilidade</b><a href="/solucoes/naia-geo-seo">Naia</a><span>Aparecer no Google e nas respostas das IAs.</span></div>
+      <span class="eq__op">×</span>
+      <div class="eq__f"><b>Lembrança</b><a href="/solucoes/fqdtv">FQDTV</a><span>Ser conhecido no nicho antes da reunião.</span></div>
+      <span class="eq__op">×</span>
+      <div class="eq__f"><b>Autoridade</b><a href="/solucoes/fqd-studios">FQD Studios</a><span>Conteúdo que prova que você domina o assunto.</span></div>
+      <span class="eq__op">×</span>
+      <div class="eq__f"><b>Conversão</b><a href="/solucoes/comercial">Oxyn Comercial</a><span>Método e operação para fechar.</span></div>
+      <span class="eq__op">×</span>
+      <div class="eq__f"><b>Time</b><a href="/solucoes/pessoas">Oxyn Pessoas</a><span>Gente certa e líderes preparados.</span></div>
+      <span class="eq__op">×</span>
+      <div class="eq__f"><b>Produtividade</b><a href="/solucoes/inteligencia-artificial">Oxyn IA</a><span>Menos tarefa manual, mais tempo vendendo.</span></div>
+    </div>
+    <div class="eq__note"><p>Se um fator é zero, o resultado é zero. <b>Por isso a Oxyn Group atua nos seis.</b></p></div>
+  </div>
+</section>
+
+</body>
+</html>

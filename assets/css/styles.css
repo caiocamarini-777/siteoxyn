@@ -492,10 +492,10 @@ body{font-weight:400}
 .has-ring>.container{position:relative;z-index:1}
 .hero.has-ring::after{z-index:0;--ring-size:820px;--ring-x:-260px;--ring-y:8%;--ring-o:.22}
 .hero.has-ring>.container{z-index:2}
-/* Anel do banner girando lentamente (respeita "reduzir movimento" do sistema) */
-.hero:not(.hero--page).has-ring::after{animation:ring-spin 40s linear infinite;will-change:transform}
+/* Anel girando lentamente em todas as aplicacoes (respeita "reduzir movimento" do sistema) */
+.has-ring::after{animation:ring-spin 40s linear infinite;will-change:transform}
 @keyframes ring-spin{to{transform:rotate(360deg)}}
-@media (prefers-reduced-motion:reduce){.hero.has-ring::after{animation:none!important}}
+@media (prefers-reduced-motion:reduce){.has-ring::after{animation:none!important}}
 .hero.has-ring::before{z-index:1}
 
 /* Grade de pontos em capas escuras */
@@ -582,3 +582,191 @@ body{font-weight:400}
 .checks li::before{background-color:var(--color-nevoa)}
 .crumbs{text-transform:uppercase;letter-spacing:.08em;font-size:10px}
 .nav__menu{background:var(--color-navy)}
+
+/* Faixa de clientes: logos oficiais em cinza (silhueta), mais escuros no hover */
+.logo-tile--img{width:170px;padding:0 20px;background:none;border:0}
+.logo-tile--img img{max-width:124px;max-height:38px;width:auto;height:auto;filter:brightness(0);opacity:.5;transition:opacity var(--dur)}
+a.logo-tile--img:hover img{opacity:.85}
+.logo-tile--img img[alt^="Bersaglio"]{max-height:54px}
+
+/* Setores da trajetoria: icone de linha + nome abaixo, sem caixa */
+.sector{display:grid;justify-items:center;align-content:center;gap:12px;width:150px;flex:none;text-align:center}
+.sector .icon{width:36px;height:36px;stroke-width:1.5;color:var(--color-primary)}
+.sector span{font-size:var(--fs-xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--color-ardosia);white-space:nowrap}
+
+/* O desafio: jornada de compra com os pontos onde a venda vaza e a frente que resolve cada um */
+.leak{position:relative;margin-top:var(--space-12)}
+.leak__phases{display:grid;grid-template-columns:3fr 1fr 2fr;gap:var(--space-4);margin-bottom:var(--space-6)}
+.leak__phase{font-size:var(--fs-xs);font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--color-accent);
+  padding-bottom:var(--space-3);border-bottom:1px solid rgba(255,255,255,.25)}
+.leak__steps{position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:var(--space-4)}
+.leak__steps::before{content:"";position:absolute;left:0;right:0;top:9px;height:1px;background:rgba(162,210,223,.35)}
+.leak__step{position:relative;display:grid;gap:var(--space-3);align-content:start;padding-top:36px}
+.leak__step::before{content:"";position:absolute;top:3px;left:0;width:13px;height:13px;border-radius:50%;background:var(--color-navy);border:2px solid var(--color-accent)}
+.leak__n{font-family:var(--font-data);font-weight:300;font-size:2.4rem;line-height:1;color:#fff}
+.leak__stage{font-weight:700;font-size:.95rem;text-transform:uppercase;letter-spacing:.03em;color:#fff}
+.leak__pain{font-size:var(--fs-sm);color:var(--color-on-dark-muted);line-height:1.6}
+.leak__front{margin-top:var(--space-2);display:inline-flex;align-items:center;gap:6px;font-size:var(--fs-xs);font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--color-lagoa)}
+.leak__front:hover{color:#fff}
+@media (max-width:1024px){.leak__phases{display:none}.leak__steps{grid-template-columns:repeat(3,1fr);row-gap:var(--space-10)}.leak__steps::before{display:none}}
+@media (max-width:640px){.leak__steps{grid-template-columns:1fr}}
+.leak__step{display:flex;flex-direction:column;gap:var(--space-3)}
+.leak__front{margin-top:auto;padding-top:var(--space-2)}
+/* Fases da jornada em evidencia: titulo maior + barra Azul Oxyn */
+.leak__phases{margin-bottom:var(--space-8)}
+.leak__phase{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-3);padding-bottom:var(--space-4);border-bottom:3px solid var(--color-primary)}
+.leak__phase b{font-family:var(--font-heading);font-size:clamp(1.15rem,.9rem + .8vw,1.6rem);font-weight:800;letter-spacing:.06em;color:#fff}
+.leak__phase small{font-family:var(--font-data);font-size:var(--fs-sm);font-weight:400;letter-spacing:.02em;text-transform:none;color:var(--color-accent);white-space:nowrap}
+.leak__phases{grid-template-columns:repeat(6,1fr)}
+.leak__phase:nth-child(1){grid-column:span 3}.leak__phase:nth-child(2){grid-column:span 1}.leak__phase:nth-child(3){grid-column:span 2}
+.leak__phase{flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:4px}
+
+/* ==========================================================================
+   11. SOLUCAO COMPLETA (bloco "A2" desenhado no Claude Design)
+   Foto de autoridade + titulo editorial + camada Oxyn + empresas acionadas
+   ========================================================================== */
+.sol{position:relative;overflow:hidden;background:#0E1418;color:#fff;padding:92px 0 64px;
+  --fg:#fff;--fg-muted:rgba(255,255,255,.7);--eyebrow:var(--color-accent)}
+.sol__photo{position:absolute;inset:0 0 auto;height:520px;background:url("/assets/img/foto-leao.jpg") 78% 30%/cover no-repeat;filter:saturate(.75)}
+.sol__photo::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0E1418 0%,rgba(14,20,24,.94) 38%,rgba(14,20,24,.55) 70%,rgba(14,20,24,.35) 100%)}
+.sol__photo::after{content:"";position:absolute;left:0;right:0;bottom:0;height:120px;background:linear-gradient(180deg,rgba(14,20,24,0),#0E1418)}
+.sol.has-ring{--ring-size:520px;--ring-x:-120px;--ring-y:40px;--ring-o:.2}
+.sol.has-ring::after{z-index:0}
+.sol>.container{position:relative;z-index:1}
+.sol__top{display:flex;flex-direction:column;gap:26px}
+.sol__top .dotgrid{top:4px;right:var(--gutter)}
+.sol__kicker{display:flex;align-items:center;gap:16px;font-size:11px;font-weight:600;letter-spacing:.26em;color:var(--color-accent)}
+.sol__kicker::before{content:"";width:48px;height:1px;background:var(--color-accent)}
+.sol__title{margin:0;display:flex;flex-direction:column;gap:4px;font-family:var(--font-heading);text-transform:uppercase}
+.sol__title small{font-size:clamp(1.05rem,.8rem + .9vw,1.65rem);font-weight:300;letter-spacing:.2em;color:rgba(255,255,255,.88)}
+.sol__title b{font-size:clamp(2.25rem,1rem + 6vw,6.25rem);font-weight:800;line-height:.94;letter-spacing:-.015em}
+.sol__title b span{color:var(--color-primary)}
+.sol__creds{display:flex;flex-wrap:wrap;margin-top:6px}
+.sol__cred{display:flex;flex-direction:column;gap:4px;padding:0 40px}
+.sol__cred:first-child{padding-left:0}
+.sol__cred+.sol__cred{border-left:1px solid rgba(255,255,255,.22)}
+.sol__cred b{font-family:var(--font-data);font-size:2.5rem;font-weight:300;line-height:1}
+.sol__cred span{font-size:12px;line-height:1.5;color:rgba(255,255,255,.66)}
+
+.sol__layer{margin-top:72px;display:grid;grid-template-columns:300px repeat(3,minmax(0,1fr));background:#141C22;border-top:2px solid var(--color-primary)}
+.sol__brand{display:flex;flex-direction:column;justify-content:center;gap:10px;padding:34px 36px;background:var(--color-primary);color:#fff}
+.sol__brand:hover{background:var(--color-primary-hover)}
+.sol__brand small{font-size:11px;font-weight:600;letter-spacing:.22em;color:var(--color-nevoa)}
+.sol__brand b{font-family:var(--font-heading);font-size:3.25rem;font-weight:800;letter-spacing:.05em;line-height:1}
+.sol__step{display:flex;flex-direction:column;gap:12px;padding:32px 34px}
+.sol__step+.sol__step{border-left:1px solid rgba(255,255,255,.1)}
+.sol__step em{font-style:normal;font-family:var(--font-data);font-size:2.9rem;font-weight:300;line-height:1;color:var(--color-accent)}
+.sol__step b{font-size:1.125rem;font-weight:700;line-height:1.3}
+.sol__step span{font-size:13px;line-height:1.55;color:rgba(255,255,255,.66)}
+
+.sol__cos{margin-top:40px;display:grid;grid-template-columns:300px repeat(5,minmax(0,1fr))}
+.sol__cos-label{font-size:11px;font-weight:600;letter-spacing:.22em;line-height:1.8;color:var(--color-accent);padding:18px 36px 0 0}
+.sol__co{display:flex;flex-direction:column;gap:6px;padding:18px 20px 0 0;border-top:1px solid rgba(255,255,255,.18);transition:border-color var(--dur)}
+.sol__co b{font-size:17px;font-weight:700}
+.sol__co span{font-size:12px;line-height:1.5;color:rgba(255,255,255,.62)}
+.sol__co:hover{border-top-color:var(--color-accent)}
+.sol__co:hover b{color:var(--color-accent)}
+
+.sol__foot{margin-top:56px;display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap}
+.sol__foot p{font-size:15px;line-height:1.6;color:rgba(255,255,255,.72)}
+.sol__foot p strong{color:#fff;font-weight:600}
+
+@media (max-width:1100px){
+  .sol__layer{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .sol__brand{grid-column:1/-1}
+  .sol__cos{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:24px}
+  .sol__cos-label{grid-column:1/-1;padding:0}
+}
+@media (max-width:700px){
+  .sol{padding-top:72px}
+  .sol__cred{padding:0 20px}
+  .sol__cred b{font-size:2rem}
+  .sol__layer{grid-template-columns:1fr;margin-top:48px}
+  .sol__step+.sol__step{border-left:0;border-top:1px solid rgba(255,255,255,.1)}
+  .sol__cos{grid-template-columns:1fr 1fr}
+}
+.sol__kicker,.sol__brand small,.sol__cos-label{text-transform:uppercase}
+@media (max-width:700px){
+  .sol__creds{flex-wrap:nowrap}
+  .sol__cred{padding:0 12px;flex:1 1 0;min-width:0}
+  .sol__cred b{font-size:1.75rem}
+  .sol__cred span{font-size:10.5px}
+  .sol__cred span br{display:none}
+}
+/* Foto do leao: painel a direita com a proporcao da imagem, para mostrar a cabeca inteira */
+.sol__photo{left:auto;right:0;width:min(64%,1000px);height:560px;background-position:center 18%;background-size:cover}
+.sol__photo::before{background:linear-gradient(90deg,#0E1418 0%,rgba(14,20,24,.7) 30%,rgba(14,20,24,.25) 65%,rgba(14,20,24,.15) 100%)}
+@media (max-width:900px){.sol__photo{width:100%;height:420px;opacity:.55}}
+.sol.has-ring{--ring-size:560px;--ring-x:-200px;--ring-y:600px;--ring-o:.12}
+.sol .dotgrid{display:none}
+/* Leao inteiro: painel na proporcao 4:3 da foto, ancorado no topo */
+.sol__photo{width:min(56%,780px);height:585px;background-position:center top;background-size:cover}
+.sol__photo::before{background:linear-gradient(90deg,#0E1418 0%,rgba(14,20,24,.55) 25%,rgba(14,20,24,.15) 60%,rgba(14,20,24,.1) 100%)}
+/* Sem leao: abstrato escuro do manual (bokeh verde-azulado), em toda a largura, espelhado para nao repetir o enquadramento do Posicionamento */
+.sol__photo{left:0;right:0;width:auto;height:620px;background:url("/assets/img/foto-abstrato-escuro.jpg") center/cover no-repeat;filter:none;transform:scaleX(-1)}
+.sol__photo::before{background:rgba(14,20,24,.35)}
+.sol__photo::after{height:220px}
+@media (max-width:900px){.sol__photo{height:520px;opacity:1}}
+/* Sem o anel neste bloco: grade de pontos do manual ("capas escuras"), esmaecendo nas bordas */
+.sol::after{content:"";position:absolute;z-index:0;right:0;bottom:0;width:min(46%,640px);height:420px;pointer-events:none;
+  background-image:radial-gradient(rgba(162,210,223,.55) 1px,transparent 1.6px);background-size:22px 22px;
+  -webkit-mask-image:radial-gradient(ellipse at 80% 80%,#000 10%,transparent 70%);mask-image:radial-gradient(ellipse at 80% 80%,#000 10%,transparent 70%)}
+/* Menu: grupos Oxyn / Empresas do grupo */
+.nav__group{display:block;padding:12px 12px 4px;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--color-accent)}
+.nav__group:first-child{padding-top:6px}
+/* Bloco solucao: frentes da Oxyn + empresas do grupo */
+.sol__cos{grid-template-columns:300px 2fr 3fr;column-gap:0}
+.sol__group{display:flex;flex-direction:column;gap:14px;padding-right:28px}
+.sol__group+.sol__group{padding-left:28px;padding-right:0;border-left:1px solid rgba(255,255,255,.12)}
+.sol__group-t{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.sol__group-items{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:20px}
+.sol__group .sol__co{padding-right:0}
+@media (max-width:1100px){.sol__cos{grid-template-columns:1fr 1fr;row-gap:24px}.sol__cos-label{grid-column:1/-1}}
+@media (max-width:700px){.sol__cos{grid-template-columns:1fr}.sol__group,.sol__group+.sol__group{padding:0;border-left:0}.sol__group-items{grid-auto-flow:row;grid-template-columns:1fr 1fr}}
+/* Paginas das empresas do grupo: logo oficial a direita do banner */
+.hero__split{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,380px);gap:var(--space-12);align-items:center}
+.hero__logo{display:grid;place-items:center}
+.hero__logo img{width:100%;max-width:340px;max-height:260px;height:auto;object-fit:contain;filter:drop-shadow(0 18px 40px rgba(0,0,0,.35))}
+@media (max-width:900px){.hero__split{grid-template-columns:1fr}.hero__logo{order:-1;justify-items:start}.hero__logo img{max-width:180px;max-height:120px}}
+
+/* ==========================================================================
+   12. BANNER PRINCIPAL DA HOME (mesma linguagem editorial da secao solucao)
+   ========================================================================== */
+.hero__content--home{max-width:820px;gap:26px}
+.hero__content--home .lead{font-size:var(--fs-lead);max-width:600px;color:rgba(255,255,255,.78)}
+.hero__content--home .btn-row{margin-top:6px}
+.hero__pains{margin-top:72px;display:grid;grid-template-columns:200px repeat(3,minmax(0,1fr));border-top:1px solid rgba(255,255,255,.22)}
+.hero__pains-t{padding:22px 24px 0 0;font-size:11px;font-weight:600;letter-spacing:.22em;line-height:1.8;text-transform:uppercase;color:var(--color-accent)}
+.hero__pains>div{display:grid;grid-template-columns:auto 1fr;column-gap:14px;row-gap:4px;align-content:start;padding:22px 28px 0;border-left:1px solid rgba(255,255,255,.12)}
+.hero__pains em{grid-row:span 2;font-style:normal;font-family:var(--font-data);font-weight:300;font-size:2rem;line-height:1;color:var(--color-accent)}
+.hero__pains b{font-size:15px;font-weight:700;line-height:1.35}
+.hero__pains span{font-size:13px;line-height:1.5;color:rgba(255,255,255,.62)}
+@media (max-width:1024px){.hero__pains{grid-template-columns:1fr 1fr 1fr}.hero__pains-t{grid-column:1/-1;padding-top:18px}.hero__pains>div:nth-child(2){border-left:0;padding-left:0}}
+@media (max-width:700px){.hero__pains{grid-template-columns:1fr;margin-top:48px}.hero__pains>div{border-left:0;padding:16px 0 0}}
+
+/* ==========================================================================
+   13. FUNDADORES (retratos, linguagem editorial premium)
+   ========================================================================== */
+.founders{background:#0E1418;color:#fff;--fg:#fff;--fg-muted:rgba(255,255,255,.7);--eyebrow:var(--color-accent)}
+.founders__head{display:flex;justify-content:space-between;align-items:flex-end;gap:var(--space-12);flex-wrap:wrap;margin-bottom:var(--space-12)}
+.founders__head>div{display:flex;flex-direction:column;gap:22px}
+.founders__head .sol__title b{font-size:clamp(2.1rem,1rem + 4.2vw,4.75rem)}
+.founders__head .lead{max-width:420px;font-size:15px;color:rgba(255,255,255,.7)}
+.founders__grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px}
+.founder{display:flex;flex-direction:column}
+.founder__photo{position:relative;overflow:hidden;aspect-ratio:3/4;background:#141C22}
+.founder__photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%;filter:grayscale(1) contrast(1.05) brightness(.92);transition:transform .8s var(--ease),filter .5s var(--ease)}
+.founder__photo::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--color-primary);transition:width .5s var(--ease)}
+.founder:hover .founder__photo img{transform:scale(1.04);filter:grayscale(1) contrast(1.08) brightness(1)}
+.founder:hover .founder__photo::after{width:100%}
+.founder__body{display:flex;flex-direction:column;gap:8px;padding-top:20px;margin-top:20px;border-top:1px solid rgba(255,255,255,.18)}
+.founder__role{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--color-accent)}
+.founder__name{margin:0;font-family:var(--font-heading);font-size:1.2rem;font-weight:700;line-height:1.25;color:#fff}
+.founder__body p{font-size:13px;line-height:1.6;color:rgba(255,255,255,.62)}
+.founder__photo img[alt^="Beatriz"]{object-position:center 30%}
+@media (max-width:1100px){.founders__grid{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:40px}}
+@media (max-width:700px){
+  .founders__grid{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:78%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:none}
+  .founders__grid::-webkit-scrollbar{display:none}
+  .founder{scroll-snap-align:start}
+}
