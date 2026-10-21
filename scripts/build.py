@@ -231,7 +231,7 @@ LEADERS = [
   dict(nome="Caio Camarini", cargo="Co-CEO", foto="caio-camarini.jpg", bio="Executivo com mais de 20 anos em liderança comercial e desenvolvimento de negócios. Especialista em digitalização B2B e estratégias omnichannel, concluiu o programa de Negociação e Decisões Competitivas da Harvard Business School."),
   dict(nome="Erick Melo", cargo="Co-CEO", foto="erick-melo.jpg", bio="Empreendedor com mais de 20 anos em tecnologia e negócios. Fundou a Webjump, integra o Conselho do E-Commerce Brasil e concluiu o programa Managing Innovation da Harvard Business School."),
   dict(nome="Bruno Gurgel", cargo="CTO", foto="bruno-gurgel.jpg", bio="Empreendedor com mais de 20 anos em tecnologia, inovação e gestão, com passagens por R7, Whirlpool e Ambev."),
-  dict(nome="Rodrigo Macena", cargo="COO", foto="", bio="Especialista em otimização de operações em grandes empresas, com passagem pela Porto Seguro e formação na Harvard Business School."),
+  dict(nome="Rodrigo Macena", cargo="COO", foto="rodrigo-macena.jpg", bio="Especialista em otimização de operações em grandes empresas, com passagem pela Porto Seguro e formação na Harvard Business School."),
   dict(nome="Beatriz Fonseca", cargo="CPO", foto="beatriz-fonseca.jpg", bio="Executiva com mais de 20 anos de experiência, 10 deles liderando equipes. Especialista em Pessoas e Cultura, pós-graduada em Psicologia Organizacional e formada no High Potential Leadership Program da Harvard Business School."),
   dict(nome="Vinicius Christe", cargo="CRO", foto="vinicius-christe.jpg", bio="Executivo com mais de 20 anos em planejamento e comercialização de mídia digital. Especialista em estratégia comercial, relacionamento com o mercado e novos formatos e veículos de mídia."),
 ]
