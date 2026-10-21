@@ -228,9 +228,10 @@ CSS_V, JS_V = _ver("assets/css/styles.css"), _ver("assets/js/main.js")
 # Fundadores (Manual de Marca v1.0, slide "Fundadores"). Fotos: salvar em
 # assets/img/fundadores/<slug>.jpg e preencher "foto".
 LEADERS = [
-  dict(nome="Caio Camarini", cargo="CEO", foto="caio-camarini.jpg", bio="Executivo com mais de 20 anos em liderança comercial e desenvolvimento de negócios. Especialista em digitalização B2B e estratégias omnichannel, concluiu o programa de Negociação e Decisões Competitivas da Harvard Business School."),
-  dict(nome="Erick Melo", cargo="Membro da diretoria", foto="erick-melo.jpg", bio="Empreendedor com mais de 20 anos em tecnologia e negócios. Fundou a Webjump, integra o Conselho do E-Commerce Brasil e concluiu o programa Managing Innovation da Harvard Business School."),
-  dict(nome="Bruno Gurgel", cargo="Membro da diretoria", foto="bruno-gurgel.jpg", bio="Empreendedor com mais de 20 anos em tecnologia, inovação e gestão. Com passagens por R7, Whirlpool e Ambev, é fundador da EquilibriON e da consultoria de tecnologia A10 Partners."),
+  dict(nome="Caio Camarini", cargo="Co-CEO", foto="caio-camarini.jpg", bio="Executivo com mais de 20 anos em liderança comercial e desenvolvimento de negócios. Especialista em digitalização B2B e estratégias omnichannel, concluiu o programa de Negociação e Decisões Competitivas da Harvard Business School."),
+  dict(nome="Erick Melo", cargo="Co-CEO", foto="erick-melo.jpg", bio="Empreendedor com mais de 20 anos em tecnologia e negócios. Fundou a Webjump, integra o Conselho do E-Commerce Brasil e concluiu o programa Managing Innovation da Harvard Business School."),
+  dict(nome="Bruno Gurgel", cargo="CTO", foto="bruno-gurgel.jpg", bio="Empreendedor com mais de 20 anos em tecnologia, inovação e gestão, com passagens por R7, Whirlpool e Ambev."),
+  dict(nome="Rodrigo Macena", cargo="COO", foto="", bio="Especialista em otimização de operações em grandes empresas, com passagem pela Porto Seguro e formação na Harvard Business School."),
   dict(nome="Beatriz Fonseca", cargo="CPO", foto="beatriz-fonseca.jpg", bio="Executiva com mais de 20 anos de experiência, 10 deles liderando equipes. Especialista em Pessoas e Cultura, pós-graduada em Psicologia Organizacional e formada no High Potential Leadership Program da Harvard Business School."),
   dict(nome="Vinicius Christe", cargo="CRO", foto="vinicius-christe.jpg", bio="Executivo com mais de 20 anos em planejamento e comercialização de mídia digital. Especialista em estratégia comercial, relacionamento com o mercado e novos formatos e veículos de mídia."),
 ]
@@ -454,7 +455,7 @@ def home():
            ("i-users","Escalar","pessoas","As frentes Pessoas e IA da Oxyn dão estrutura, líderes e produtividade.")]
     eco_cards = "\n".join(f"""        <a href="/solucoes/{s}" class="card card--eco" data-reveal><svg class="icon icon--cyan"><use href="#{i}"/></svg><h3 class="h5">{t}</h3><p>{d}</p></a>""" for i,t,s,d in eco)
     leaders = "\n".join(f"""        <article class="founder" data-reveal>
-          <div class="founder__photo"><img src="{IMG}/fundadores/{l["foto"]}" alt="{l["nome"]}, {l["cargo"]} da Oxyn Group" loading="lazy" width="600" height="800"></div>
+          <div class="founder__photo{"" if l["foto"] else " founder__photo--vazia"}">{f'<img src="{IMG}/fundadores/{l["foto"]}" alt="{l["nome"]}, {l["cargo"]} da Oxyn Group" loading="lazy" width="600" height="800">' if l["foto"] else ""}</div>
           <div class="founder__body">
             <span class="founder__role">{l["cargo"]}</span>
             <h3 class="founder__name">{l["nome"]}</h3>
