@@ -488,8 +488,10 @@ def home():
       <div class="hero__pains" data-reveal>
         <span class="hero__pains-t">O que resolvemos</span>
         <div><em>01</em><b>Ninguém encontra a sua empresa</b><span>Nem no Google, nem nas respostas das IAs.</span></div>
-        <div><em>02</em><b>O time vende sem método</b><span>Funil sem critério e resultado que oscila.</span></div>
-        <div><em>03</em><b>A operação não escala</b><span>Gente, liderança e produtividade travando o crescimento.</span></div>
+        <div><em>02</em><b>A marca não tem autoridade</b><span>Desconhecida no setor e sem conteúdo que prove o que entrega.</span></div>
+        <div><em>03</em><b>O time vende sem método</b><span>Sem processo, funil sem critério e resultado que oscila.</span></div>
+        <div><em>04</em><b>As pessoas não sustentam</b><span>Contratação que não vinga e líderes sem preparo.</span></div>
+        <div><em>05</em><b>A IA ainda não trabalha para você</b><span>Tarefas manuais em todas as áreas e cada um usando IA de um jeito.</span></div>
       </div>
     </div>
   </header>
