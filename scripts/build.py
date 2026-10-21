@@ -7,6 +7,15 @@ import json, sys, pathlib, hashlib
 OUT = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else pathlib.Path(__file__).resolve().parent.parent
 SITE = "https://oxyngroup.com.br"
 WA = "https://wa.me/5511979706449?text=Ol%C3%A1%2C%20quero%20falar%20com%20um%20especialista%20da%20Oxyn."
+WA_NUM = "5511979706449"
+def wa_oferta(oferta):
+    """Link de WhatsApp que ja chega com o nome da oferta, para a equipe saber em qual o cliente clicou."""
+    from urllib.parse import quote
+    return f"https://wa.me/{WA_NUM}?text=" + quote(f"Olá! Vi no site da Oxyn e quero conversar sobre: {oferta}.")
+def slugify(t):
+    import unicodedata, re
+    t = unicodedata.normalize("NFKD", t).encode("ascii", "ignore").decode().lower()
+    return re.sub(r"[^a-z0-9]+", "-", t).strip("-")
 EMAIL = "comercial@oxyngroup.com.br"
 PHONE = "+55 11 97970-6449"
 IG = "https://www.instagram.com/oxyn_group/"
@@ -29,12 +38,14 @@ UNITS = [
        pains_h2="Onde a venda trava na sua empresa?",
        pains=[("i-chart","Resultado instável","Meses bons e meses ruins sem saber por quê. Falta cadência e critério claro de qualificação."),
               ("i-users","Energia no lead errado","Time ocupado com contas de baixo potencial, propostas genéricas e ciclos que se arrastam."),
-              ("i-database","Gestão sem dados","CRM desatualizado, funil sem indicadores e decisões tomadas por sensação.")],
-       deliv_h2="O diagnóstico define o caminho",
-       deliv=[("i-target","Diagnóstico comercial","Processo, time, carteira, canais e mercado: mostramos onde a venda trava e onde agir primeiro."),
-              ("i-layers","Reestruturar","Redesenho de papéis, perfis, metas, remuneração e rituais comerciais."),
-              ("i-users","Treinar","Capacitação do time atual em método, prospecção e negociação com a metodologia D.R.I.V.E."),
-              ("i-handshake","Operar","A Oxyn assume a operação comercial como o time da sua empresa, com metas e rituais compartilhados.")],
+              ("i-database","Gestão sem dados","CRM desatualizado, funil sem indicadores e decisões tomadas por sensação."),
+              ("i-layers","Sem processo e definições claras","Ninguém sabe ao certo quem faz o quê, em qual etapa e com qual critério. Cada vendedor vende do seu jeito.")],
+       deliv_eyebrow="", deliv_h2="Como a Oxyn faz você vender mais", deliv_cta="Quero conversar sobre isso",
+       deliv=[("i-target","Consultoria de vendas e performance","Diagnóstico de processo, time, carteira e mercado, com plano de ação e acompanhamento dos indicadores comerciais."),
+              ("i-layers","Reestruturação de operações","Redesenho de papéis, perfis, metas, remuneração e rituais da área comercial."),
+              ("i-users","Treinamento comercial","Capacitação do time em método, prospecção e negociação com a metodologia D.R.I.V.E."),
+              ("i-award","Mentoria","Acompanhamento individual de líderes e gestores comerciais para decidir melhor e conduzir o time."),
+              ("i-handshake","Terceirização de operação comercial","A Oxyn assume a operação comercial como o time da sua empresa, com metas e rituais compartilhados.")],
        how_eyebrow="Metodologia", how_h2="D.R.I.V.E., de ponta a ponta no processo comercial",
        how_lead="Nosso método para vendas complexas: da escolha das contas certas até o fechamento, com dados em cada etapa.",
        how=["<b>Descoberta:</b> quais empresas, perfis e decisores têm maior potencial de receita e fit operacional",
@@ -47,33 +58,33 @@ UNITS = [
             ("Por que começar pelo diagnóstico?","Porque contratar mais vendedores raramente resolve. Na maioria dos casos, o problema está antes: no perfil de cliente mal definido ou em um funil sem critério de priorização. O diagnóstico mostra se o gargalo está no processo, no time ou no mercado."),
             ("A Oxyn representa a minha marca?","Não representamos marcas: vestimos a camisa. Quando faz sentido, assumimos a operação comercial com a sua marca, metas, rituais e indicadores compartilhados.")]),
   dict(slug="inteligencia-artificial", unit="Oxyn IA", short="Inteligência Artificial", icon="i-cpu", color="blue", img="foto-abstrato-escuro.jpg",
-       card="Consultoria para aplicar IA em vendas, atendimento e operação, com foco em produtividade e receita.",
-       tags=["Agentes de IA", "Automação comercial", "Capacitação"],
-       menu="IA aplicada a vendas e operação",
-       title="Consultoria de inteligência artificial para empresas",
+       card="Consultoria em IA, treinamento e padronização do uso de IA pelo time e desenvolvimento de soluções personalizadas, para a empresa inteira.",
+       tags=["Consultoria em IA", "Treinamento e padronização", "Soluções sob medida"],
+       menu="Consultoria, treinamento e soluções de IA",
+       title="Consultoria, treinamento e soluções de inteligência artificial para empresas",
        eyebrow="Oxyn IA · Inteligência artificial",
-       h1_thin="Inteligência artificial", h1="aplicada para vender mais.",
-       lead="Identificamos onde a IA gera retorno no seu negócio, implementamos com as ferramentas certas e treinamos seu time para usar no dia a dia. Sem fórmula mágica: casos de uso escolhidos pelo impacto em receita e produtividade.",
+       h1_thin="Inteligência artificial", h1="aplicada à empresa inteira.",
+       lead="Fazemos consultoria para identificar onde a IA gera retorno, treinamos e padronizamos o uso de IA pelo seu time e desenvolvemos soluções personalizadas com IA. Em vendas, atendimento, marketing, financeiro, RH e operação: onde houver ganho.",
        pains_h2="A IA já chegou na sua empresa ou só no discurso?",
        pains=[("i-message","IA só no discurso","A empresa sabe que precisa, mas não sabe por onde começar nem como medir o retorno."),
-              ("i-zap","Time sobrecarregado","Horas perdidas com pesquisa de leads, follow-up, propostas e relatórios que poderiam ser automatizados."),
-              ("i-layers","Ferramentas soltas","Cada área testa uma ferramenta diferente, sem governança, segurança ou integração.")],
-       deliv_h2="Da estratégia à adoção pelo time",
-       deliv=[("i-target","Mapa de oportunidades","Priorizamos os casos de uso de IA por impacto em receita, custo e esforço de implantação."),
-              ("i-zap","Agentes e automações","Prospecção, qualificação, follow-up e atendimento com agentes integrados ao seu CRM."),
-              ("i-users","Capacitação do time","Treinamentos práticos por área para transformar a IA em hábito, não em experimento."),
-              ("i-award","Governança e segurança","Políticas de uso, proteção de dados e critérios para escolher e avaliar ferramentas.")],
+              ("i-zap","Horas em tarefa repetitiva","Relatórios, atendimento, propostas e conferências manuais tomando o tempo de todas as áreas."),
+              ("i-layers","Cada um usa de um jeito","Cada área testa uma ferramenta diferente, sem padrão, governança nem segurança de dados.")],
+       deliv_h2="Como a Oxyn IA leva a IA para a sua empresa", deliv_cta="Quero conversar sobre isso",
+       deliv=[("i-target","Consultoria em IA","Diagnóstico de processos e maturidade, mapa de oportunidades priorizado por retorno e plano de adoção para cada área da empresa."),
+              ("i-users","Treinamento e padronização","Capacitação prática por área e padrões de uso: ferramentas aprovadas, prompts, fluxos de trabalho e regras de segurança de dados."),
+              ("i-cpu","Soluções personalizadas com IA","Desenvolvimento de agentes, automações e sistemas sob medida, integrados às ferramentas que a sua empresa já usa.")],
        how_eyebrow="Como funciona", how_h2="Pilotos curtos, resultados medidos",
-       how_lead="Começamos pequeno, provamos valor com indicadores e só então escalamos.",
-       how=["Diagnóstico de processos e maturidade digital",
+       how_lead="Começamos pequeno, provamos valor com indicadores e só então escalamos para outras áreas.",
+       how=["Diagnóstico de processos e maturidade digital em cada área",
             "Priorização de casos de uso por impacto e esforço",
-            "Pilotos com indicadores de sucesso definidos antes de começar",
-            "Implementação e integração com os sistemas que você já usa",
-            "Treinamento e acompanhamento da adoção"],
-       connects=["vendas","naia-geo-seo","pessoas"],
-       faq=[("Preciso ter uma equipe de tecnologia para implementar IA?","Não. Conduzimos o diagnóstico, a implementação e o treinamento. Quando há integração com sistemas internos, trabalhamos junto com o seu time ou fornecedor de TI."),
-            ("Quais ferramentas de IA vocês utilizam?","Escolhemos a ferramenta pelo caso de uso, não o contrário. Trabalhamos com os principais modelos e plataformas do mercado e com automações integradas ao seu CRM."),
-            ("Como medir o retorno de um projeto de IA?","Cada piloto nasce com indicadores definidos, como horas economizadas, leads qualificados, tempo de resposta ou taxa de conversão.")]),
+            "Treinamento do time e padronização do uso de IA",
+            "Desenvolvimento e integração de soluções personalizadas",
+            "Acompanhamento da adoção e dos indicadores de cada piloto"],
+       connects=["vendas","pessoas","naia-geo-seo"],
+       faq=[("A Oxyn IA atua só em vendas?","Não. Atuamos na empresa inteira: vendas, atendimento, marketing, financeiro, RH e operação. Onde houver tarefa repetitiva ou decisão que se beneficia de dados, a IA pode gerar ganho."),
+            ("O que significa padronizar o uso de IA?","É definir quais ferramentas usar, para quê e com quais regras: políticas de uso, proteção de dados, prompts e fluxos de trabalho por área, para que todo o time use IA do mesmo jeito e com segurança."),
+            ("Vocês desenvolvem soluções de IA sob medida?","Sim. Desenvolvemos agentes, automações e sistemas com IA personalizados para o seu processo, integrados aos sistemas que você já usa."),
+            ("Preciso ter uma equipe de tecnologia?","Não. Conduzimos diagnóstico, desenvolvimento e treinamento. Quando há integração com sistemas internos, trabalhamos junto com o seu time ou fornecedor de TI.")]),
   dict(slug="pessoas", unit="Oxyn Pessoas", short="Pessoas e RH", icon="i-users", color="blue", img="foto-broto.jpg",
        card="Consultoria de RH e formação de lideranças. Estruturamos o RH, formamos líderes e, quando necessário, somos o RH da sua empresa.",
        tags=["Consultoria de RH", "Mentoria de líderes", "RH como serviço"],
@@ -382,7 +393,7 @@ ORG = {
   "name": "Oxyn Group", "legalName": "Oxyn Serviços e Consultoria LTDA", "url": SITE,
   "logo": f"{SITE}{IMG}/logo-oxyn.png", "slogan": "Oxigenamos o crescimento B2B.",
   "email": EMAIL, "telephone": "+5511979706449", "sameAs": [IG, LI],
-  "description": "Grupo de quatro empresas B2B focado em fazer clientes venderem mais: a Oxyn (consultoria comercial e terceirização de vendas, consultoria de RH e IA aplicada), a Naia (GEO e SEO), a FQDTV (mídia de nicho) e a FQD Studios (estúdio de conteúdo).",
+  "description": "Grupo de quatro empresas B2B focado em fazer clientes venderem mais: a Oxyn (consultoria comercial e terceirização de vendas, consultoria de RH e consultoria, treinamento e soluções de IA para toda a empresa), a Naia (GEO e SEO), a FQDTV (mídia de nicho) e a FQD Studios (estúdio de conteúdo).",
   "founder": [{"@type": "Person", "name": l["nome"], "jobTitle": l["cargo"]} for l in LEADERS],
   "subOrganization": [{"@type": "Organization", "name": "Oxyn", "url": SITE,
                        "department": [{"@type": "Organization", "name": BY[s]["unit"], "url": f'{SITE}/solucoes/{s}'} for s in OXYN]}]
@@ -411,7 +422,7 @@ def home():
             return f'<a class="logo-tile logo-tile--img" href="{c["site"]}" target="_blank" rel="noopener" title="{c["nome"]}">{img}</a>'
         return f'<span class="logo-tile logo-tile--img" title="{c["nome"]}">{img}</span>'
     client_tiles = "".join(client_tile(c) for c in CLIENTS)
-    acionadas = {"pessoas":"Time e lideranças que sustentam", "inteligencia-artificial":"Produtividade para vender mais",
+    acionadas = {"pessoas":"Time e lideranças que sustentam", "inteligencia-artificial":"Consultoria, treinamento e soluções de IA",
                  "naia-geo-seo":"Visibilidade no Google e nas IAs", "fqdtv":"Reputação no seu nicho",
                  "fqd-studios":"Conteúdo que prova autoridade"}
     co = lambda s, nome: f'''<a class="sol__co" href="/solucoes/{s}"><b>{nome}</b><span>{acionadas[s]}</span></a>'''
@@ -456,7 +467,7 @@ def home():
                 ("Por onde começamos?","Pelo diagnóstico. Ele mostra se o gargalo está no processo, no time ou no mercado e define quais frentes fazem sentido para o seu momento.")]
 
     html = head("Oxyn Group | Oxigenamos o crescimento B2B",
-                "Consultoria comercial B2B e terceirização de vendas, consultoria de RH, IA aplicada, GEO e SEO, mídia de nicho e estúdio de conteúdo. Business Converter™: entramos na operação e ficamos até o resultado aparecer.",
+                "Consultoria comercial B2B e terceirização de vendas, consultoria de RH, consultoria e soluções de IA, GEO e SEO, mídia de nicho e estúdio de conteúdo. Business Converter™: entramos na operação e ficamos até o resultado aparecer.",
                 "/", [ORG, faq_ld(faq_home)])
     html += body_open()
     html += nav()
@@ -650,16 +661,19 @@ def unit_page(u):
         a = u["address"]
         service_ld["location"] = {"@type":"Place","name":u["unit"],"address":{"@type":"PostalAddress","streetAddress":a["street"],
             "addressLocality":a["city"],"addressRegion":a["region"],"postalCode":a["zip"],"addressCountry":"BR"}}
-    pains = "\n".join(f"""        <article class="card card--glass" data-reveal>
-          <svg class="icon icon--cyan"><use href="#{i}"/></svg>
-          <h3 class="h5">{t}</h3>
-          <p>{d}</p>
-        </article>""" for i,t,d in u["pains"])
-    deliv = "\n".join(f"""        <article class="card card--soft card--feature" data-reveal>
+    pains = "\n".join(f"""        <div class="pains__row" data-reveal><em>{k+1:02d}</em><div><b>{t}</b><span>{d}</span></div></div>""" for k,(i,t,d) in enumerate(u["pains"]))
+    def deliv_cta(t):
+        if not u.get("deliv_cta"):
+            return ""
+        return (f'''
+          <a class="offer-cta" href="{wa_oferta(t)}" target="_blank" rel="noopener" data-oferta="{slugify(t)}">{u["deliv_cta"]} <span class="arrow">→</span></a>''')
+    deliv = "\n".join(f"""        <article class="card card--soft card--feature{" card--offer" if u.get("deliv_cta") else ""}" data-reveal>
           <div class="card__top"><span class="icon-badge"><svg class="icon"><use href="#{i}"/></svg></span><span class="num">{k+1}.</span></div>
           <h3 class="h4">{t}</h3>
-          <p>{d}</p>
+          <p>{d}</p>{deliv_cta(t)}
         </article>""" for k,(i,t,d) in enumerate(u["deliv"]))
+    eb = u.get("deliv_eyebrow", "O que entregamos")   # vazio = sem rotulo acima do titulo
+    deliv_eb = f'        <p class="eyebrow">{eb}</p>\n' if eb else ""
     checks = "\n".join(f"            <li>{c}</li>" for c in u["how"])
     conn = "\n".join(f"""        <a href="/solucoes/{o["slug"]}" class="card card--eco" data-reveal><svg class="icon icon--cyan"><use href="#{o["icon"]}"/></svg><span class="leader__role">{o["unit"]}</span><h3 class="h5">{o["short"]}</h3><p>{o["card"]}</p></a>"""
                      for o in (BY[s] for s in u["connects"]))
@@ -689,13 +703,15 @@ def unit_page(u):
   </header>
 
   <!-- DESAFIO -->
-  <section class="section section--navy section--tight" data-section="problem">
-    <div class="container">
-      <header class="section-head" data-reveal>
-        <p class="eyebrow">O desafio</p>
-        <h2 class="h2">{u["pains_h2"]}</h2>
+  <section class="section pains" data-section="problem">
+    <div class="container pains__wrap">
+      <header class="pains__head" data-reveal>
+        <p class="sol__kicker">O desafio</p>
+        <h2 class="pains__title">{u["pains_h2"]}</h2>
+        <p>Se a sua empresa se reconhece em algum destes pontos, a venda está deixando dinheiro na mesa.</p>
+        <a href="#contato" class="link-arrow">Agende um diagnóstico <span class="arrow">→</span></a>
       </header>
-      <div class="grid grid--3">
+      <div class="pains__list">
 {pains}
       </div>
     </div>
@@ -705,10 +721,9 @@ def unit_page(u):
   <section class="section section--white has-ring" id="entregas" data-section="deliverables" style="--ring-o:.08">
     <div class="container">
       <header class="section-head" data-reveal>
-        <p class="eyebrow">O que entregamos</p>
-        <h2 class="h2">{u["deliv_h2"]}</h2>
+{deliv_eb}        <h2 class="h2">{u["deliv_h2"]}</h2>
       </header>
-      <div class="grid grid--4">
+      <div class="grid grid--{len(u["deliv"])}">
 {deliv}
       </div>
     </div>

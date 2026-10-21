@@ -773,3 +773,35 @@ a.logo-tile--img:hover img{opacity:.85}
 /* Cards numerados: numeral a esquerda, icone a direita */
 .card--feature .card__top .num{order:-1;margin-left:0}
 .card--feature .card__top .icon-badge{margin-left:auto}
+
+/* ==========================================================================
+   14. O DESAFIO (paginas de solucao): lista editorial numerada, sem cards
+   ========================================================================== */
+.pains{background:#0E1418;color:#fff;--fg:#fff;--fg-muted:rgba(255,255,255,.7);--eyebrow:var(--color-accent)}
+.pains__wrap{display:grid;grid-template-columns:5fr 7fr;gap:var(--space-16);align-items:start}
+.pains__head{position:sticky;top:110px;display:flex;flex-direction:column;gap:22px}
+.pains__title{margin:0;font-family:var(--font-heading);font-size:clamp(1.9rem,1.2rem + 2.2vw,3.1rem);font-weight:800;line-height:1.05;letter-spacing:-.005em;text-transform:uppercase;color:#fff}
+.pains__head p:not(.sol__kicker){font-size:15px;line-height:1.65;color:rgba(255,255,255,.66);max-width:400px}
+.pains__head .link-arrow{color:var(--color-accent);text-transform:uppercase;letter-spacing:.08em;font-size:12px}
+.pains__list{border-top:1px solid rgba(255,255,255,.22)}
+.pains__row{display:grid;grid-template-columns:76px minmax(0,1fr);gap:var(--space-4);padding:30px 0;border-bottom:1px solid rgba(255,255,255,.12);transition:background var(--dur)}
+.pains__row em{font-style:normal;font-family:var(--font-data);font-weight:300;font-size:2.6rem;line-height:1;color:var(--color-accent);transition:color var(--dur)}
+.pains__row b{display:block;font-size:1.25rem;font-weight:700;line-height:1.3;margin-bottom:8px}
+.pains__row span{font-size:15px;line-height:1.6;color:rgba(255,255,255,.66)}
+.pains__row:hover em{color:var(--color-primary)}
+@media (max-width:900px){.pains__wrap{grid-template-columns:1fr;gap:var(--space-10)}.pains__head{position:static}.pains__row{grid-template-columns:56px minmax(0,1fr)}.pains__row em{font-size:2rem}}
+/* Grade de 5 cards (ofertas da Oxyn Vendas) */
+.grid--5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.grid--5 .card--feature .h4{font-size:.95rem}
+@media (max-width:1200px){.grid--5{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:700px){.grid--5{grid-template-columns:1fr}}
+/* Ofertas com chamada propria (link de WhatsApp com o nome da oferta) */
+.card--offer .offer-cta{margin-top:auto;padding-top:18px;border-top:1px solid var(--color-border);display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--color-primary)}
+.card--offer p{margin-bottom:6px}
+.card--offer .offer-cta:hover{color:var(--color-primary-hover)}
+.card--offer .offer-cta:hover .arrow{transform:translateX(3px)}
+.card--offer:has(.offer-cta:hover){border-color:var(--color-primary)}
+.card--offer .offer-cta{white-space:nowrap;letter-spacing:.06em;font-size:11.5px;justify-content:flex-start}
+.card--offer .offer-cta{display:block;white-space:normal;text-transform:none;letter-spacing:0;font-size:13.5px;line-height:1.4}
+.card--offer .offer-cta .arrow{display:inline-block}
