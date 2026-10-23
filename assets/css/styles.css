@@ -343,7 +343,7 @@ button{font:inherit;cursor:pointer}
 /* FOOTER */
 .footer{background:var(--color-navy);color:var(--color-on-dark);padding-block:var(--space-16) var(--space-8);border-top:1px solid var(--color-glass-border)}
 .footer__grid{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:var(--space-8)}
-.footer h4{font-size:var(--fs-sm);font-weight:600;margin-bottom:var(--space-4);font-family:var(--font-body)}
+.footer h4,.footer__t{font-size:var(--fs-sm);font-weight:600;margin-bottom:var(--space-4);font-family:var(--font-body)}
 .footer li{margin-bottom:var(--space-3)}
 .footer li a,.footer p{font-size:var(--fs-sm);color:var(--color-on-dark-muted)}
 .footer li a:hover{color:var(--color-on-dark)}
@@ -488,7 +488,7 @@ body{font-weight:400}
 /* Anel como marca d'agua: ampliado, cortado pela borda, 8% a 16% de opacidade */
 .has-ring{position:relative;overflow:hidden;isolation:isolate}
 .has-ring::after{content:"";position:absolute;z-index:-1;pointer-events:none;width:var(--ring-size,560px);aspect-ratio:1;
-  right:var(--ring-x,-180px);top:var(--ring-y,-200px);background:url("/assets/img/anel.png") center/contain no-repeat;opacity:var(--ring-o,.1)}
+  right:var(--ring-x,-180px);top:var(--ring-y,-200px);background:url("/assets/img/anel.webp") center/contain no-repeat;opacity:var(--ring-o,.1)}
 .has-ring>.container{position:relative;z-index:1}
 .hero.has-ring::after{z-index:0;--ring-size:820px;--ring-x:-260px;--ring-y:8%;--ring-o:.22}
 .hero.has-ring>.container{z-index:2}
@@ -820,3 +820,10 @@ a.logo-tile--img:hover img{opacity:.85}
 .founder__body p{font-size:12.5px}
 @media (max-width:1200px){.founders__grid{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:40px}}
 @media (max-width:700px){.founders__grid{grid-template-columns:none}}
+
+/* 15. Acessibilidade e 404 */
+/* Sobretitulo em fundo claro: Azul Oxyn um tom abaixo para passar no contraste minimo (4.5:1) */
+.section--white,.section--light{--eyebrow:#16708C}
+.nf-links{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:8px}
+.nf-links a{font-size:14px;font-weight:600;color:var(--color-accent);text-decoration:none}
+.nf-links a:hover{text-decoration:underline;text-underline-offset:4px}

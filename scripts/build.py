@@ -27,7 +27,9 @@ LI = "https://www.linkedin.com/company/oxyn-group/"
 # o nome "Oxyn IA" e de trabalho: validar com a diretoria.
 # --------------------------------------------------------------------------
 UNITS = [
-  dict(slug="vendas", unit="Oxyn Vendas", short="Vendas", icon="i-trend", color="blue", img="foto-leao.jpg",
+  dict(slug="vendas", seo_title="Consultoria de vendas B2B e terceirização comercial | Oxyn",
+       seo_desc="Diagnóstico comercial, reestruturação do time, treinamento com a metodologia D.R.I.V.E., mentoria e operação de vendas terceirizada para empresas B2B.",
+       unit="Oxyn Vendas", short="Vendas", icon="i-trend", color="blue", img="foto-leao.jpg",
        card="Consultoria comercial B2B. Diagnóstico primeiro; depois reestruturamos o time, treinamos a equipe ou assumimos a operação de vendas.",
        tags=["Diagnóstico comercial", "Treinamento", "Operação terceirizada"],
        menu="Consultoria comercial e operação de vendas",
@@ -57,7 +59,9 @@ UNITS = [
        faq=[("Qual a diferença entre reestruturar, treinar e operar?","Reestruturar é redesenhar o time: papéis, perfis, metas e rituais. Treinar é capacitar o time atual em método, prospecção e negociação. Operar é a Oxyn assumir a área comercial como o time da sua empresa."),
             ("Por que começar pelo diagnóstico?","Porque contratar mais vendedores raramente resolve. Na maioria dos casos, o problema está antes: no perfil de cliente mal definido ou em um funil sem critério de priorização. O diagnóstico mostra se o gargalo está no processo, no time ou no mercado."),
             ("A Oxyn representa a minha marca?","Não representamos marcas: vestimos a camisa. Quando faz sentido, assumimos a operação comercial com a sua marca, metas, rituais e indicadores compartilhados.")]),
-  dict(slug="inteligencia-artificial", unit="Oxyn IA", short="Inteligência Artificial", icon="i-cpu", color="blue", img="foto-abstrato-escuro.jpg",
+  dict(slug="inteligencia-artificial", seo_title="Consultoria e treinamento em IA para empresas | Oxyn IA",
+       seo_desc="Consultoria, treinamento e padronização do uso de IA e soluções sob medida para vendas, atendimento, marketing, financeiro, RH e operação.",
+       unit="Oxyn IA", short="Inteligência Artificial", icon="i-cpu", color="blue", img="foto-abstrato-escuro.jpg",
        card="Consultoria em IA, treinamento e padronização do uso de IA pelo time e desenvolvimento de soluções personalizadas, para a empresa inteira.",
        tags=["Consultoria em IA", "Treinamento e padronização", "Soluções sob medida"],
        menu="Consultoria, treinamento e soluções de IA",
@@ -85,7 +89,9 @@ UNITS = [
             ("O que significa padronizar o uso de IA?","É definir quais ferramentas usar, para quê e com quais regras: políticas de uso, proteção de dados, prompts e fluxos de trabalho por área, para que todo o time use IA do mesmo jeito e com segurança."),
             ("Vocês desenvolvem soluções de IA sob medida?","Sim. Desenvolvemos agentes, automações e sistemas com IA personalizados para o seu processo, integrados aos sistemas que você já usa."),
             ("Preciso ter uma equipe de tecnologia?","Não. Conduzimos diagnóstico, desenvolvimento e treinamento. Quando há integração com sistemas internos, trabalhamos junto com o seu time ou fornecedor de TI.")]),
-  dict(slug="pessoas", unit="Oxyn Pessoas", short="Pessoas e RH", icon="i-users", color="blue", img="foto-broto.jpg",
+  dict(slug="pessoas", seo_title="Consultoria de RH e formação de líderes | Oxyn Pessoas",
+       seo_desc="Estruturamos o RH, formamos lideranças e atuamos como o RH da sua empresa. Cargos, carreiras, rituais de gestão e implantação em 90 dias.",
+       unit="Oxyn Pessoas", short="Pessoas e RH", icon="i-users", color="blue", img="foto-broto.jpg",
        card="Consultoria de RH e formação de lideranças. Estruturamos o RH, formamos líderes e, quando necessário, somos o RH da sua empresa.",
        tags=["Consultoria de RH", "Mentoria de líderes", "RH como serviço"],
        menu="Consultoria de RH, lideranças e RH como serviço",
@@ -112,7 +118,9 @@ UNITS = [
        faq=[("A consultoria de RH é só para a área comercial?","Não. Atendemos toda a estrutura da empresa: governança de RH, cargos e salários, lideranças e rituais de gestão. A experiência comercial do grupo ajuda especialmente em times de vendas."),
             ("O que é RH como serviço?","É quando a Oxyn atua como o RH da sua empresa, conduzindo rituais, clima e PDI, com uma transição planejada para um time interno quando fizer sentido."),
             ("Quanto tempo dura a implantação?","O ciclo padrão é de 90 dias: estruturar, implantar e sustentar. Ao final, a rotina está com a liderança e com o time de Pessoas da empresa.")]),
-  dict(slug="naia-geo-seo", unit="Naia", short="GEO e SEO", icon="i-search", color="blue", img="foto-abstrato-capa.jpg",
+  dict(slug="naia-geo-seo", seo_title="GEO e SEO: sua marca no Google e nas IAs | Naia",
+       seo_desc="Com a plataforma Naia e SEO técnico e de conteúdo, sua marca aparece no Google e nas respostas do ChatGPT, Gemini e Perplexity.",
+       unit="Naia", short="GEO e SEO", icon="i-search", color="blue", img="foto-abstrato-capa.jpg",
        card="Implementação e ongoing da Naia, plataforma de GEO, mais SEO para sua marca ser encontrada no Google e recomendada pelas IAs.",
        tags=["GEO", "SEO", "Plataforma Naia"],
        menu="GEO e SEO com a plataforma Naia",
@@ -140,7 +148,9 @@ UNITS = [
        faq=[("O que é GEO?","GEO, ou Generative Engine Optimization, é a otimização para que sua marca seja citada e recomendada em respostas de IAs generativas como ChatGPT, Gemini e Perplexity."),
             ("GEO substitui o SEO?","Não. Os dois se complementam: as IAs se apoiam em conteúdo bem estruturado e com autoridade, que é a base do SEO. Trabalhamos as duas frentes juntas."),
             ("Em quanto tempo vejo resultado?","SEO e GEO são trabalhos de médio prazo. A Naia mede a linha de base desde o início para que você acompanhe a evolução mês a mês.")]),
-  dict(slug="fqdtv", unit="FQDTV", short="Mídia de nicho", icon="i-megaphone", color="blue", img="foto-abstrato-escuro.jpg",
+  dict(slug="fqdtv", seo_title="Mídia de nicho e branded content B2B | FQDTV",
+       seo_desc="Programas, distribuição segmentada e branded content para a sua marca falar com quem decide a compra nos nichos que a mídia de massa não alcança.",
+       unit="FQDTV", short="Mídia de nicho", icon="i-megaphone", color="blue", img="foto-abstrato-escuro.jpg",
        card="Mídias de penetração em públicos nichados. Sua marca falando com quem decide, no contexto certo.",
        tags=["Mídia segmentada", "Branded content", "Autoridade"],
        menu="Mídia para públicos de nicho",
@@ -168,7 +178,9 @@ UNITS = [
        faq=[("O que é mídia de nicho?","É a comunicação direcionada a um público segmentado, com conteúdo e canais escolhidos para o contexto desse público, em vez de buscar alcance amplo."),
             ("A FQDTV produz o conteúdo?","Sim. Concebemos, produzimos e distribuímos. A programação diária da FQDTV é gravada no FQD Studios, o estúdio do grupo em São Paulo."),
             ("Como sei se a mídia gerou negócios?","Cada campanha tem indicadores de alcance e engajamento e, quando integrada ao comercial, de oportunidades geradas.")]),
-  dict(slug="fqd-studios", unit="FQD Studios", short="Estúdio e conteúdo", icon="i-video", color="blue", img="foto-abstrato-capa.jpg",
+  dict(slug="fqd-studios", seo_title="Estúdio de podcast e vídeo em São Paulo | FQD Studios",
+       seo_desc="Estúdio em São Paulo para podcast, videocast, lives, aulas e conteúdo corporativo, com captação em 4K, pós-produção e gravações externas.",
+       unit="FQD Studios", short="Estúdio e conteúdo", icon="i-video", color="blue", img="foto-abstrato-capa.jpg",
        site="https://fqdstudios.com/",
        address=dict(street="Av. Queiroz Filho, 1700, Bloco D, Sala 802", district="Vila Hamburguesa", city="São Paulo", region="SP", zip="05319-000"),
        card="Estúdio em São Paulo e gravações externas para podcasts, lives, programas de bancada e conteúdo corporativo. Um estúdio, todos os formatos.",
@@ -249,6 +261,8 @@ CLIENTS = [
 SECTORS = [("Indústria","i-factory"), ("Agro","i-wheat"), ("Farma","i-pill"), ("Varejo","i-store"),
            ("Educação","i-graduation"), ("Financeiro","i-bank"), ("Automotivo","i-car"), ("Aviação","i-plane")]
 
+FONTS = "https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;600&family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+
 def head(title, desc, path, jsonld):
     url = SITE + path
     return f"""<!doctype html>
@@ -266,12 +280,16 @@ def head(title, desc, path, jsonld):
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{SITE}{IMG}/logo-oxyn.png">
+<meta property="og:image" content="{SITE}{IMG}/og-oxyn.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="{IMG}/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="{IMG}/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;600&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="{FONTS}" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{FONTS}"></noscript>
 <link rel="stylesheet" href="/assets/css/styles.css?v={CSS_V}">
 <script type="application/ld+json">
 {json.dumps(jsonld, ensure_ascii=False, indent=2)}
@@ -289,7 +307,7 @@ def nav(current=None):
   <nav class="nav" data-component="nav">
     <div class="container">
       <a href="/" class="brand" aria-label="Oxyn Group, página inicial">
-        <img class="brand__logo" src="{IMG}/logo-oxyn-branco.png" alt="Oxyn Group" width="240" height="86">
+        <img class="brand__logo" src="{IMG}/logo-oxyn-branco.webp" alt="Oxyn Group" width="240" height="86">
       </a>
       <div class="nav__links" id="nav-links">
         <div class="nav__drop">
@@ -329,23 +347,25 @@ def cta(thin, h2, lead):
 
 def footer():
     sols = "".join(f'<li><a href="/solucoes/{u["slug"]}">{u["unit"]}</a></li>' for u in UNITS)
-    return f"""  <!-- FOOTER -->
+    return f"""  </main>
+
+  <!-- FOOTER -->
   <footer class="footer" data-component="footer">
     <div class="container">
       <div class="footer__grid">
         <div>
-          <a href="/" class="brand"><img class="brand__logo" src="{IMG}/logo-oxyn-branco.png" alt="Oxyn Group" width="240" height="86" loading="lazy"></a>
+          <a href="/" class="brand"><img class="brand__logo" src="{IMG}/logo-oxyn-branco.webp" alt="Oxyn Group" width="240" height="86" loading="lazy"></a>
           <p>Oxigenamos o crescimento B2B. Vendas, pessoas, IA, GEO, mídia e conteúdo para sua empresa vender mais.</p>
           <div class="socials">
             <a href="{LI}" aria-label="LinkedIn" target="_blank" rel="noopener"><svg class="icon icon--sm"><use href="#i-linkedin"/></svg></a>
             <a href="{IG}" aria-label="Instagram" target="_blank" rel="noopener"><svg class="icon icon--sm"><use href="#i-instagram"/></svg></a>
           </div>
         </div>
-        <div><h4>Soluções</h4><ul>{sols}</ul></div>
-        <div><h4>Oxyn Group</h4><ul>
+        <div><p class="footer__t">Soluções</p><ul>{sols}</ul></div>
+        <div><p class="footer__t">Oxyn Group</p><ul>
           <li><a href="/#pilares">Pilares</a></li><li><a href="/#metodo">Método D.R.I.V.E.</a></li>
           <li><a href="/#fundadores">Fundadores</a></li><li><a href="/#contato">Contato</a></li></ul></div>
-        <div><h4>Contato</h4><ul>
+        <div><p class="footer__t">Contato</p><ul>
           <li><a href="{WA}" target="_blank" rel="noopener">{PHONE}</a></li>
           <li><a href="mailto:{EMAIL}">{EMAIL}</a></li></ul></div>
       </div>
@@ -467,17 +487,18 @@ def home():
                 ("Preciso contratar todas as frentes?","Não. Cada empresa do grupo pode ser contratada de forma independente. A vantagem de combinar frentes é ter um único parceiro cuidando da jornada inteira, da visibilidade ao fechamento."),
                 ("Por onde começamos?","Pelo diagnóstico. Ele mostra se o gargalo está no processo, no time ou no mercado e define quais frentes fazem sentido para o seu momento.")]
 
-    html = head("Oxyn Group | Oxigenamos o crescimento B2B",
-                "Consultoria comercial B2B e terceirização de vendas, consultoria de RH, consultoria e soluções de IA, GEO e SEO, mídia de nicho e estúdio de conteúdo. Business Converter™: entramos na operação e ficamos até o resultado aparecer.",
+    html = head("Oxyn Group | Consultoria de vendas B2B e operação comercial",
+                "Consultoria de vendas B2B, treinamento e operação comercial terceirizada, com RH, IA, GEO e SEO, mídia e conteúdo no mesmo grupo. Agende um diagnóstico.",
                 "/", [ORG, faq_ld(faq_home)])
     html += body_open()
     html += nav()
+    html += '  <main id="conteudo">'
     html += f"""
   <!-- HERO | abstrato escuro (capa do manual) + anel em marca d'agua + grade de pontos -->
   <header class="hero has-ring" data-section="hero" style="--img:url('{IMG}/foto-abstrato-capa.jpg')">
     <div class="container">
       <span class="dotgrid" aria-hidden="true"></span>
-      <div class="hero__content hero__content--home" data-reveal>
+      <div class="hero__content hero__content--home">
         <p class="sol__kicker">Oxyn Group · Business Converter™</p>
         <h1 class="sol__title"><small>Vendas que não</small><b>dependem</b><b>de sorte<span>.</span></b></h1>
         <p class="lead">Venda travada raramente tem uma causa só. A OXYN identifica a origem, assume a operação e conduz a virada por inteiro: comercial, liderança, inteligência artificial, presença digital e conteúdo, trabalhando pelo mesmo resultado.</p>
@@ -486,7 +507,7 @@ def home():
           <a href="#solucao" class="btn btn--ghost btn--lg">Veja como funciona</a>
         </div>
       </div>
-      <div class="hero__pains" data-reveal>
+      <div class="hero__pains">
         <span class="hero__pains-t">O que resolvemos</span>
         <div><em>01</em><b>Ninguém encontra a sua empresa</b><span>Nem no Google, nem nas respostas das IAs.</span></div>
         <div><em>02</em><b>A marca não tem autoridade</b><span>Desconhecida no setor e sem conteúdo que prove o que entrega.</span></div>
@@ -682,14 +703,15 @@ def unit_page(u):
                      for o in (BY[s] for s in u["connects"]))
     tags = "".join(f'<span class="tag tag--dark">{t}</span>' for t in u["tags"])
 
-    html = head(f'{u["title"]} | {u["unit"]}', u["lead"], path, [service_ld, faq_ld(u["faq"])])
+    html = head(u["seo_title"], u["seo_desc"], path, [service_ld, faq_ld(u["faq"])])
     html += body_open()
     html += nav(u["slug"])
+    html += '  <main id="conteudo">'
     html += f"""
   <!-- HERO interno | uma foto por pagina, sobreposicao escura -->
   <header class="hero hero--page has-ring" data-section="hero" style="--img:url('{IMG}/{u["img"]}')">
     <div class="container{" hero__split" if u.get("logo") else ""}">
-      <div class="hero__content" data-reveal>
+      <div class="hero__content">
         <nav class="crumbs" aria-label="Trilha"><a href="/">Oxyn Group</a><span>/</span><a href="/#solucoes">Soluções</a><span>/</span><span>{u["unit"]}</span></nav>
         <p class="eyebrow">{u["eyebrow"]}</p>
         <h1 class="display"><span class="thin">{u["h1_thin"]}</span>{u["h1"]}</h1>
@@ -701,7 +723,7 @@ def unit_page(u):
           <a href="{u["site"]}" class="btn btn--ghost" target="_blank" rel="noopener">{u.get("site_label", "Site da " + u["unit"])} <svg class="icon icon--sm"><use href="#i-external"/></svg></a>''' if u.get("site") else ""}
         </div>
       </div>{f'''
-      <div class="hero__logo" data-reveal><img src="{IMG}/{u["logo"]}" alt="Logo {u["unit"]}" width="360" height="240"></div>''' if u.get("logo") else ""}
+      <div class="hero__logo"><img src="{IMG}/{u["logo"]}" alt="Logo {u["unit"]}" width="360" height="240"></div>''' if u.get("logo") else ""}
     </div>
   </header>
 
@@ -772,6 +794,29 @@ def unit_page(u):
 (OUT / "solucoes").mkdir(exist_ok=True)
 for u in UNITS:
     (OUT / "solucoes" / f'{u["slug"]}.html').write_text(unit_page(u), encoding="utf-8")
+
+def not_found():
+    """Pagina 404 (a Vercel serve o 404.html para qualquer endereco inexistente)."""
+    html = head("Página não encontrada | Oxyn Group", "O endereço que você procurou não existe ou mudou de lugar.", "/404", [ORG])
+    html = html.replace(f'<link rel="canonical" href="{SITE}/404">', '<meta name="robots" content="noindex">')
+    links = "".join(f'<a href="/solucoes/{u["slug"]}">{u["unit"]}</a>' for u in UNITS)
+    html += body_open() + nav() + '  <main id="conteudo">'
+    html += f"""
+  <header class="hero has-ring" data-section="hero" style="--img:url('{IMG}/foto-abstrato-capa.jpg')">
+    <div class="container">
+      <div class="hero__content hero__content--home">
+        <p class="sol__kicker">Erro 404</p>
+        <h1 class="sol__title"><small>Esta página</small><b>não existe<span>.</span></b></h1>
+        <p class="lead">O endereço pode ter mudado. Volte para o início ou vá direto para uma das nossas soluções.</p>
+        <div class="btn-row"><a href="/" class="btn btn--primary btn--lg">Ir para o início <span class="arrow">→</span></a></div>
+        <nav class="nf-links" aria-label="Soluções">{links}</nav>
+      </div>
+    </div>
+  </header>
+"""
+    return html + footer()
+
+(OUT / "404.html").write_text(not_found(), encoding="utf-8")
 
 urls = ["/"] + [f'/solucoes/{u["slug"]}' for u in UNITS]
 (OUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
