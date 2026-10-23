@@ -294,7 +294,8 @@ button{font:inherit;cursor:pointer}
 
 /* MARQUEE de logos de clientes */
 .marquee{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
-.marquee__track{display:flex;gap:var(--space-8);width:max-content;animation:marquee 40s linear infinite}
+.marquee__track{display:flex;width:max-content;animation:marquee 40s linear infinite}
+.marquee__track>*{flex:none;margin-right:var(--space-8)}  /* margem em cada item (e nao gap) para os dois blocos terem a mesma largura */
 .marquee:hover .marquee__track{animation-play-state:paused}
 .logo-tile{display:grid;place-items:center;width:150px;height:64px;border-radius:var(--r-sm);background:var(--color-bg);
   border:1px solid var(--color-border);font-family:var(--font-heading);font-weight:700;color:#7d8fa0;font-size:1rem;letter-spacing:-.01em}

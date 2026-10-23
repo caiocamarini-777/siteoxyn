@@ -23,8 +23,17 @@
     }));
   }
 
-  /* MARQUEE: duplica os itens para loop continuo */
-  $$('[data-marquee]').forEach(t => { t.innerHTML += t.innerHTML; });
+  /* MARQUEE: repete os itens ate um bloco cobrir a tela e duplica o bloco;
+     a animacao anda exatamente um bloco (-50%), entao o ultimo logo emenda no primeiro sem lacuna */
+  $$('[data-marquee]').forEach(t => {
+    const base = t.innerHTML, box = t.parentElement;
+    let set = base, n = 1;
+    t.innerHTML = set;
+    while (t.scrollWidth < box.clientWidth + 200 && n < 12) { set += base; n++; t.innerHTML = set; }
+    const w = t.scrollWidth;
+    t.innerHTML = set + set;
+    t.style.animationDuration = Math.max(20, w / 45) + 's';   /* ~45 px por segundo */
+  });
 
   /* CARROSSEL: setas + dots sincronizados com o scroll */
   $$('[data-carousel]').forEach(c => {
