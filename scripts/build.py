@@ -6,17 +6,22 @@ import json, sys, pathlib, hashlib, re
 
 OUT = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else pathlib.Path(__file__).resolve().parent.parent
 SITE = "https://oxyngroup.com.br"
-WA = "https://wa.me/5511979706449?text=Ol%C3%A1%2C%20quero%20falar%20com%20um%20especialista%20da%20Oxyn."
 WA_NUM = "5511979706449"
-def wa_oferta(oferta):
-    """Link de WhatsApp que ja chega com o nome da oferta, para a equipe saber em qual o cliente clicou."""
+EMAIL = "comercial@oxyngroup.com.br"
+def wa_ctx(pagina, area, acao="quero conversar com a Oxyn"):
+    """Link de WhatsApp que ja chega com a pagina e a secao do clique, para a equipe saber de onde o cliente veio."""
     from urllib.parse import quote
-    return f"https://wa.me/{WA_NUM}?text=" + quote(f"Olá! Vi no site da Oxyn e quero conversar sobre: {oferta}.")
+    return f"https://wa.me/{WA_NUM}?text=" + quote(f"Olá! Vim pelo site da Oxyn ({pagina}, {area}) e {acao}.")
+def mail_ctx(pagina, area):
+    """E-mail com assunto e primeira linha dizendo a pagina e a secao do clique."""
+    from urllib.parse import quote
+    return (f"mailto:{EMAIL}?subject=" + quote(f"Contato pelo site · {pagina}")
+            + "&body=" + quote(f"Olá! Vim pelo site da Oxyn ({pagina}, {area}) e quero conversar.\n\n"))
+DIAG = "quero agendar um diagnóstico"
 def slugify(t):
     import unicodedata, re
     t = unicodedata.normalize("NFKD", t).encode("ascii", "ignore").decode().lower()
     return re.sub(r"[^a-z0-9]+", "-", t).strip("-")
-EMAIL = "comercial@oxyngroup.com.br"
 PHONE = "+55 11 97970-6449"
 IG = "https://www.instagram.com/oxyn_group/"
 LI = "https://www.linkedin.com/company/oxyn-group/"
@@ -341,7 +346,8 @@ def head(title, desc, path, jsonld, hero="foto-abstrato-capa.webp"):
 
 CUR = ' aria-current="page"'
 
-def nav(current=None):
+def nav(current=None, pagina=None):
+    pagina = pagina or (BY[current]["unit"] if current else "Página inicial")
     link = lambda u: f'            <a href="/solucoes/{u["slug"]}"{CUR if u["slug"]==current else ""}><b>{u["unit"]}</b><small>{u["menu"]}</small></a>'
     items = ('            <span class="nav__group">Oxyn</span>\n' + "\n".join(link(BY[s]) for s in OXYN) +
              '\n            <span class="nav__group">Empresas do grupo</span>\n' + "\n".join(link(BY[s]) for s in EMPRESAS))
@@ -360,14 +366,14 @@ def nav(current=None):
         </div>
         <a href="/#metodo">Método</a>
         <a href="/#fundadores">Fundadores</a>
-        <a href="/#contato" class="btn btn--ghost btn--sm">Fale com a Oxyn</a>
+        <a href="{wa_ctx(pagina, "menu")}" class="btn btn--ghost btn--sm" target="_blank" rel="noopener">Fale com a Oxyn</a>
       </div>
       <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-links"><svg class="icon"><use href="#i-menu"/></svg></button>
     </div>
   </nav>
 """
 
-def cta(thin, h2, lead):
+def cta(thin, h2, lead, pagina):
     return f"""  <!-- CTA FINAL | foto escura + composicao assinatura entre fios finos | 1 botao ambar -->
   <section class="section section--overlay cta-final has-ring" id="contato" data-section="cta" style="--img:url('{IMG}/foto-abstrato-capa.webp');--ring-o:.12;--ring-x:auto;--ring-y:-180px">
     <div class="container">
@@ -376,18 +382,18 @@ def cta(thin, h2, lead):
       </header>
       <p class="lead" style="text-align:center;margin:0 auto 32px" data-reveal>{lead}</p>
       <div class="btn-row" style="justify-content:center" data-reveal>
-        <a href="{WA}" class="btn btn--amber btn--lg" target="_blank" rel="noopener">Agende um diagnóstico <span class="arrow">→</span></a>
-        <a href="mailto:{EMAIL}" class="btn btn--ghost btn--lg">Enviar e-mail</a>
+        <a href="{wa_ctx(pagina, "seção de contato", DIAG)}" class="btn btn--amber btn--lg" target="_blank" rel="noopener">Agende um diagnóstico <span class="arrow">→</span></a>
+        <a href="{mail_ctx(pagina, "seção de contato")}" class="btn btn--ghost btn--lg">Enviar e-mail</a>
       </div>
       <div class="contact-line" data-reveal>
-        <a href="{WA}" target="_blank" rel="noopener"><svg class="icon icon--sm"><use href="#i-phone"/></svg>{PHONE}</a>
-        <a href="mailto:{EMAIL}"><svg class="icon icon--sm"><use href="#i-mail"/></svg>{EMAIL}</a>
+        <a href="{wa_ctx(pagina, "seção de contato")}" target="_blank" rel="noopener"><svg class="icon icon--sm"><use href="#i-phone"/></svg>{PHONE}</a>
+        <a href="{mail_ctx(pagina, "seção de contato")}"><svg class="icon icon--sm"><use href="#i-mail"/></svg>{EMAIL}</a>
       </div>
     </div>
   </section>
 """
 
-def footer():
+def footer(pagina):
     sols = "".join(f'<li><a href="/solucoes/{u["slug"]}">{u["unit"]}</a></li>' for u in UNITS)
     return f"""  </main>
 
@@ -406,16 +412,16 @@ def footer():
         <div><p class="footer__t">Soluções</p><ul>{sols}</ul></div>
         <div><p class="footer__t">Oxyn Group</p><ul>
           <li><a href="/#pilares">Pilares</a></li><li><a href="/#metodo">Método D.R.I.V.E.</a></li>
-          <li><a href="/#fundadores">Fundadores</a></li><li><a href="/#contato">Contato</a></li></ul></div>
+          <li><a href="/#fundadores">Fundadores</a></li><li><a href="{"/#contato" if pagina == "Página não encontrada" else "#contato"}">Contato</a></li></ul></div>
         <div><p class="footer__t">Contato</p><ul>
-          <li><a href="{WA}" target="_blank" rel="noopener">{PHONE}</a></li>
-          <li><a href="mailto:{EMAIL}">{EMAIL}</a></li></ul></div>
+          <li><a href="{wa_ctx(pagina, "rodapé")}" target="_blank" rel="noopener">{PHONE}</a></li>
+          <li><a href="{mail_ctx(pagina, "rodapé")}">{EMAIL}</a></li></ul></div>
       </div>
       <div class="footer__bottom"><span>© <span data-year>2026</span> Oxyn Serviços e Consultoria LTDA. Todos os direitos reservados.</span><a href="#">Política de Privacidade</a></div>
     </div>
   </footer>
 
-  <a class="wa-float" href="{WA}" target="_blank" rel="noopener" aria-label="Conversar no WhatsApp"><svg class="icon"><use href="#i-message"/></svg></a>
+  <a class="wa-float" href="{wa_ctx(pagina, "botão do WhatsApp")}" target="_blank" rel="noopener" aria-label="Conversar no WhatsApp"><svg class="icon"><use href="#i-message"/></svg></a>
 
   <!-- COOKIE BANNER -->
   <div class="cookie" data-cookie>
@@ -545,7 +551,7 @@ def home():
         <h1 class="sol__title"><small>Vendas que não</small><b>dependem</b><b>de sorte<span>.</span></b></h1>
         <p class="lead">Venda travada raramente tem uma causa só. A OXYN identifica a origem, assume a operação e conduz a virada por inteiro: comercial, liderança, inteligência artificial, presença digital e conteúdo, trabalhando pelo mesmo resultado.</p>
         <div class="btn-row">
-          <a href="#contato" class="btn btn--primary btn--lg">Agende um diagnóstico <span class="arrow">→</span></a>
+          <a href="{wa_ctx("Página inicial", "banner principal", DIAG)}" class="btn btn--primary btn--lg" target="_blank" rel="noopener">Agende um diagnóstico <span class="arrow">→</span></a>
           <a href="#solucao" class="btn btn--ghost btn--lg">Veja como funciona</a>
         </div>
       </div>
@@ -595,7 +601,7 @@ def home():
       </div>
       <div class="sol__foot" data-reveal>
         <p>Estruturando, crescendo ou escalando: <strong>a Oxyn monta a combinação certa para o seu momento.</strong></p>
-        <a href="#contato" class="btn btn--amber btn--lg">Agende um diagnóstico <span class="arrow">→</span></a>
+        <a href="{wa_ctx("Página inicial", "Como resolvemos", DIAG)}" class="btn btn--amber btn--lg" target="_blank" rel="noopener">Agende um diagnóstico <span class="arrow">→</span></a>
       </div>
     </div>
   </section>
@@ -708,8 +714,8 @@ def home():
 
 """
     html += faq_block(faq_home, "Antes de conversarmos")
-    html += cta("Vamos além do óbvio", "Vamos conversar sobre a sua operação?", "Conte o seu desafio. Em uma conversa, mostramos onde a venda trava e quais frentes fazem sentido para o seu momento.")
-    html += footer()
+    html += cta("Vamos além do óbvio", "Vamos conversar sobre a sua operação?", "Conte o seu desafio. Em uma conversa, mostramos onde a venda trava e quais frentes fazem sentido para o seu momento.", "Página inicial")
+    html += footer("Página inicial")
     return html
 
 # --------------------------------------------------------------------------
@@ -732,7 +738,7 @@ def unit_page(u):
         if not u.get("deliv_cta"):
             return ""
         return (f'''
-          <a class="offer-cta" href="{wa_oferta(t)}" target="_blank" rel="noopener" data-oferta="{slugify(t)}">{u["deliv_cta"]} <span class="arrow">→</span></a>''')
+          <a class="offer-cta" href="{wa_ctx(u["unit"], u["deliv_h2"], "quero conversar sobre: " + t)}" target="_blank" rel="noopener" data-oferta="{slugify(t)}">{u["deliv_cta"]} <span class="arrow">→</span></a>''')
     deliv = "\n".join(f"""        <article class="card card--soft card--feature{" card--offer" if u.get("deliv_cta") else ""}" data-reveal>
           <div class="card__top"><span class="icon-badge"><svg class="icon"><use href="#{i}"/></svg></span><span class="num">{k+1}.</span></div>
           <h3 class="h4">{t}</h3>
@@ -760,7 +766,7 @@ def unit_page(u):
         <p class="lead">{u["lead"]}</p>
         <div class="tags">{tags}</div>
         <div class="btn-row">
-          <a href="#contato" class="btn btn--primary">Vamos conversar <span class="arrow">→</span></a>
+          <a href="{wa_ctx(u["unit"], "banner")}" class="btn btn--primary" target="_blank" rel="noopener">Vamos conversar <span class="arrow">→</span></a>
           <a href="#entregas" class="btn btn--ghost">O que entregamos</a>{f'''
           <a href="{u["site"]}" class="btn btn--ghost" target="_blank" rel="noopener">Conheça mais <svg class="icon icon--sm"><use href="#i-external"/></svg></a>''' if u.get("site") else ""}
         </div>
@@ -776,7 +782,7 @@ def unit_page(u):
         <p class="sol__kicker">O desafio</p>
         <h2 class="pains__title">{u["pains_h2"]}</h2>
         <p>Se a sua empresa se reconhece em algum destes pontos, a venda está deixando dinheiro na mesa.</p>
-        <a href="#contato" class="link-arrow">Agende um diagnóstico <span class="arrow">→</span></a>
+        <a href="{wa_ctx(u["unit"], "O desafio", DIAG)}" class="link-arrow" target="_blank" rel="noopener">Agende um diagnóstico <span class="arrow">→</span></a>
       </header>
       <div class="pains__list">
 {pains}
@@ -803,7 +809,7 @@ def unit_page(u):
         <p class="eyebrow">{u["how_eyebrow"]}</p>
         <h2 class="h2">{u["how_h2"]}</h2>
         <p class="lead">{u["how_lead"]}</p>
-        <div class="btn-row" style="margin-top:8px"><a href="#contato" class="btn btn--primary">Agende um diagnóstico <span class="arrow">→</span></a></div>
+        <div class="btn-row" style="margin-top:8px"><a href="{wa_ctx(u["unit"], u["how_eyebrow"], DIAG)}" class="btn btn--primary" target="_blank" rel="noopener">Agende um diagnóstico <span class="arrow">→</span></a></div>
       </header>
       <ul class="checks card card--soft" data-reveal>
 {checks}
@@ -827,8 +833,8 @@ def unit_page(u):
 
 """
     html += faq_block(u["faq"], f'Dúvidas sobre {u["unit"]}')
-    html += cta("Vamos além do óbvio", "Vamos conversar sobre a sua operação?", "Conte o seu desafio. Nosso time responde rápido e indica o melhor caminho para o seu momento.")
-    html += footer()
+    html += cta("Vamos além do óbvio", "Vamos conversar sobre a sua operação?", "Conte o seu desafio. Nosso time responde rápido e indica o melhor caminho para o seu momento.", u["unit"])
+    html += footer(u["unit"])
     return html
 
 # --------------------------------------------------------------------------
@@ -842,7 +848,7 @@ def not_found():
     html = head("Página não encontrada | Oxyn Group", "O endereço que você procurou não existe ou mudou de lugar.", "/404", [ORG])
     html = html.replace(f'<link rel="canonical" href="{SITE}/404">', '<meta name="robots" content="noindex">')
     links = "".join(f'<a href="/solucoes/{u["slug"]}">{u["unit"]}</a>' for u in UNITS)
-    html += body_open() + nav() + '  <main id="conteudo">'
+    html += body_open() + nav(pagina="Página não encontrada") + '  <main id="conteudo">'
     html += f"""
   <header class="hero has-ring" data-section="hero" style="--img:url('{IMG}/foto-abstrato-capa.webp')">
     <div class="container">
@@ -856,7 +862,7 @@ def not_found():
     </div>
   </header>
 """
-    return html + footer()
+    return html + footer("Página não encontrada")
 
 (OUT / "404.html").write_text(not_found(), encoding="utf-8")
 
