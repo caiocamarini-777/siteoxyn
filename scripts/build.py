@@ -8,9 +8,11 @@ OUT = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else pathlib.Path(__file__)
 SITE = "https://oxyngroup.com.br"
 WA_NUM = "5511979706449"
 EMAIL = "comercial@oxyngroup.com.br"
-def wa_ctx(pagina, area, acao="quero conversar com a Oxyn"):
+def wa_ctx(pagina, area, acao=None):
     """Link de WhatsApp que ja chega com a pagina e a secao do clique, para a equipe saber de onde o cliente veio."""
     from urllib.parse import quote
+    if acao is None:   # nas paginas das empresas do grupo, a conversa e sobre a empresa da pagina
+        acao = f"quero conversar sobre a {pagina}" if pagina in GRUPO else "quero conversar com a Oxyn"
     return f"https://wa.me/{WA_NUM}?text=" + quote(f"Olá! Vim pelo site da Oxyn ({pagina}, {area}) e {acao}.")
 def mail_ctx(pagina, area):
     """E-mail com assunto e primeira linha dizendo a pagina e a secao do clique."""
@@ -265,7 +267,16 @@ for u in UNITS:
 BY["naia-geo-seo"]["logo"] = "empresas/naia.svg"
 BY["fqdtv"]["logo"] = "empresas/fqdtv.svg"
 BY["fqd-studios"]["logo"] = "empresas/fqd-studios.svg"
-BY["prisma"]["logo"] = "empresas/prisma.svg"   # logo negativo extraido do guia de marca da Prisma
+BY["prisma"]["logo"] = "empresas/prisma.svg"
+GRUPO = {BY[s]["unit"] for s in EMPRESAS}
+# Botao principal e mensagem de cada empresa do grupo (nas frentes da Oxyn fica "Agende um diagnostico")
+for s_, (rotulo, acao) in {"naia-geo-seo": ("Solicite uma demonstração", "quero uma demonstração da Naia"),
+                           "fqdtv": ("Solicite uma proposta", "quero uma proposta de mídia da FQDTV"),
+                           "fqd-studios": ("Solicite um orçamento", "quero um orçamento da FQD Studios"),
+                           "prisma": ("Agende uma conversa", "quero agendar uma conversa com a Prisma")}.items():
+    BY[s_].update(cta_label=rotulo, cta_acao=acao)
+for u in UNITS:
+    u.setdefault("cta_label", "Agende um diagnóstico"); u.setdefault("cta_acao", DIAG)   # logo negativo extraido do guia de marca da Prisma
 # Site proprio de cada empresa (botao no banner, para o cliente saber mais)
 # (o logo do banner e o botao "Conheca mais" levam para esse site)
 BY["naia-geo-seo"]["site"] = "https://naia.today/"
@@ -373,7 +384,7 @@ def nav(current=None, pagina=None):
   </nav>
 """
 
-def cta(thin, h2, lead, pagina):
+def cta(thin, h2, lead, pagina, rotulo="Agende um diagnóstico", acao=DIAG):
     return f"""  <!-- CTA FINAL | foto escura + composicao assinatura entre fios finos | 1 botao ambar -->
   <section class="section section--overlay cta-final has-ring" id="contato" data-section="cta" style="--img:url('{IMG}/foto-abstrato-capa.webp');--ring-o:.12;--ring-x:auto;--ring-y:-180px">
     <div class="container">
@@ -382,7 +393,7 @@ def cta(thin, h2, lead, pagina):
       </header>
       <p class="lead" style="text-align:center;margin:0 auto 32px" data-reveal>{lead}</p>
       <div class="btn-row" style="justify-content:center" data-reveal>
-        <a href="{wa_ctx(pagina, "seção de contato", DIAG)}" class="btn btn--amber btn--lg" target="_blank" rel="noopener">Agende um diagnóstico <span class="arrow">→</span></a>
+        <a href="{wa_ctx(pagina, "seção de contato", acao)}" class="btn btn--amber btn--lg" target="_blank" rel="noopener">{rotulo} <span class="arrow">→</span></a>
         <a href="{mail_ctx(pagina, "seção de contato")}" class="btn btn--ghost btn--lg">Enviar e-mail</a>
       </div>
       <div class="contact-line" data-reveal>
@@ -782,7 +793,7 @@ def unit_page(u):
         <p class="sol__kicker">O desafio</p>
         <h2 class="pains__title">{u["pains_h2"]}</h2>
         <p>Se a sua empresa se reconhece em algum destes pontos, a venda está deixando dinheiro na mesa.</p>
-        <a href="{wa_ctx(u["unit"], "O desafio", DIAG)}" class="link-arrow" target="_blank" rel="noopener">Agende um diagnóstico <span class="arrow">→</span></a>
+        <a href="{wa_ctx(u["unit"], "O desafio", u["cta_acao"])}" class="link-arrow" target="_blank" rel="noopener">{u["cta_label"]} <span class="arrow">→</span></a>
       </header>
       <div class="pains__list">
 {pains}
@@ -809,7 +820,7 @@ def unit_page(u):
         <p class="eyebrow">{u["how_eyebrow"]}</p>
         <h2 class="h2">{u["how_h2"]}</h2>
         <p class="lead">{u["how_lead"]}</p>
-        <div class="btn-row" style="margin-top:8px"><a href="{wa_ctx(u["unit"], u["how_eyebrow"], DIAG)}" class="btn btn--primary" target="_blank" rel="noopener">Agende um diagnóstico <span class="arrow">→</span></a></div>
+        <div class="btn-row" style="margin-top:8px"><a href="{wa_ctx(u["unit"], u["how_eyebrow"], u["cta_acao"])}" class="btn btn--primary" target="_blank" rel="noopener">{u["cta_label"]} <span class="arrow">→</span></a></div>
       </header>
       <ul class="checks card card--soft" data-reveal>
 {checks}
@@ -833,7 +844,7 @@ def unit_page(u):
 
 """
     html += faq_block(u["faq"], f'Dúvidas sobre {u["unit"]}')
-    html += cta("Vamos além do óbvio", "Vamos conversar sobre a sua operação?", "Conte o seu desafio. Nosso time responde rápido e indica o melhor caminho para o seu momento.", u["unit"])
+    html += cta("Vamos além do óbvio", "Vamos conversar sobre a sua operação?", "Conte o seu desafio. Nosso time responde rápido e indica o melhor caminho para o seu momento.", u["unit"], u["cta_label"], u["cta_acao"])
     html += footer(u["unit"])
     return html
 
