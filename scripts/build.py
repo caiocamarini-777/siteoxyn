@@ -97,7 +97,7 @@ UNITS = [
        title="Prisma: consultoria de IA e engenharia de software",
        eyebrow="Prisma · Consultoria e engenharia de software",
        h1_thin="Do cenário ao resultado", h1="em semanas.",
-       lead="Há mais de 20 anos a Prisma leva o que há de mais novo em tecnologia para dentro de operações reais. Hoje, esse motor é a inteligência artificial: consultoria, automação, software sob medida e treinamento, com escopo fechado e preço pela entrega. Sem vender horas e sem projetos que nunca terminam.",
+       lead="Os fundadores da Prisma somam mais de 20 anos levando o que há de mais novo em tecnologia para dentro de operações reais. A Prisma une essa bagagem à inovação e à inteligência artificial para entregar mais, com menos esforço e mais resultado: consultoria, automação, software sob medida e treinamento, com escopo fechado e preço pela entrega.",
        pains_h2="A IA já chegou na sua empresa ou só no discurso?",
        pains=[("i-chart","IA sem resultado é custo","95% dos programas de IA generativa não geram retorno financeiro relevante. Fonte: Harvard Business Review."),
               ("i-layers","Pilotos que não saem do lugar","Só 26% das empresas desenvolveram capacidade para sair das provas de conceito e gerar valor. Fonte: BCG."),
