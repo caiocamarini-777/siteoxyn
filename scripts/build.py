@@ -5,7 +5,7 @@ Edite os textos aqui e rode o script; ele sobrescreve index.html, solucoes/*.htm
 import json, sys, pathlib, hashlib, re
 
 OUT = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else pathlib.Path(__file__).resolve().parent.parent
-SITE = "https://oxyngroup.com.br"
+SITE = "https://www.oxyngroup.com.br"   # dominio principal na Vercel (o endereco sem www redireciona para ca)
 WA_NUM = "5511979706449"
 EMAIL = "comercial@oxyngroup.com.br"
 def wa_ctx(pagina, area, acao=None):
