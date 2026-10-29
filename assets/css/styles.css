@@ -209,14 +209,15 @@ button{font:inherit;cursor:pointer}
 .card--feature .card__top{display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-3)}
 .card--feature .h4{margin-bottom:var(--space-1)}
 
-/* Bento de servicos: 2 grandes em cima, 4 menores embaixo */
-.bento{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4)}
-.bento>.card--service:nth-child(-n+2){grid-column:span 2}
+/* Bento de servicos: as 3 frentes da Oxyn em cima, as 4 empresas do grupo embaixo */
+.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--space-4)}
+.bento>.card--service{grid-column:span 3}
+.bento>.card--service:nth-child(-n+3){grid-column:span 4}
 .card--service{min-height:260px}
 .card--service .h3{margin-top:var(--space-2)}
 .card--service .tags{margin-top:auto;padding-top:var(--space-3)}
-@media (max-width:1024px){.bento{grid-template-columns:repeat(2,1fr)}.bento>.card--service:nth-child(-n+2){grid-column:span 2}}
-@media (max-width:640px){.bento{grid-template-columns:1fr}.bento>.card--service:nth-child(-n+2){grid-column:auto}}
+@media (max-width:1024px){.bento{grid-template-columns:repeat(2,1fr)}.bento>.card--service,.bento>.card--service:nth-child(-n+3){grid-column:auto}.bento>.card--service:first-child{grid-column:span 2}}
+@media (max-width:640px){.bento{grid-template-columns:1fr}.bento>.card--service:first-child{grid-column:auto}}
 
 /* Case: imagem de fundo + fade escuro + conteudo no rodape */
 .card--case{--img:none;min-height:420px;padding:var(--space-6);justify-content:flex-end;overflow:hidden;color:var(--color-on-dark);
@@ -589,6 +590,8 @@ body{font-weight:400}
 .logo-tile--img img{max-width:124px;max-height:38px;width:auto;height:auto;filter:brightness(0);opacity:.5;transition:opacity var(--dur)}
 a.logo-tile--img:hover img{opacity:.85}
 .logo-tile--img img[alt^="Bersaglio"]{max-height:54px}
+.logo-tile--img:has(img[alt^="Paula Torres"]){width:210px}   /* logotipo horizontal e fino: bloco mais largo */
+.logo-tile--img img[alt^="Paula Torres"]{max-width:170px}
 
 /* Setores da trajetoria: icone de linha + nome abaixo, sem caixa */
 .sector{display:grid;justify-items:center;align-content:center;gap:12px;width:150px;flex:none;text-align:center}
@@ -716,7 +719,7 @@ a.logo-tile--img:hover img{opacity:.85}
 .nav__group{display:block;padding:12px 12px 4px;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--color-accent)}
 .nav__group:first-child{padding-top:6px}
 /* Bloco solucao: frentes da Oxyn + empresas do grupo */
-.sol__cos{grid-template-columns:300px 2fr 3fr;column-gap:0}
+.sol__cos{grid-template-columns:260px 2fr 4fr;column-gap:0}
 .sol__group{display:flex;flex-direction:column;gap:14px;padding-right:28px}
 .sol__group+.sol__group{padding-left:28px;padding-right:0;border-left:1px solid rgba(255,255,255,.12)}
 .sol__group-t{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5)}

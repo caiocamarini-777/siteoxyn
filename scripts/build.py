@@ -22,9 +22,9 @@ IG = "https://www.instagram.com/oxyn_group/"
 LI = "https://www.linkedin.com/company/oxyn-group/"
 
 # --------------------------------------------------------------------------
-# O Oxyn Group sao 4 empresas: a Oxyn (frentes Vendas, Pessoas e IA), Naia, FQDTV e FQD Studios.
+# O Oxyn Group sao 5 empresas: a Oxyn (frentes Vendas, Pessoas e SEO/GEO), Naia, FQDTV, FQD Studios e Prisma.
 # Oxyn Vendas (antes "Comercial" no manual) e Oxyn Pessoas seguem o manual de marca;
-# o nome "Oxyn IA" e de trabalho: validar com a diretoria.
+# A antiga frente Oxyn IA virou a Prisma, empresa do grupo (logo do guia de marca da Prisma; pagina no visual Oxyn).
 # --------------------------------------------------------------------------
 UNITS = [
   dict(slug="vendas", seo_title="Consultoria de vendas B2B e terceirização comercial | Oxyn",
@@ -55,40 +55,10 @@ UNITS = [
             "<b>Investigação:</b> escuta estruturada das motivações, restrições e dependências do comprador",
             "<b>Validação:</b> o diagnóstico vira uma proposta clara, personalizada e financeiramente viável",
             "<b>Execução:</b> acompanhamento até o fechamento, retroalimentando o sistema com dados"],
-       connects=["inteligencia-artificial","pessoas","naia-geo-seo"],
+       connects=["prisma","pessoas","seo-geo"],
        faq=[("Qual a diferença entre reestruturar, treinar e operar?","Reestruturar é redesenhar o time: papéis, perfis, metas e rituais. Treinar é capacitar o time atual em método, prospecção e negociação. Operar é a Oxyn assumir a área comercial como o time da sua empresa."),
             ("Por que começar pelo diagnóstico?","Porque contratar mais vendedores raramente resolve. Na maioria dos casos, o problema está antes: no perfil de cliente mal definido ou em um funil sem critério de priorização. O diagnóstico mostra se o gargalo está no processo, no time ou no mercado."),
             ("A Oxyn representa a minha marca?","Não representamos marcas: vestimos a camisa. Quando faz sentido, assumimos a operação comercial com a sua marca, metas, rituais e indicadores compartilhados.")]),
-  dict(slug="inteligencia-artificial", seo_title="Consultoria e treinamento em IA para empresas | Oxyn IA",
-       seo_desc="Consultoria, treinamento e padronização do uso de IA e soluções sob medida para vendas, atendimento, marketing, financeiro, RH e operação.",
-       unit="Oxyn IA", short="Inteligência Artificial", icon="i-cpu", color="blue", img="foto-abstrato-escuro.jpg",
-       card="Consultoria em IA, treinamento e padronização do uso de IA pelo time e desenvolvimento de soluções personalizadas, para a empresa inteira.",
-       tags=["Consultoria em IA", "Treinamento e padronização", "Soluções sob medida"],
-       menu="Consultoria, treinamento e soluções de IA",
-       title="Consultoria, treinamento e soluções de inteligência artificial para empresas",
-       eyebrow="Oxyn IA · Inteligência artificial",
-       h1_thin="Inteligência artificial", h1="aplicada à empresa inteira.",
-       lead="Fazemos consultoria para identificar onde a IA gera retorno, treinamos e padronizamos o uso de IA pelo seu time e desenvolvemos soluções personalizadas com IA. Em vendas, atendimento, marketing, financeiro, RH e operação: onde houver ganho.",
-       pains_h2="A IA já chegou na sua empresa ou só no discurso?",
-       pains=[("i-message","IA só no discurso","A empresa sabe que precisa, mas não sabe por onde começar nem como medir o retorno."),
-              ("i-zap","Horas em tarefa repetitiva","Relatórios, atendimento, propostas e conferências manuais tomando o tempo de todas as áreas."),
-              ("i-layers","Cada um usa de um jeito","Cada área testa uma ferramenta diferente, sem padrão, governança nem segurança de dados.")],
-       deliv_h2="Como a Oxyn IA leva a IA para a sua empresa", deliv_cta="Quero conversar sobre isso",
-       deliv=[("i-target","Consultoria em IA","Diagnóstico de processos e maturidade, mapa de oportunidades priorizado por retorno e plano de adoção para cada área da empresa."),
-              ("i-users","Treinamento e padronização","Capacitação prática por área e padrões de uso: ferramentas aprovadas, prompts, fluxos de trabalho e regras de segurança de dados."),
-              ("i-cpu","Soluções personalizadas com IA","Desenvolvimento de agentes, automações e sistemas sob medida, integrados às ferramentas que a sua empresa já usa.")],
-       how_eyebrow="Como funciona", how_h2="Pilotos curtos, resultados medidos",
-       how_lead="Começamos pequeno, provamos valor com indicadores e só então escalamos para outras áreas.",
-       how=["Diagnóstico de processos e maturidade digital em cada área",
-            "Priorização de casos de uso por impacto e esforço",
-            "Treinamento do time e padronização do uso de IA",
-            "Desenvolvimento e integração de soluções personalizadas",
-            "Acompanhamento da adoção e dos indicadores de cada piloto"],
-       connects=["vendas","pessoas","naia-geo-seo"],
-       faq=[("A Oxyn IA atua só em vendas?","Não. Atuamos na empresa inteira: vendas, atendimento, marketing, financeiro, RH e operação. Onde houver tarefa repetitiva ou decisão que se beneficia de dados, a IA pode gerar ganho."),
-            ("O que significa padronizar o uso de IA?","É definir quais ferramentas usar, para quê e com quais regras: políticas de uso, proteção de dados, prompts e fluxos de trabalho por área, para que todo o time use IA do mesmo jeito e com segurança."),
-            ("Vocês desenvolvem soluções de IA sob medida?","Sim. Desenvolvemos agentes, automações e sistemas com IA personalizados para o seu processo, integrados aos sistemas que você já usa."),
-            ("Preciso ter uma equipe de tecnologia?","Não. Conduzimos diagnóstico, desenvolvimento e treinamento. Quando há integração com sistemas internos, trabalhamos junto com o seu time ou fornecedor de TI.")]),
   dict(slug="pessoas", seo_title="Consultoria de RH e formação de líderes | Oxyn Pessoas",
        seo_desc="Estruturamos o RH, formamos lideranças e atuamos como o RH da sua empresa. Cargos, carreiras, rituais de gestão e implantação em 90 dias.",
        unit="Oxyn Pessoas", short="Pessoas e RH", icon="i-users", color="blue", img="foto-broto.jpg",
@@ -114,40 +84,105 @@ UNITS = [
             "<b>Mês 2 · Implantar:</b> formação dos líderes e primeira aplicação dos rituais, com acompanhamento",
             "<b>Mês 3 · Sustentar:</b> ajustes finais, co-condução, handover e revisão do ciclo",
             "<b>Ao final:</b> a rotina está com a liderança e com o time de Pessoas da sua empresa"],
-       connects=["vendas","inteligencia-artificial","fqd-studios"],
+       connects=["vendas","prisma","fqd-studios"],
        faq=[("A consultoria de RH é só para a área comercial?","Não. Atendemos toda a estrutura da empresa: governança de RH, cargos e salários, lideranças e rituais de gestão. A experiência comercial do grupo ajuda especialmente em times de vendas."),
             ("O que é RH como serviço?","É quando a Oxyn atua como o RH da sua empresa, conduzindo rituais, clima e PDI, com uma transição planejada para um time interno quando fizer sentido."),
             ("Quanto tempo dura a implantação?","O ciclo padrão é de 90 dias: estruturar, implantar e sustentar. Ao final, a rotina está com a liderança e com o time de Pessoas da empresa.")]),
-  dict(slug="naia-geo-seo", seo_title="GEO e SEO: sua marca no Google e nas IAs | Naia",
-       seo_desc="Com a plataforma Naia e SEO técnico e de conteúdo, sua marca aparece no Google e nas respostas do ChatGPT, Gemini e Perplexity.",
-       unit="Naia", short="GEO e SEO", icon="i-search", color="blue", img="foto-abstrato-capa.jpg",
-       card="Implementação e ongoing da Naia, plataforma de GEO, mais SEO para sua marca ser encontrada no Google e recomendada pelas IAs.",
-       tags=["GEO", "SEO", "Plataforma Naia"],
-       menu="GEO e SEO com a plataforma Naia",
-       title="Naia: GEO e SEO para empresas",
-       eyebrow="Naia · GEO e SEO",
-       h1_thin="Seja encontrado no Google", h1="e recomendado pelas IAs.",
-       lead="Seus clientes já pesquisam no ChatGPT, Gemini e Perplexity antes de falar com um vendedor. Com a Naia, plataforma de GEO, e o nosso time de SEO, sua marca aparece nas respostas que influenciam a decisão de compra.",
+  dict(slug="prisma", seo_title="Consultoria de IA e tecnologia para empresas | Prisma",
+       seo_desc="IA em escala com curadoria humana: consultoria em IA, treinamento e padronização do uso e soluções sob medida, com escopo fechado.",
+       unit="Prisma", short="IA e tecnologia", icon="i-cpu", color="blue", img="foto-abstrato-escuro.jpg",
+       card="Consultoria de tecnologia que une IA em escala e curadoria humana: consultoria em IA, treinamento e padronização e soluções sob medida.",
+       tags=["Consultoria em IA", "Treinamento e padronização", "Soluções sob medida"],
+       menu="Consultoria, treinamento e soluções de IA",
+       title="Prisma: consultoria de IA e tecnologia para empresas",
+       eyebrow="Prisma · Make it simple",
+       h1_thin="Solução,", h1="não horas.",
+       lead="A Prisma é a consultoria de tecnologia do grupo. Une IA em escala com curadoria humana na arquitetura, no levantamento de necessidades e na qualidade da entrega. Em vendas, atendimento, marketing, financeiro, RH e operação: onde houver ganho.",
+       pains_h2="A IA já chegou na sua empresa ou só no discurso?",
+       pains=[("i-message","IA só no discurso","A empresa sabe que precisa, mas não sabe por onde começar nem como medir o retorno."),
+              ("i-zap","Horas em tarefa repetitiva","Relatórios, atendimento, propostas e conferências manuais tomando o tempo de todas as áreas."),
+              ("i-layers","Cada um usa de um jeito","Cada área testa uma ferramenta diferente, sem padrão, governança nem segurança de dados.")],
+       deliv_h2="Três frentes, escopo limpo", deliv_cta="Quero conversar sobre isso",
+       deliv=[("i-target","Consultoria em IA","Levantamento de necessidades com curadoria humana, mapa de oportunidades priorizado por retorno e plano de adoção por área. Três alternativas, uma recomendação."),
+              ("i-users","Treinamento e padronização","Capacitação prática por área e padrões de uso: ferramentas aprovadas, prompts, fluxos de trabalho e regras de segurança de dados."),
+              ("i-cpu","Soluções personalizadas com IA","Agentes, automações e sistemas sob medida, integrados às ferramentas que a empresa já usa. Arquitetura desenhada antes de qualquer linha de código.")],
+       how_eyebrow="O modelo", how_h2="Uma ideia. Três caminhos.",
+       how_lead="Como o prisma separa a luz em cores, recebemos uma ideia como foco e a desdobramos em alternativas. Você paga pela entrega, não por horas ou pessoas alocadas.",
+       how=["<b>Descoberta:</b> extração de necessidades com curadoria humana, área por área",
+            "<b>Arquitetura:</b> desenho da solução antes de qualquer linha de código, com três alternativas e uma recomendação",
+            "<b>Entrega:</b> IA em escala na construção, revisão humana em cada decisão e escopo fechado",
+            "<b>Adoção:</b> treinamento do time, padrões de uso e indicadores acompanhados depois da entrega"],
+       connects=["vendas","pessoas","seo-geo"],
+       faq=[("A Prisma atua só em vendas?","Não. Atuamos na empresa inteira: vendas, atendimento, marketing, financeiro, RH e operação. Onde houver tarefa repetitiva ou decisão que se beneficia de dados, a IA pode gerar ganho."),
+            ("O que significa vender solução, não horas?","Você contrata uma entrega com escopo e prazo definidos, não um pacote de horas ou um time alocado. A IA acelera a construção e a curadoria humana garante a qualidade."),
+            ("O que significa padronizar o uso de IA?","É definir quais ferramentas usar, para quê e com quais regras: políticas de uso, proteção de dados, prompts e fluxos de trabalho por área, para que todo o time use IA do mesmo jeito e com segurança."),
+            ("Preciso ter uma equipe de tecnologia?","Não. Conduzimos levantamento, arquitetura, desenvolvimento e treinamento. Quando há integração com sistemas internos, trabalhamos junto com o seu time ou fornecedor de TI.")]),
+  dict(slug="seo-geo", seo_title="SEO e GEO: sua marca no Google e nas IAs | Oxyn SEO/GEO",
+       seo_desc="Implementação e ongoing de SEO e GEO para a sua marca aparecer no Google e ser recomendada pelo ChatGPT, Gemini e Perplexity, com resultado medido em vendas.",
+       unit="Oxyn SEO/GEO", short="SEO e GEO", icon="i-search", color="blue", img="foto-abstrato-capa.jpg",
+       card="Implementação e ongoing de SEO e GEO: sua marca encontrada no Google e recomendada pelas IAs, com resultado medido em vendas e leads.",
+       tags=["Implementação", "Ongoing", "Google e IAs"],
+       menu="Implementação e ongoing de SEO e GEO",
+       title="SEO e GEO para empresas",
+       eyebrow="Oxyn SEO/GEO · Visibilidade orgânica",
+       h1_thin="Quando seu cliente pergunta,", h1="a resposta é a sua marca.",
+       lead="Antes de escolher um produto, um serviço ou uma empresa, o seu cliente pesquisa no Google e pergunta ao ChatGPT, ao Gemini e ao Perplexity. A Oxyn implementa e opera SEO e GEO para a sua marca aparecer nessas respostas e ser a recomendação, e acompanha o resultado até a venda, o contato ou o cadastro.",
        pains_h2="Quando seu cliente pergunta, quem aparece?",
-       pains=[("i-message","Invisível nas IAs","Quando o comprador pergunta a uma IA quem resolve o problema dele, a resposta cita seus concorrentes."),
-              ("i-trend","Orgânico estagnado","O tráfego do Google não cresce e o site não gera oportunidades para o time comercial."),
-              ("i-layers","Conteúdo sem estratégia","Publicações que não respondem às perguntas reais do comprador e não geram leads.")],
-       deliv_h2="Visibilidade que vira oportunidade",
-       deliv=[("i-cpu","Implementação da Naia","Configuração da plataforma, mapeamento das perguntas do seu mercado e linha de base de visibilidade."),
-              ("i-chart","Monitoramento contínuo","Acompanhamento de menções, posicionamento e concorrentes nas principais IAs generativas."),
-              ("i-search","SEO técnico e de conteúdo","Arquitetura do site, velocidade, palavras-chave e conteúdos que respondem ao comprador."),
-              ("i-trend","Ongoing de otimização","Ciclos mensais de ajustes, novos conteúdos e relatórios focados em geração de leads.")],
-       how_eyebrow="Como funciona", how_h2="GEO e SEO trabalhando juntos",
-       how_lead="O mesmo conteúdo que ranqueia no Google é o que as IAs usam para recomendar marcas. Por isso tratamos os dois como um só trabalho.",
-       how=["Diagnóstico de visibilidade no Google e nas IAs generativas",
-            "Mapa de perguntas e intenções de compra do seu público",
-            "Otimização técnica do site e dados estruturados",
-            "Produção e atualização de conteúdo orientado a autoridade",
-            "Relatórios mensais de visibilidade, tráfego e leads"],
-       connects=["fqd-studios","fqdtv","vendas"],
-       faq=[("O que é GEO?","GEO, ou Generative Engine Optimization, é a otimização para que sua marca seja citada e recomendada em respostas de IAs generativas como ChatGPT, Gemini e Perplexity."),
-            ("GEO substitui o SEO?","Não. Os dois se complementam: as IAs se apoiam em conteúdo bem estruturado e com autoridade, que é a base do SEO. Trabalhamos as duas frentes juntas."),
-            ("Em quanto tempo vejo resultado?","SEO e GEO são trabalhos de médio prazo. A Naia mede a linha de base desde o início para que você acompanhe a evolução mês a mês.")]),
+       pains=[("i-message","Invisível nas IAs","Seu cliente pergunta a uma IA quem resolve o problema dele e a resposta cita os seus concorrentes."),
+              ("i-trend","Tráfego que não vira resultado","O site recebe visitas, mas poucas viram venda, contato ou cadastro."),
+              ("i-chart","Refém da mídia paga","O custo por lead sobe e a geração de demanda para no dia em que o investimento para."),
+              ("i-globe","Ninguém sabe o que as IAs dizem","Descrições erradas, dados desatualizados e terceiros falando pela sua marca nas respostas.")],
+       deliv_h2="Da implementação ao ongoing", deliv_cta="Quero conversar sobre isso",
+       deliv=[("i-target","Diagnóstico e plano","Auditoria técnica, de conteúdo e de autoridade, linha de base no Google e nas IAs e um plano priorizado pelo que mais aproxima a venda."),
+              ("i-layers","Fundação técnica","Arquitetura do site, indexação, velocidade, dados estruturados e uma descrição única da empresa, dos produtos e dos especialistas."),
+              ("i-message","Conteúdo que responde ao seu cliente","Mapa das perguntas que o seu cliente faz em cada etapa da decisão e páginas que o Google ranqueia e as IAs usam como fonte."),
+              ("i-award","Autoridade fora do site","Menções em veículos do seu mercado, porta-vozes, dados próprios e presença nos canais que as IAs consultam para recomendar marcas."),
+              ("i-chart","Ongoing e monitoramento","Ciclos mensais de otimização, perguntas monitoradas nas principais IAs com a plataforma Naia e relatório ligado a vendas e leads."),
+              ("i-users","Capacitação do seu time","Treinamento, playbook e padrões de conteúdo para os times de marketing, conteúdo e e-commerce. Os ativos, os dados e o conhecimento ficam com a sua empresa.")],
+       how_eyebrow="Como funciona", how_h2="Implementação e ongoing, um só programa",
+       how_lead="Primeiro entendemos e planejamos; depois executamos de forma contínua, com checkpoints que recalibram o plano. O objetivo não é mais tráfego: é mais venda.",
+       how=["<b>Mês 1 · Implementação:</b> diagnóstico, linha de base no Google e nas IAs, mapa das perguntas do seu cliente e plano priorizado",
+            "<b>Meses 2 e 3 · Fundação:</b> correções técnicas, dados estruturados, identidade da marca consistente e primeiros conteúdos-piloto",
+            "<b>A partir do mês 4 · Ongoing:</b> ciclos mensais de conteúdo, autoridade e otimização, com novas perguntas monitoradas a cada trimestre",
+            "<b>Todo mês:</b> relatório que conecta presença, tráfego e resultado: vendas, contatos e cadastros",
+            "<b>A cada trimestre:</b> checkpoint executivo com o que funcionou, o que escalar e o roadmap recalibrado"],
+       connects=["vendas","fqd-studios","naia-geo-seo"],
+       faq=[("O que é GEO?","GEO, ou Generative Engine Optimization, é o trabalho para que a sua marca seja mencionada, citada como fonte e recomendada nas respostas de IAs como ChatGPT, Gemini, Perplexity e AI Overviews do Google."),
+            ("GEO substitui o SEO?","Não. O SEO é a fundação: sem um site rastreável, bem estruturado e com autoridade, as IAs dificilmente usam a sua marca como fonte. O GEO amplia essa fundação para as respostas geradas por IA. Tratamos os dois como um só trabalho."),
+            ("Qual a diferença entre a Oxyn SEO/GEO e a Naia?","A Naia é a plataforma do grupo que monitora a presença da sua marca nas IAs. A Oxyn SEO/GEO é o serviço: planeja, implementa e opera o trabalho, usando a Naia como painel de medição."),
+            ("Por que a Oxyn mede até a venda?","Porque o nosso negócio é fazer empresas venderem mais. Visibilidade que não vira venda, contato ou cadastro não paga o investimento, por isso o relatório vai até o resultado do negócio."),
+            ("Em quanto tempo vejo resultado?","As correções técnicas e os primeiros pilotos costumam mostrar sinais no primeiro trimestre. Autoridade e presença consistente nas IAs são construídas ao longo dos meses seguintes, e as metas são definidas depois da linha de base do primeiro mês.")]),
+  dict(slug="naia-geo-seo", seo_title="Naia: monitoramento da sua marca nas IAs | GEO",
+       seo_desc="A Naia mostra como ChatGPT, Gemini, Perplexity e AI Overviews falam da sua marca: menções, citações, concorrentes, fontes e evolução mês a mês.",
+       unit="Naia", short="Plataforma de GEO", icon="i-search", color="blue", img="foto-abstrato-capa.jpg",
+       card="Plataforma de GEO que mostra como as IAs falam da sua marca: menções, citações, concorrentes e fontes, com série histórica.",
+       tags=["Monitoramento multi-IA", "Concorrentes e fontes", "Série histórica"],
+       menu="Plataforma de monitoramento da marca nas IAs",
+       title="Naia: plataforma de monitoramento da marca nas IAs",
+       eyebrow="Naia · Plataforma de GEO",
+       h1_thin="Saiba o que as IAs", h1="dizem da sua marca.",
+       lead="Seus clientes perguntam ao ChatGPT, ao Gemini e ao Perplexity antes de escolher uma marca. A Naia acompanha essas respostas de forma contínua e mostra onde a sua marca aparece, quem aparece no lugar dela e em quais fontes as IAs se apoiam.",
+       pains_h2="Você sabe o que as IAs respondem sobre o seu mercado?",
+       pains=[("i-message","Ninguém mede","A empresa não sabe se é citada, em quais perguntas, nem em qual posição da resposta."),
+              ("i-globe","Concorrentes no seu lugar","Quando seu cliente pede uma indicação, a IA recomenda outra marca e você nem fica sabendo."),
+              ("i-layers","Informação errada circulando","Descrições desatualizadas ou imprecisas sobre a empresa e os produtos, repetidas a cada nova resposta.")],
+       deliv_h2="O que a Naia mostra",
+       deliv=[("i-message","Presença nas respostas","Menções, citações da sua URL e posição da marca em ChatGPT, Gemini, Perplexity e AI Overviews."),
+              ("i-target","Concorrentes e fontes","Quais marcas aparecem nas mesmas perguntas e em quais sites as IAs se apoiam para responder."),
+              ("i-search","Precisão e alertas","Descrições erradas ou desatualizadas da sua marca identificadas para correção."),
+              ("i-chart","Série histórica","Evolução por pergunta, por IA e por localidade, para medir o efeito de cada ação ao longo dos meses.")],
+       how_eyebrow="Como funciona", how_h2="Do primeiro painel à evolução mensal",
+       how_lead="A Naia é a camada de medição. A execução do trabalho de SEO e GEO fica com a Oxyn SEO/GEO, ou com o seu próprio time.",
+       how=["<b>Configuração:</b> marca, concorrentes e as perguntas que o seu cliente faz às IAs",
+            "<b>Linha de base:</b> primeira leitura de presença, citações e fontes em cada IA",
+            "<b>Monitoramento contínuo:</b> coleta recorrente, com registro de IA, data e localidade",
+            "<b>Painel e relatórios:</b> evolução mês a mês e comparação com os concorrentes",
+            "<b>Escala:</b> novas perguntas e mercados adicionados sem trocar de plataforma"],
+       connects=["seo-geo","fqd-studios","vendas"],
+       faq=[("O que é GEO?","GEO, ou Generative Engine Optimization, é o trabalho para que a sua marca seja mencionada, citada como fonte e recomendada nas respostas de IAs generativas como ChatGPT, Gemini e Perplexity."),
+            ("Qual a diferença entre a Naia e a Oxyn SEO/GEO?","A Naia é a plataforma que mede a presença da sua marca nas IAs. A Oxyn SEO/GEO é o serviço que planeja, implementa e opera o trabalho para melhorar essa presença, usando a Naia como painel."),
+            ("Posso contratar só a plataforma?","Sim. A Naia pode ser usada pelo seu próprio time de marketing ou pela sua agência. Quando você quiser execução, a Oxyn SEO/GEO assume o trabalho."),
+            ("Quais IAs a Naia acompanha?","As principais IAs generativas usadas pelos seus clientes, como ChatGPT, Gemini, Perplexity e as respostas com IA do Google.")]),
   dict(slug="fqdtv", seo_title="Mídia de nicho e branded content B2B | FQDTV",
        seo_desc="Programas, distribuição segmentada e branded content para a sua marca falar com quem decide a compra nos nichos que a mídia de massa não alcança.",
        unit="FQDTV", short="Mídia de nicho", icon="i-megaphone", color="blue", img="foto-abstrato-escuro.jpg",
@@ -213,8 +248,8 @@ UNITS = [
             ("Quanto custa?","Não trabalhamos com tabela fixa. Depois de uma conversa rápida sobre formato e objetivo, enviamos uma proposta sob medida.")]),
 ]
 BY = {u["slug"]: u for u in UNITS}
-OXYN = ["vendas", "pessoas", "inteligencia-artificial"]      # frentes dentro da Oxyn
-EMPRESAS = ["naia-geo-seo", "fqdtv", "fqd-studios"]            # demais empresas do grupo
+OXYN = ["vendas", "pessoas", "seo-geo"]                      # frentes dentro da Oxyn
+EMPRESAS = ["naia-geo-seo", "fqdtv", "fqd-studios", "prisma"]  # demais empresas do grupo
 UNITS = [BY[s] for s in OXYN + EMPRESAS]
 for u in UNITS:
     u["empresa"] = "Oxyn" if u["slug"] in OXYN else u["unit"]
@@ -222,6 +257,7 @@ for u in UNITS:
 BY["naia-geo-seo"]["logo"] = "empresas/naia.svg"
 BY["fqdtv"]["logo"] = "empresas/fqdtv.svg"
 BY["fqd-studios"]["logo"] = "empresas/fqd-studios.svg"
+BY["prisma"]["logo"] = "empresas/prisma.svg"   # logo negativo extraido do guia de marca da Prisma
 # Site proprio de cada empresa (botao no banner, para o cliente saber mais)
 BY["naia-geo-seo"].update(site="https://naia.today/", site_label="Site da Naia")
 BY["fqdtv"].update(site="https://fqdtv.com.br/", site_label="Canal da FQDTV no YouTube")
@@ -257,6 +293,7 @@ CLIENTS = [
   dict(nome="Weinberg", logo="weinberg.png", site=""),
   dict(nome="Naia", logo="naia.svg", site="https://naia.today/"),
   dict(nome="iMasters", logo="imasters.png", site="https://imasters.com.br/"),
+  dict(nome="Paula Torres", logo="paula-torres.svg", site="https://www.paulatorres.com.br/"),
 ]
 SECTORS = [("Indústria","i-factory"), ("Agro","i-wheat"), ("Farma","i-pill"), ("Varejo","i-store"),
            ("Educação","i-graduation"), ("Financeiro","i-bank"), ("Automotivo","i-car"), ("Aviação","i-plane")]
@@ -355,7 +392,7 @@ def footer():
       <div class="footer__grid">
         <div>
           <a href="/" class="brand"><img class="brand__logo" src="{IMG}/logo-oxyn-branco.webp" alt="Oxyn Group" width="240" height="86" loading="lazy"></a>
-          <p>Oxigenamos o crescimento B2B. Vendas, pessoas, IA, GEO, mídia e conteúdo para sua empresa vender mais.</p>
+          <p>Oxigenamos o crescimento B2B. Vendas, pessoas, SEO e GEO, IA, mídia e conteúdo para sua empresa vender mais.</p>
           <div class="socials">
             <a href="{LI}" aria-label="LinkedIn" target="_blank" rel="noopener"><svg class="icon icon--sm"><use href="#i-linkedin"/></svg></a>
             <a href="{IG}" aria-label="Instagram" target="_blank" rel="noopener"><svg class="icon icon--sm"><use href="#i-instagram"/></svg></a>
@@ -414,7 +451,7 @@ ORG = {
   "name": "Oxyn Group", "legalName": "Oxyn Serviços e Consultoria LTDA", "url": SITE,
   "logo": f"{SITE}{IMG}/logo-oxyn.png", "slogan": "Oxigenamos o crescimento B2B.",
   "email": EMAIL, "telephone": "+5511979706449", "sameAs": [IG, LI],
-  "description": "Grupo de quatro empresas B2B focado em fazer clientes venderem mais: a Oxyn (consultoria comercial e terceirização de vendas, consultoria de RH e consultoria, treinamento e soluções de IA para toda a empresa), a Naia (GEO e SEO), a FQDTV (mídia de nicho) e a FQD Studios (estúdio de conteúdo).",
+  "description": "Grupo de cinco empresas B2B focado em fazer clientes venderem mais: a Oxyn (consultoria comercial e terceirização de vendas, consultoria de RH e SEO e GEO), a Naia (plataforma de GEO), a FQDTV (mídia de nicho), a FQD Studios (estúdio de conteúdo) e a Prisma (consultoria de IA e tecnologia).",
   "founder": [{"@type": "Person", "name": l["nome"], "jobTitle": l["cargo"]} for l in LEADERS],
   "subOrganization": [{"@type": "Organization", "name": "Oxyn", "url": SITE,
                        "department": [{"@type": "Organization", "name": BY[s]["unit"], "url": f'{SITE}/solucoes/{s}'} for s in OXYN]}]
@@ -443,11 +480,11 @@ def home():
             return f'<a class="logo-tile logo-tile--img" href="{c["site"]}" target="_blank" rel="noopener" title="{c["nome"]}">{img}</a>'
         return f'<span class="logo-tile logo-tile--img" title="{c["nome"]}">{img}</span>'
     client_tiles = "".join(client_tile(c) for c in CLIENTS)
-    acionadas = {"pessoas":"Time e lideranças que sustentam", "inteligencia-artificial":"Consultoria, treinamento e soluções de IA",
-                 "naia-geo-seo":"Visibilidade no Google e nas IAs", "fqdtv":"Reputação no seu nicho",
+    acionadas = {"pessoas":"Time e lideranças que sustentam", "seo-geo":"Sua marca no Google e nas IAs",
+                 "prisma":"IA e tecnologia com escopo fechado", "naia-geo-seo":"Presença da marca nas IAs, medida", "fqdtv":"Reputação no seu nicho",
                  "fqd-studios":"Conteúdo que prova autoridade"}
     co = lambda s, nome: f'''<a class="sol__co" href="/solucoes/{s}"><b>{nome}</b><span>{acionadas[s]}</span></a>'''
-    sol_frentes = "".join(co(s, BY[s]["short"].replace(" e RH","")) for s in ["pessoas","inteligencia-artificial"])
+    sol_frentes = "".join(co(s, BY[s]["short"].replace(" e RH","")) for s in ["pessoas","seo-geo"])
     sol_empresas = "".join(co(s, BY[s]["unit"]) for s in EMPRESAS)
     pillars = [("i-users","Conexões certas","Networking e know-how de fundadores com mais de 20 anos de vivência no setor B2B."),
                ("i-award","Experiência prática","Atuação real com indústrias, distribuidores e grandes contas, de agro a varejo."),
@@ -469,10 +506,10 @@ def home():
              ("V","Validação","O diagnóstico vira proposta clara, personalizada e financeiramente viável."),
              ("E","Execução","Acompanhamento até o fechamento, retroalimentando o sistema com dados.")]
     steps = "\n".join(f"""        <div class="step" data-reveal><span class="step__letter">{l}</span><h3 class="h5">{t}</h3><p>{d}</p></div>""" for l,t,d in drive)
-    eco = [("i-search","Ser encontrado","naia-geo-seo","Naia coloca sua marca no Google e nas respostas das IAs."),
+    eco = [("i-search","Ser encontrado","seo-geo","Oxyn SEO/GEO e Naia colocam sua marca no Google e nas respostas das IAs."),
            ("i-megaphone","Ser lembrado","fqdtv","FQDTV e FQD Studios constroem autoridade no seu nicho."),
            ("i-trend","Converter","vendas","A Oxyn transforma oportunidades em contratos assinados."),
-           ("i-users","Escalar","pessoas","As frentes Pessoas e IA da Oxyn dão estrutura, líderes e produtividade.")]
+           ("i-users","Escalar","pessoas","Oxyn Pessoas e Prisma dão estrutura, líderes e produtividade com IA.")]
     eco_cards = "\n".join(f"""        <a href="/solucoes/{s}" class="card card--eco" data-reveal><svg class="icon icon--cyan"><use href="#{i}"/></svg><h3 class="h5">{t}</h3><p>{d}</p></a>""" for i,t,s,d in eco)
     leaders = "\n".join(f"""        <article class="founder" data-reveal>
           <div class="founder__photo{"" if l["foto"] else " founder__photo--vazia"}">{f'<img src="{IMG}/fundadores/{l["foto"]}" alt="{l["nome"]}, {l["cargo"]} da Oxyn Group" loading="lazy" width="600" height="800">' if l["foto"] else ""}</div>
@@ -482,7 +519,7 @@ def home():
             <p>{l["bio"]}</p>
           </div>
         </article>""" for l in LEADERS)
-    faq_home = [("O que é a Oxyn Group?","A Oxyn Group é um grupo de quatro empresas B2B que oxigena o crescimento de outras empresas: a Oxyn, com as frentes Vendas, Pessoas e IA; a Naia, de GEO e SEO; a FQDTV, de mídia de nicho; e a FQD Studios, de produção de conteúdo. Todas com o mesmo objetivo: fazer o cliente vender mais."),
+    faq_home = [("O que é a Oxyn Group?","A Oxyn Group é um grupo de cinco empresas B2B que oxigena o crescimento de outras empresas: a Oxyn, com as frentes Vendas, Pessoas e SEO/GEO; a Naia, plataforma de GEO; a FQDTV, de mídia de nicho; a FQD Studios, de produção de conteúdo; e a Prisma, de IA e tecnologia. Todas com o mesmo objetivo: fazer o cliente vender mais."),
                 ("O que significa Business Converter™?","É a categoria que criamos para nos descrever. Não somos uma agência de representação nem uma consultoria que entrega um relatório e vai embora. Entramos na operação, estruturamos o que precisa ser estruturado e ficamos até o resultado aparecer."),
                 ("Preciso contratar todas as frentes?","Não. Cada empresa do grupo pode ser contratada de forma independente. A vantagem de combinar frentes é ter um único parceiro cuidando da jornada inteira, da visibilidade ao fechamento."),
                 ("Por onde começamos?","Pelo diagnóstico. Ele mostra se o gargalo está no processo, no time ou no mercado e define quais frentes fazem sentido para o seu momento.")]
@@ -535,7 +572,7 @@ def home():
       <h2 class="sol__title" data-reveal><small>A solução completa para</small><b>Incrementar</b><b>vendas<span>.</span></b></h2>
       <div class="sol__creds" data-reveal>
         <div class="sol__cred"><b>20+</b><span>anos de cada fundador <br>em vendas B2B</span></div>
-        <div class="sol__cred"><b>4</b><span>empresas integradas <br>em um só grupo</span></div>
+        <div class="sol__cred"><b>5</b><span>empresas integradas <br>em um só grupo</span></div>
         <div class="sol__cred"><b>8</b><span>setores com cases, <br>de agro a aviação</span></div>
       </div>
     </div>
@@ -594,13 +631,13 @@ def home():
     </div>
   </section>
 
-  <!-- SOLUCOES | as 4 empresas do grupo: Oxyn (3 frentes) + Naia, FQDTV, FQD Studios -->
+  <!-- SOLUCOES | as 5 empresas do grupo: Oxyn (3 frentes) na primeira linha + Naia, FQDTV, FQD Studios e Prisma na segunda -->
   <section class="section section--white" id="solucoes" data-section="services">
     <div class="container">
       <header class="section-head section-head--center" data-reveal>
         <p class="eyebrow">Soluções</p>
-        <h2 class="h2">Quatro empresas, a mesma lógica</h2>
-        <p class="lead">A Oxyn, com as frentes Vendas, Pessoas e IA, mais Naia, FQDTV e FQD Studios. Contrate uma ou combine várias: todas trabalham pelo mesmo resultado, a sua receita.</p>
+        <h2 class="h2">Cinco empresas, a mesma lógica</h2>
+        <p class="lead">A Oxyn, com as frentes Vendas, Pessoas e SEO/GEO, mais Naia, FQDTV, FQD Studios e Prisma. Contrate uma ou combine várias: todas trabalham pelo mesmo resultado, a sua receita.</p>
       </header>
       <div class="bento">
 {service_cards}
@@ -748,7 +785,7 @@ def unit_page(u):
       <header class="section-head" data-reveal>
 {deliv_eb}        <h2 class="h2">{u["deliv_h2"]}</h2>
       </header>
-      <div class="grid grid--{len(u["deliv"])}">
+      <div class="grid grid--{3 if len(u["deliv"]) == 6 else len(u["deliv"])}">
 {deliv}
       </div>
     </div>
