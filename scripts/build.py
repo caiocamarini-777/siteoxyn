@@ -88,35 +88,38 @@ UNITS = [
        faq=[("A consultoria de RH é só para a área comercial?","Não. Atendemos toda a estrutura da empresa: governança de RH, cargos e salários, lideranças e rituais de gestão. A experiência comercial do grupo ajuda especialmente em times de vendas."),
             ("O que é RH como serviço?","É quando a Oxyn atua como o RH da sua empresa, conduzindo rituais, clima e PDI, com uma transição planejada para um time interno quando fizer sentido."),
             ("Quanto tempo dura a implantação?","O ciclo padrão é de 90 dias: estruturar, implantar e sustentar. Ao final, a rotina está com a liderança e com o time de Pessoas da empresa.")]),
-  dict(slug="prisma", seo_title="Consultoria de IA e tecnologia para empresas | Prisma",
-       seo_desc="IA em escala com curadoria humana: consultoria em IA, treinamento e padronização do uso e soluções sob medida, com escopo fechado.",
+  dict(slug="prisma", seo_title="Consultoria de IA e software sob medida | Prisma",
+       seo_desc="Consultoria e engenharia de software com IA: automação, agentes, software sob medida e treinamento, com escopo fechado e primeiro valor em semanas.",
        unit="Prisma", short="IA e tecnologia", icon="i-cpu", color="blue", img="foto-abstrato-escuro.webp",
-       card="Consultoria de tecnologia que une IA em escala e curadoria humana: consultoria em IA, treinamento e padronização e soluções sob medida.",
-       tags=["Consultoria em IA", "Treinamento e padronização", "Soluções sob medida"],
-       menu="Consultoria, treinamento e soluções de IA",
-       title="Prisma: consultoria de IA e tecnologia para empresas",
-       eyebrow="Prisma · Make it simple",
-       h1_thin="Solução,", h1="não horas.",
-       lead="A Prisma é a consultoria de tecnologia do grupo. Une IA em escala com curadoria humana na arquitetura, no levantamento de necessidades e na qualidade da entrega. Em vendas, atendimento, marketing, financeiro, RH e operação: onde houver ganho.",
+       card="Consultoria e engenharia de software com IA: automação, agentes, software sob medida e treinamento, com escopo fechado e resultado em semanas.",
+       tags=["Consultoria em IA", "Automação e agentes", "Software sob medida"],
+       menu="Consultoria de IA e software sob medida",
+       title="Prisma: consultoria de IA e engenharia de software",
+       eyebrow="Prisma · Consultoria e engenharia de software",
+       h1_thin="Do cenário ao resultado", h1="em semanas.",
+       lead="Há mais de 20 anos a Prisma leva o que há de mais novo em tecnologia para dentro de operações reais. Hoje, esse motor é a inteligência artificial: consultoria, automação, software sob medida e treinamento, com escopo fechado e preço pela entrega. Sem vender horas e sem projetos que nunca terminam.",
        pains_h2="A IA já chegou na sua empresa ou só no discurso?",
-       pains=[("i-message","IA só no discurso","A empresa sabe que precisa, mas não sabe por onde começar nem como medir o retorno."),
-              ("i-zap","Horas em tarefa repetitiva","Relatórios, atendimento, propostas e conferências manuais tomando o tempo de todas as áreas."),
-              ("i-layers","Cada um usa de um jeito","Cada área testa uma ferramenta diferente, sem padrão, governança nem segurança de dados.")],
-       deliv_h2="Três frentes, escopo limpo", deliv_cta="Quero conversar sobre isso",
-       deliv=[("i-target","Consultoria em IA","Levantamento de necessidades com curadoria humana, mapa de oportunidades priorizado por retorno e plano de adoção por área. Três alternativas, uma recomendação."),
-              ("i-users","Treinamento e padronização","Capacitação prática por área e padrões de uso: ferramentas aprovadas, prompts, fluxos de trabalho e regras de segurança de dados."),
-              ("i-cpu","Soluções personalizadas com IA","Agentes, automações e sistemas sob medida, integrados às ferramentas que a empresa já usa. Arquitetura desenhada antes de qualquer linha de código.")],
-       how_eyebrow="O modelo", how_h2="Uma ideia. Três caminhos.",
-       how_lead="Como o prisma separa a luz em cores, recebemos uma ideia como foco e a desdobramos em alternativas. Você paga pela entrega, não por horas ou pessoas alocadas.",
-       how=["<b>Descoberta:</b> extração de necessidades com curadoria humana, área por área",
-            "<b>Arquitetura:</b> desenho da solução antes de qualquer linha de código, com três alternativas e uma recomendação",
-            "<b>Entrega:</b> IA em escala na construção, revisão humana em cada decisão e escopo fechado",
-            "<b>Adoção:</b> treinamento do time, padrões de uso e indicadores acompanhados depois da entrega"],
+       pains=[("i-chart","IA sem resultado é custo","95% dos programas de IA generativa não geram retorno financeiro relevante. Fonte: Harvard Business Review."),
+              ("i-layers","Pilotos que não saem do lugar","Só 26% das empresas desenvolveram capacidade para sair das provas de conceito e gerar valor. Fonte: BCG."),
+              ("i-zap","Horas em tarefa repetitiva","Planilhas críticas, conferências manuais e retrabalho entre sistemas tomando o tempo de todas as áreas."),
+              ("i-message","Cada um usa de um jeito","Ferramentas soltas e times que não se conversam, sem padrão, governança nem segurança de dados.")],
+       deliv_h2="O que a Prisma entrega", deliv_cta="Quero conversar sobre isso",
+       deliv=[("i-target","Consultoria e discovery em IA","Diagnóstico da operação, mapa de oportunidades priorizado por retorno e um caminho claro antes de investir."),
+              ("i-zap","Automação e agentes de IA","Automações que eliminam etapas manuais, modelos que leem documentos e agentes que operam atendimento, triagem e back-office integrados aos seus sistemas."),
+              ("i-cpu","Software sob medida e integrações","Sistemas, integrações, APIs e produtos digitais construídos a partir do que falta na operação, com protótipo para validar antes de construir."),
+              ("i-users","Treinamento e padronização","Capacitação prática por área e padrões de uso: ferramentas aprovadas, prompts, fluxos de trabalho e regras de segurança de dados.")],
+       how_eyebrow="Método Espectro", how_h2="Engenharia de Valor: valor cedo, valor sempre",
+       how_lead="Como um prisma decompõe a luz, partimos de um objetivo de negócio e o desdobramos em frentes integradas, com IA orquestrada e curadoria humana em cada decisão. Case Marco: SaaS completo para o mercado de esquadrias, no ar em 12 semanas e com 40% menos tempo de processo (fonte: Prisma).",
+       how=["<b>Semana 1 · Imersão:</b> mergulhamos na operação para entender o que ela precisa ser capaz de fazer",
+            "<b>Semana 2 · Desenho de valor:</b> abrimos alternativas e escolhemos com você a que gera mais impacto primeiro",
+            "<b>Semanas 3 e 4 · Protótipo:</b> você vê a solução funcionando e valida antes de investir pesado",
+            "<b>Semanas 5 a 8 · Primeiro valor no ar:</b> a entrega que já muda o dia a dia vai para produção",
+            "<b>Depois · Evolução contínua:</b> seguimos responsáveis pelo resultado, evoluindo a partir do que funciona"],
        connects=["vendas","pessoas","seo-geo"],
-       faq=[("A Prisma atua só em vendas?","Não. Atuamos na empresa inteira: vendas, atendimento, marketing, financeiro, RH e operação. Onde houver tarefa repetitiva ou decisão que se beneficia de dados, a IA pode gerar ganho."),
-            ("O que significa vender solução, não horas?","Você contrata uma entrega com escopo e prazo definidos, não um pacote de horas ou um time alocado. A IA acelera a construção e a curadoria humana garante a qualidade."),
-            ("O que significa padronizar o uso de IA?","É definir quais ferramentas usar, para quê e com quais regras: políticas de uso, proteção de dados, prompts e fluxos de trabalho por área, para que todo o time use IA do mesmo jeito e com segurança."),
-            ("Preciso ter uma equipe de tecnologia?","Não. Conduzimos levantamento, arquitetura, desenvolvimento e treinamento. Quando há integração com sistemas internos, trabalhamos junto com o seu time ou fornecedor de TI.")]),
+       faq=[("A Prisma atua só em vendas?","Não. Atuamos na empresa inteira: vendas, atendimento, marketing, financeiro, RH e operação. Onde houver tarefa repetitiva, retrabalho entre sistemas ou decisão que se beneficia de dados, a IA pode gerar ganho."),
+            ("O que significa vender solução, não horas?","Você contrata uma entrega com escopo fechado e preço pela entrega, não um pacote de horas ou um time alocado. A IA acelera a construção e a curadoria humana garante a qualidade."),
+            ("Em quanto tempo vejo o primeiro resultado?","Pela Engenharia de Valor, o protótipo fica pronto entre a terceira e a quarta semana, e a primeira entrega que muda o dia a dia vai para produção entre a quinta e a oitava semana."),
+            ("Preciso ter uma equipe de tecnologia?","Não. Conduzimos diagnóstico, desenho, desenvolvimento e treinamento. Quando há integração com sistemas internos, trabalhamos junto com o seu time ou fornecedor de TI.")]),
   dict(slug="seo-geo", seo_title="SEO e GEO: sua marca no Google e nas IAs | Oxyn SEO/GEO",
        seo_desc="Implementação e ongoing de SEO e GEO para a sua marca aparecer no Google e ser recomendada pelo ChatGPT, Gemini e Perplexity, com resultado medido em vendas.",
        unit="Oxyn SEO/GEO", short="SEO e GEO", icon="i-search", color="blue", img="foto-abstrato-capa.webp",
@@ -259,9 +262,10 @@ BY["fqdtv"]["logo"] = "empresas/fqdtv.svg"
 BY["fqd-studios"]["logo"] = "empresas/fqd-studios.svg"
 BY["prisma"]["logo"] = "empresas/prisma.svg"   # logo negativo extraido do guia de marca da Prisma
 # Site proprio de cada empresa (botao no banner, para o cliente saber mais)
-BY["naia-geo-seo"].update(site="https://naia.today/", site_label="Site da Naia")
-BY["fqdtv"].update(site="https://fqdtv.com.br/", site_label="Canal da FQDTV no YouTube")
-BY["fqd-studios"].update(site_label="Site da FQD Studios")
+# (o logo do banner e o botao "Conheca mais" levam para esse site)
+BY["naia-geo-seo"]["site"] = "https://naia.today/"
+BY["fqdtv"]["site"] = "https://fqdtv.com.br/"
+BY["prisma"]["site"] = "https://www.prismalogic.com.br/"
 
 # --------------------------------------------------------------------------
 # Partes compartilhadas
@@ -482,7 +486,7 @@ def home():
         return f'<span class="logo-tile logo-tile--img" title="{c["nome"]}">{img}</span>'
     client_tiles = "".join(client_tile(c) for c in CLIENTS)
     acionadas = {"pessoas":"Time e lideranças que sustentam", "seo-geo":"Sua marca no Google e nas IAs",
-                 "prisma":"IA e tecnologia com escopo fechado", "naia-geo-seo":"Presença da marca nas IAs, medida", "fqdtv":"Reputação no seu nicho",
+                 "prisma":"IA e software com escopo fechado", "naia-geo-seo":"Presença da marca nas IAs, medida", "fqdtv":"Reputação no seu nicho",
                  "fqd-studios":"Conteúdo que prova autoridade"}
     co = lambda s, nome: f'''<a class="sol__co" href="/solucoes/{s}"><b>{nome}</b><span>{acionadas[s]}</span></a>'''
     sol_frentes = "".join(co(s, BY[s]["short"].replace(" e RH","")) for s in ["pessoas","seo-geo"])
@@ -758,10 +762,10 @@ def unit_page(u):
         <div class="btn-row">
           <a href="#contato" class="btn btn--primary">Vamos conversar <span class="arrow">→</span></a>
           <a href="#entregas" class="btn btn--ghost">O que entregamos</a>{f'''
-          <a href="{u["site"]}" class="btn btn--ghost" target="_blank" rel="noopener">{u.get("site_label", "Site da " + u["unit"])} <svg class="icon icon--sm"><use href="#i-external"/></svg></a>''' if u.get("site") else ""}
+          <a href="{u["site"]}" class="btn btn--ghost" target="_blank" rel="noopener">Conheça mais <svg class="icon icon--sm"><use href="#i-external"/></svg></a>''' if u.get("site") else ""}
         </div>
       </div>{f'''
-      <div class="hero__logo"><img src="{IMG}/{u["logo"]}" alt="Logo {u["unit"]}" width="360" height="240"></div>''' if u.get("logo") else ""}
+      <div class="hero__logo">{f'<a href="{u["site"]}" target="_blank" rel="noopener" aria-label="Site da {u["unit"]} (abre em nova aba)">' if u.get("site") else ""}<img src="{IMG}/{u["logo"]}" alt="Logo {u["unit"]}" width="360" height="240">{"</a>" if u.get("site") else ""}</div>''' if u.get("logo") else ""}
     </div>
   </header>
 
