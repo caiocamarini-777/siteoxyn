@@ -2,7 +2,7 @@
 Uso (na raiz do repo): python3 scripts/build.py
 Edite os textos aqui e rode o script; ele sobrescreve index.html, solucoes/*.html e sitemap.xml.
 """
-import json, sys, pathlib, hashlib
+import json, sys, pathlib, hashlib, re
 
 OUT = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else pathlib.Path(__file__).resolve().parent.parent
 SITE = "https://oxyngroup.com.br"
@@ -29,7 +29,7 @@ LI = "https://www.linkedin.com/company/oxyn-group/"
 UNITS = [
   dict(slug="vendas", seo_title="Consultoria de vendas B2B e terceirização comercial | Oxyn",
        seo_desc="Diagnóstico comercial, reestruturação do time, treinamento com a metodologia D.R.I.V.E., mentoria e operação de vendas terceirizada para empresas B2B.",
-       unit="Oxyn Vendas", short="Vendas", icon="i-trend", color="blue", img="foto-leao.jpg",
+       unit="Oxyn Vendas", short="Vendas", icon="i-trend", color="blue", img="foto-leao.webp",
        card="Consultoria comercial B2B. Diagnóstico primeiro; depois reestruturamos o time, treinamos a equipe ou assumimos a operação de vendas.",
        tags=["Diagnóstico comercial", "Treinamento", "Operação terceirizada"],
        menu="Consultoria comercial e operação de vendas",
@@ -61,7 +61,7 @@ UNITS = [
             ("A Oxyn representa a minha marca?","Não representamos marcas: vestimos a camisa. Quando faz sentido, assumimos a operação comercial com a sua marca, metas, rituais e indicadores compartilhados.")]),
   dict(slug="pessoas", seo_title="Consultoria de RH e formação de líderes | Oxyn Pessoas",
        seo_desc="Estruturamos o RH, formamos lideranças e atuamos como o RH da sua empresa. Cargos, carreiras, rituais de gestão e implantação em 90 dias.",
-       unit="Oxyn Pessoas", short="Pessoas e RH", icon="i-users", color="blue", img="foto-broto.jpg",
+       unit="Oxyn Pessoas", short="Pessoas e RH", icon="i-users", color="blue", img="foto-broto.webp",
        card="Consultoria de RH e formação de lideranças. Estruturamos o RH, formamos líderes e, quando necessário, somos o RH da sua empresa.",
        tags=["Consultoria de RH", "Mentoria de líderes", "RH como serviço"],
        menu="Consultoria de RH, lideranças e RH como serviço",
@@ -90,7 +90,7 @@ UNITS = [
             ("Quanto tempo dura a implantação?","O ciclo padrão é de 90 dias: estruturar, implantar e sustentar. Ao final, a rotina está com a liderança e com o time de Pessoas da empresa.")]),
   dict(slug="prisma", seo_title="Consultoria de IA e tecnologia para empresas | Prisma",
        seo_desc="IA em escala com curadoria humana: consultoria em IA, treinamento e padronização do uso e soluções sob medida, com escopo fechado.",
-       unit="Prisma", short="IA e tecnologia", icon="i-cpu", color="blue", img="foto-abstrato-escuro.jpg",
+       unit="Prisma", short="IA e tecnologia", icon="i-cpu", color="blue", img="foto-abstrato-escuro.webp",
        card="Consultoria de tecnologia que une IA em escala e curadoria humana: consultoria em IA, treinamento e padronização e soluções sob medida.",
        tags=["Consultoria em IA", "Treinamento e padronização", "Soluções sob medida"],
        menu="Consultoria, treinamento e soluções de IA",
@@ -119,7 +119,7 @@ UNITS = [
             ("Preciso ter uma equipe de tecnologia?","Não. Conduzimos levantamento, arquitetura, desenvolvimento e treinamento. Quando há integração com sistemas internos, trabalhamos junto com o seu time ou fornecedor de TI.")]),
   dict(slug="seo-geo", seo_title="SEO e GEO: sua marca no Google e nas IAs | Oxyn SEO/GEO",
        seo_desc="Implementação e ongoing de SEO e GEO para a sua marca aparecer no Google e ser recomendada pelo ChatGPT, Gemini e Perplexity, com resultado medido em vendas.",
-       unit="Oxyn SEO/GEO", short="SEO e GEO", icon="i-search", color="blue", img="foto-abstrato-capa.jpg",
+       unit="Oxyn SEO/GEO", short="SEO e GEO", icon="i-search", color="blue", img="foto-abstrato-capa.webp",
        card="Implementação e ongoing de SEO e GEO: sua marca encontrada no Google e recomendada pelas IAs, com resultado medido em vendas e leads.",
        tags=["Implementação", "Ongoing", "Google e IAs"],
        menu="Implementação e ongoing de SEO e GEO",
@@ -154,7 +154,7 @@ UNITS = [
             ("Em quanto tempo vejo resultado?","As correções técnicas e os primeiros pilotos costumam mostrar sinais no primeiro trimestre. Autoridade e presença consistente nas IAs são construídas ao longo dos meses seguintes, e as metas são definidas depois da linha de base do primeiro mês.")]),
   dict(slug="naia-geo-seo", seo_title="Naia: monitoramento da sua marca nas IAs | GEO",
        seo_desc="A Naia mostra como ChatGPT, Gemini, Perplexity e AI Overviews falam da sua marca: menções, citações, concorrentes, fontes e evolução mês a mês.",
-       unit="Naia", short="Plataforma de GEO", icon="i-search", color="blue", img="foto-abstrato-capa.jpg",
+       unit="Naia", short="Plataforma de GEO", icon="i-search", color="blue", img="foto-abstrato-capa.webp",
        card="Plataforma de GEO que mostra como as IAs falam da sua marca: menções, citações, concorrentes e fontes, com série histórica.",
        tags=["Monitoramento multi-IA", "Concorrentes e fontes", "Série histórica"],
        menu="Plataforma de monitoramento da marca nas IAs",
@@ -185,7 +185,7 @@ UNITS = [
             ("Quais IAs a Naia acompanha?","As principais IAs generativas usadas pelos seus clientes, como ChatGPT, Gemini, Perplexity e as respostas com IA do Google.")]),
   dict(slug="fqdtv", seo_title="Mídia de nicho e branded content B2B | FQDTV",
        seo_desc="Programas, distribuição segmentada e branded content para a sua marca falar com quem decide a compra nos nichos que a mídia de massa não alcança.",
-       unit="FQDTV", short="Mídia de nicho", icon="i-megaphone", color="blue", img="foto-abstrato-escuro.jpg",
+       unit="FQDTV", short="Mídia de nicho", icon="i-megaphone", color="blue", img="foto-abstrato-escuro.webp",
        card="Mídias de penetração em públicos nichados. Sua marca falando com quem decide, no contexto certo.",
        tags=["Mídia segmentada", "Branded content", "Autoridade"],
        menu="Mídia para públicos de nicho",
@@ -215,7 +215,7 @@ UNITS = [
             ("Como sei se a mídia gerou negócios?","Cada campanha tem indicadores de alcance e engajamento e, quando integrada ao comercial, de oportunidades geradas.")]),
   dict(slug="fqd-studios", seo_title="Estúdio de podcast e vídeo em São Paulo | FQD Studios",
        seo_desc="Estúdio em São Paulo para podcast, videocast, lives, aulas e conteúdo corporativo, com captação em 4K, pós-produção e gravações externas.",
-       unit="FQD Studios", short="Estúdio e conteúdo", icon="i-video", color="blue", img="foto-abstrato-capa.jpg",
+       unit="FQD Studios", short="Estúdio e conteúdo", icon="i-video", color="blue", img="foto-abstrato-capa.webp",
        site="https://fqdstudios.com/",
        address=dict(street="Av. Queiroz Filho, 1700, Bloco D, Sala 802", district="Vila Hamburguesa", city="São Paulo", region="SP", zip="05319-000"),
        card="Estúdio em São Paulo e gravações externas para podcasts, lives, programas de bancada e conteúdo corporativo. Um estúdio, todos os formatos.",
@@ -271,7 +271,12 @@ IMG = "/assets/img"
 # Versao dos arquivos de estilo e script: muda a cada alteracao e obriga o navegador a baixar a versao nova
 def _ver(rel):
     return hashlib.md5((OUT / rel).read_bytes()).hexdigest()[:10]
-CSS_V, JS_V = _ver("assets/css/styles.css"), _ver("assets/js/main.js")
+JS_V = _ver("assets/js/main.js")
+def _min_css(t):
+    t = re.sub(r"/\*.*?\*/", "", t, flags=re.S)
+    t = re.sub(r"\s+", " ", t)
+    return re.sub(r"\s*([{};,>])\s*", r"\1", t).replace(";}", "}").strip()
+CSS = _min_css((OUT / "assets/css/styles.css").read_text(encoding="utf-8"))
 
 # Fundadores (Manual de Marca v1.0, slide "Fundadores"). Fotos: salvar em
 # assets/img/fundadores/<slug>.jpg e preencher "foto".
@@ -298,9 +303,7 @@ CLIENTS = [
 SECTORS = [("Indústria","i-factory"), ("Agro","i-wheat"), ("Farma","i-pill"), ("Varejo","i-store"),
            ("Educação","i-graduation"), ("Financeiro","i-bank"), ("Automotivo","i-car"), ("Aviação","i-plane")]
 
-FONTS = "https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;600&family=Montserrat:wght@300;400;500;600;700;800&display=swap"
-
-def head(title, desc, path, jsonld):
+def head(title, desc, path, jsonld, hero="foto-abstrato-capa.webp"):
     url = SITE + path
     return f"""<!doctype html>
 <html lang="pt-BR">
@@ -323,11 +326,9 @@ def head(title, desc, path, jsonld):
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="{IMG}/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="{IMG}/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="{FONTS}" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="{FONTS}"></noscript>
-<link rel="stylesheet" href="/assets/css/styles.css?v={CSS_V}">
+<link rel="preload" href="/assets/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{IMG}/{hero}" as="image" fetchpriority="high">
+<style>{CSS}</style>
 <script type="application/ld+json">
 {json.dumps(jsonld, ensure_ascii=False, indent=2)}
 </script>
@@ -364,7 +365,7 @@ def nav(current=None):
 
 def cta(thin, h2, lead):
     return f"""  <!-- CTA FINAL | foto escura + composicao assinatura entre fios finos | 1 botao ambar -->
-  <section class="section section--overlay cta-final has-ring" id="contato" data-section="cta" style="--img:url('{IMG}/foto-abstrato-capa.jpg');--ring-o:.12;--ring-x:auto;--ring-y:-180px">
+  <section class="section section--overlay cta-final has-ring" id="contato" data-section="cta" style="--img:url('{IMG}/foto-abstrato-capa.webp');--ring-o:.12;--ring-x:auto;--ring-y:-180px">
     <div class="container">
       <header class="section-head section-head--center signature" data-reveal>
         <h2 class="h2"><span class="thin">{thin}</span>{h2}</h2>
@@ -532,7 +533,7 @@ def home():
     html += '  <main id="conteudo">'
     html += f"""
   <!-- HERO | abstrato escuro (capa do manual) + anel em marca d'agua + grade de pontos -->
-  <header class="hero has-ring" data-section="hero" style="--img:url('{IMG}/foto-abstrato-capa.jpg')">
+  <header class="hero has-ring" data-section="hero" style="--img:url('{IMG}/foto-abstrato-capa.webp')">
     <div class="container">
       <span class="dotgrid" aria-hidden="true"></span>
       <div class="hero__content hero__content--home">
@@ -609,7 +610,7 @@ def home():
   </section>
 
   <!-- POSICIONAMENTO | composicao assinatura entre fios finos sobre foto escura -->
-  <section class="section section--overlay photo-section" data-section="positioning" style="--img:url('{IMG}/foto-abstrato-escuro.jpg');--ov:.45">
+  <section class="section section--overlay photo-section" data-section="positioning" style="--img:url('{IMG}/foto-abstrato-escuro.webp');--ov:.45">
     <div class="container">
       <div class="signature" data-reveal>
         <h2 class="display"><span class="thin">Somos</span>Business Converter™</h2>
@@ -740,7 +741,7 @@ def unit_page(u):
                      for o in (BY[s] for s in u["connects"]))
     tags = "".join(f'<span class="tag tag--dark">{t}</span>' for t in u["tags"])
 
-    html = head(u["seo_title"], u["seo_desc"], path, [service_ld, faq_ld(u["faq"])])
+    html = head(u["seo_title"], u["seo_desc"], path, [service_ld, faq_ld(u["faq"])], hero=u["img"])
     html += body_open()
     html += nav(u["slug"])
     html += '  <main id="conteudo">'
@@ -839,7 +840,7 @@ def not_found():
     links = "".join(f'<a href="/solucoes/{u["slug"]}">{u["unit"]}</a>' for u in UNITS)
     html += body_open() + nav() + '  <main id="conteudo">'
     html += f"""
-  <header class="hero has-ring" data-section="hero" style="--img:url('{IMG}/foto-abstrato-capa.jpg')">
+  <header class="hero has-ring" data-section="hero" style="--img:url('{IMG}/foto-abstrato-capa.webp')">
     <div class="container">
       <div class="hero__content hero__content--home">
         <p class="sol__kicker">Erro 404</p>

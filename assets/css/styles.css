@@ -1,3 +1,8 @@
+/* 0. FONTES | hospedadas no proprio site (sem ida ao Google Fonts antes de desenhar a pagina) */
+@font-face{font-family:"Montserrat";font-style:normal;font-weight:300 800;font-display:swap;src:url("/assets/fonts/montserrat-latin.woff2") format("woff2")}
+@font-face{font-family:"Barlow";font-style:normal;font-weight:300;font-display:swap;src:url("/assets/fonts/barlow-300-latin.woff2") format("woff2")}
+@font-face{font-family:"Barlow";font-style:normal;font-weight:400;font-display:swap;src:url("/assets/fonts/barlow-400-latin.woff2") format("woff2")}
+@font-face{font-family:"Barlow";font-style:normal;font-weight:600;font-display:swap;src:url("/assets/fonts/barlow-600-latin.woff2") format("woff2")}
 /* ==========================================================================
    1. TOKENS  (edite aqui para trocar a marca inteira)
    ========================================================================== */
@@ -631,7 +636,7 @@ a.logo-tile--img:hover img{opacity:.85}
    ========================================================================== */
 .sol{position:relative;overflow:hidden;background:#0E1418;color:#fff;padding:92px 0 64px;
   --fg:#fff;--fg-muted:rgba(255,255,255,.7);--eyebrow:var(--color-accent)}
-.sol__photo{position:absolute;inset:0 0 auto;height:520px;background:url("/assets/img/foto-leao.jpg") 78% 30%/cover no-repeat;filter:saturate(.75)}
+.sol__photo{position:absolute;inset:0 0 auto;height:520px;background:url("/assets/img/foto-leao.webp") 78% 30%/cover no-repeat;filter:saturate(.75)}
 .sol__photo::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0E1418 0%,rgba(14,20,24,.94) 38%,rgba(14,20,24,.55) 70%,rgba(14,20,24,.35) 100%)}
 .sol__photo::after{content:"";position:absolute;left:0;right:0;bottom:0;height:120px;background:linear-gradient(180deg,rgba(14,20,24,0),#0E1418)}
 .sol.has-ring{--ring-size:520px;--ring-x:-120px;--ring-y:40px;--ring-o:.2}
@@ -707,7 +712,7 @@ a.logo-tile--img:hover img{opacity:.85}
 .sol__photo{width:min(56%,780px);height:585px;background-position:center top;background-size:cover}
 .sol__photo::before{background:linear-gradient(90deg,#0E1418 0%,rgba(14,20,24,.55) 25%,rgba(14,20,24,.15) 60%,rgba(14,20,24,.1) 100%)}
 /* Sem leao: abstrato escuro do manual (bokeh verde-azulado), em toda a largura, espelhado para nao repetir o enquadramento do Posicionamento */
-.sol__photo{left:0;right:0;width:auto;height:620px;background:url("/assets/img/foto-abstrato-escuro.jpg") center/cover no-repeat;filter:none;transform:scaleX(-1)}
+.sol__photo{left:0;right:0;width:auto;height:620px;background:url("/assets/img/foto-abstrato-escuro.webp") center/cover no-repeat;filter:none;transform:scaleX(-1)}
 .sol__photo::before{background:rgba(14,20,24,.35)}
 .sol__photo::after{height:220px}
 @media (max-width:900px){.sol__photo{height:520px;opacity:1}}
