@@ -298,11 +298,12 @@ def _min_css(t):
     return re.sub(r"\s*([{};,>])\s*", r"\1", t).replace(";}", "}").strip()
 CSS = _min_css((OUT / "assets/css/styles.css").read_text(encoding="utf-8"))
 
-# Fundadores (Manual de Marca v1.0, slide "Fundadores"). Fotos: salvar em
+# Liderança (Manual de Marca v1.0, slide "Fundadores"). Fotos: salvar em
 # assets/img/fundadores/<slug>.jpg e preencher "foto".
 LEADERS = [
   dict(nome="Caio Camarini", cargo="Co-CEO", foto="caio-camarini.jpg", bio="Executivo com mais de 20 anos em liderança comercial e desenvolvimento de negócios. Especialista em digitalização B2B e estratégias omnichannel, concluiu o programa de Negociação e Decisões Competitivas da Harvard Business School."),
   dict(nome="Erick Melo", cargo="Co-CEO", foto="erick-melo.jpg", bio="Empreendedor com mais de 20 anos em tecnologia e negócios. Fundou a Webjump, integra o Conselho do E-Commerce Brasil e concluiu o programa Managing Innovation da Harvard Business School."),
+  dict(nome="Ivan Bastos", cargo="CEO Prisma", foto="ivan-bastos.jpg", bio="Empreendedor com mais de 20 anos em tecnologia e arquitetura de software. Já atuou como CEO de empresa de tecnologia e hoje lidera produtos de inteligência artificial aplicada a vendas B2B. Concluiu o Owner/President Management (OPM) da Harvard Business School."),
   dict(nome="Bruno Gurgel", cargo="CTO", foto="bruno-gurgel.jpg", bio="Empreendedor com mais de 20 anos em tecnologia, inovação e gestão, com passagens por R7, Whirlpool e Ambev."),
   dict(nome="Rodrigo Macena", cargo="COO", foto="rodrigo-macena.jpg", bio="Especialista em otimização de operações em grandes empresas, com passagem pela Porto Seguro e formação na Harvard Business School."),
   dict(nome="Beatriz Fonseca", cargo="CPO", foto="beatriz-fonseca.jpg", bio="Executiva com mais de 20 anos de experiência, 10 deles liderando equipes. Especialista em Pessoas e Cultura, pós-graduada em Psicologia Organizacional e formada no High Potential Leadership Program da Harvard Business School."),
@@ -376,7 +377,7 @@ def nav(current=None, pagina=None):
           </div>
         </div>
         <a href="/#metodo">Método</a>
-        <a href="/#fundadores">Fundadores</a>
+        <a href="/#lideranca">Liderança</a>
         <a href="{wa_ctx(pagina, "menu")}" class="btn btn--ghost btn--sm" target="_blank" rel="noopener">Fale com a Oxyn</a>
       </div>
       <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-links"><svg class="icon"><use href="#i-menu"/></svg></button>
@@ -423,7 +424,7 @@ def footer(pagina):
         <div><p class="footer__t">Soluções</p><ul>{sols}</ul></div>
         <div><p class="footer__t">Oxyn Group</p><ul>
           <li><a href="/#pilares">Pilares</a></li><li><a href="/#metodo">Método D.R.I.V.E.</a></li>
-          <li><a href="/#fundadores">Fundadores</a></li><li><a href="{"/#contato" if pagina == "Página não encontrada" else "#contato"}">Contato</a></li></ul></div>
+          <li><a href="/#lideranca">Liderança</a></li><li><a href="{"/#contato" if pagina == "Página não encontrada" else "#contato"}">Contato</a></li></ul></div>
         <div><p class="footer__t">Contato</p><ul>
           <li><a href="{wa_ctx(pagina, "rodapé")}" target="_blank" rel="noopener">{PHONE}</a></li>
           <li><a href="{mail_ctx(pagina, "rodapé")}">{EMAIL}</a></li></ul></div>
@@ -707,12 +708,12 @@ def home():
     </div>
   </section>
 
-  <!-- FUNDADORES | retratos dos fundadores (slide 10 da apresentacao Q4 2026) -->
-  <section class="section founders" id="fundadores" data-section="leadership">
+  <!-- LIDERANCA | retratos da lideranca do grupo -->
+  <section class="section founders" id="lideranca" data-section="leadership">
     <div class="container">
       <header class="founders__head" data-reveal>
         <div>
-          <p class="sol__kicker">Fundadores</p>
+          <p class="sol__kicker">Liderança</p>
           <h2 class="sol__title"><small>Quem respira B2B</small><b>há mais de 20 anos<span>.</span></b></h2>
         </div>
         <p class="lead">Liderança comercial, tecnologia, mídia e gestão de pessoas, com passagem por grandes empresas e formação na Harvard Business School. É essa experiência que aplicamos em cada cliente.</p>
