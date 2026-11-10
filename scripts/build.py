@@ -324,6 +324,8 @@ CLIENTS = [
 SECTORS = [("Indústria","i-factory"), ("Agro","i-wheat"), ("Farma","i-pill"), ("Varejo","i-store"),
            ("Educação","i-graduation"), ("Financeiro","i-bank"), ("Automotivo","i-car"), ("Aviação","i-plane")]
 
+GTM_ID = "GTM-NHPPKLLN"   # Google Tag Manager
+
 def head(title, desc, path, jsonld, hero="foto-abstrato-capa.webp"):
     url = SITE + path
     return f"""<!doctype html>
@@ -331,6 +333,15 @@ def head(title, desc, path, jsonld, hero="foto-abstrato-capa.webp"):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google Tag Manager -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('js', new Date());
+  dataLayer.push({{'gtm.start': new Date().getTime(), event: 'gtm.js'}});
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id={GTM_ID}"></script>
+<!-- End Google Tag Manager -->
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <link rel="canonical" href="{url}">
@@ -447,7 +458,8 @@ def footer(pagina):
 """
 
 def body_open():
-    return f'<body class="has-cookie">\n\n{SPRITE}\n'
+    return (f'<body class="has-cookie">\n<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={GTM_ID}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>\n'
+            f'\n{SPRITE}\n')
 
 def faq_block(items, title):
     html = "\n".join(f'        <details data-reveal><summary>{q}</summary><p>{a}</p></details>' for q,a in items)
