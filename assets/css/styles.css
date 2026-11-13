@@ -831,6 +831,21 @@ a.logo-tile--img:hover img{opacity:.85}
 .founder__body p{font-size:12.5px}
 @media (max-width:1200px){.founders__grid{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:40px}}
 @media (max-width:700px){.founders__grid{grid-template-columns:none}}
+/* Nome sempre em uma linha nas 7 colunas */
+.founder__name{white-space:nowrap;font-size:1.1rem}
+@media (max-width:1400px){.founder__name{font-size:1rem}}
+.founder__photo img[alt^="Vinicius"]{object-position:center 15%}
+/* Celular: lista editorial, foto pequena ao lado do nome e da bio */
+@media (max-width:700px){
+  .founders__head{gap:var(--space-6);margin-bottom:var(--space-8)}
+  .founders__grid{display:flex;flex-direction:column;overflow:visible;gap:0;padding:0;border-top:1px solid rgba(255,255,255,.18)}
+  .founder{display:grid;grid-template-columns:96px minmax(0,1fr);column-gap:18px;align-items:start;padding:22px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+  .founder__photo{aspect-ratio:3/4}
+  .founder__photo::after{display:none}
+  .founder__body{border-top:0;margin-top:0;padding-top:2px;gap:6px}
+  .founder__name{font-size:1.1rem;white-space:normal}
+  .founder__body p{font-size:13px;line-height:1.55}
+}
 
 /* 15. Acessibilidade e 404 */
 /* Sobretitulo em fundo claro: Azul Oxyn um tom abaixo para passar no contraste minimo (4.5:1) */
